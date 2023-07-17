@@ -22,6 +22,9 @@ path = "src/explain_gua.rs"
 test = true
 bench = false
 
+[lib]
+path = "src/explain_gua.rs"
+
 [dependencies]
 serde_json="1.0"
 serde = { version = "1.0", features = ["derive"] }
