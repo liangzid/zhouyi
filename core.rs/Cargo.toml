@@ -22,12 +22,19 @@ path = "src/explain_gua.rs"
 test = true
 bench = false
 
+# [lib]
+# name = "main"
+# path = "src/explain_gua.rs"
+
 [lib]
+name = "zhouyipy"
+# path = "src/py_lib.rs"
 path = "src/explain_gua.rs"
+crate-type = ["cdylib"]
 
 [dependencies]
 serde_json="1.0"
 serde = { version = "1.0", features = ["derive"] }
 rand = "0.8"
-
+pyo3 = "0.19.0"
 

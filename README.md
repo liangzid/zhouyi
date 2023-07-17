@@ -15,6 +15,8 @@ This directory first models the structure of zhouyi model, and then reproduces s
 
 ### Use this module
 
+### In Rust
+
 You can compile it as the execute application, or build it as the library.
 
 In the first situation, check "[[bin]]" in [core.rs/Cargo.toml](https://github.com/liangzid/zhouyi/blob/master/core.rs/Cargo.toml) and run `cargo run --bin XXX`, where `XXX` is the bin name.
@@ -60,9 +62,72 @@ fn main(){
 「小人革面」，順以從君也。"])
 ```
 
+
 Just further warp this structure of type `(HashMap<&'g str,String>,Vec<String>,Vec<String>)` and select the information you need for this.
 
 Based on the `Gua` of `革`, we might take a conclusion that the weather tomorrow will changed from today's, so there might be rainy in my place.
+
+#### In C/C++
+We use [cbindgen](https://github.com/mozilla/cbindgen) to achieve it.
+Check `my_head.h` in `core.rs/my_head.h`.
+
+If you want to generate this binding by yourself, first execute:
+```sh
+cargo install --force cbindgen
+```
+to install `cbindgen`. Then generate the bindings by:
+
+```sh
+cbindgen --config cbindgen.toml --create zhouyi --output headname_youset.h
+```
+
+#### In python
+
+We use [pyo3](https://github.com/PyO3/pyo3) to build python3 bindings, by
+
+```sh
+# 1. build and activate a virtual environment.
+python -m venv myenv
+source myenv/bin/activate
+
+# 2. install maturin
+pip install maturin
+
+# 3. develop this lib.
+maturin develop
+```
+and you can find the package in both `src/target`, and your virtual environments.
+
+To use this package in python, you can simple run:
+
+```py
+>>> import zhouyipy as z
+>>> results=z.divinate_py("dayanshi","one or two?")
+length of gua list: 64
+>>> results
+'({"duan": "《彖》曰：艮，止也。時止則止，時行則行，動靜不失其時，其道光明。艮其止，止其所也。上下敵應，不相與也。是以「不獲其身，行其庭不見其人，無咎」也。", "gua": "艮，艮其背，不獲其身，行其庭，不見其人，無咎。", "xang_top": "山", "xang": "《象》曰：兼山，艮。君子以思不出其位。", "gua_bottom": "艮", "gua_top": "艮", "xang_bottom": "山", "name": "艮"}, ["初六：艮其趾，無咎，利永貞。", "六二：艮其腓，不拯其隨，其心不快。", "九三：艮其限，列其夤，厲薰心。", "六四：艮其身，無咎。", "六五：艮其輔，言有序，悔亡。", "上九：敦艮，吉。"], ["《象》曰：艮其趾，未失正也。", "《象》曰：「不拯其隨」，未退聽也。", "《象》曰：「艮其限」，危薰心也。", "《象》曰：「艮其身」，止諸躬也。", "《象》曰：「艮其輔」，以中正也。", "《象》曰：敦艮之吉，以厚終也。"])'
+```
+
+Noted that this binding requires `python>=3.7`.
+
+#### Note
+
+when you compile python bindings, you should comment and uncomment
+some of the configs in `Cargo.toml`. Specifically, there are two libs:
+
+```toml
+
+# version for general build
+[lib]
+name = "main"
+path = "src/explain_gua.rs"
+
+# version for python3 
+[lib]
+name = "zhouyipy"
+path = "src/explain_gua.rs"
+crate-type = ["cdylib"]
+```
 
 ## Contact author
 

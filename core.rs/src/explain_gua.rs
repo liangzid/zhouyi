@@ -3,6 +3,33 @@ mod divination;
 use model::{record_64_Gua,Gua,SubGua,query};
 use divination::{coin_divinate,dayanshi_divinate};
 use std::{collections::HashMap};
+use std::ffi::{CString,CStr,c_char};
+use pyo3::prelude::*;
+
+#[no_mangle]
+pub extern "C" fn divinate_c(typ: *const c_char,
+			     event: *const c_char)-> *const c_char{
+    let dt=unsafe{CStr::from_ptr(typ)}.to_str().unwrap();
+    let ev=unsafe{CStr::from_ptr(event)}.to_str().unwrap();
+    let res=show_text_divinate(dt,ev);
+    let s_res:String=String::from(format!("{:?}",res));
+    let return_s=CString::new(s_res).unwrap().as_ptr();
+    return_s    
+}
+
+#[pyfunction]
+fn divinate_py(typ:String,event:String) ->String{
+    let res=show_text_divinate(&typ,&event);
+    let res=String::from(format!("{:?}",res));
+    res
+}
+
+#[pymodule]
+fn zhouyipy(_py: Python<'_>, m: &PyModule) -> PyResult<()>{
+    m.add_function(wrap_pyfunction!(divinate_py,m)?)?;
+    Ok(())
+}
+
 
 pub fn show_text_divinate<'g>(divinate_type:&str,event:&str)->(HashMap<&'g str,String>,Vec<String>,Vec<String>){
     // 1. first init the zhouyi model
