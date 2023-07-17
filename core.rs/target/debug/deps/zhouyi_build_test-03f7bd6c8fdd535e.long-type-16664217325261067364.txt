@@ -1,1 +1,0 @@
-((std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String, std::string::String), (SubGua, SubGua, SubGua, SubGua, SubGua, SubGua, SubGua, SubGua), HashMap<std::string::String, &SubGua>)
