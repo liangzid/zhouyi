@@ -78,7 +78,7 @@ cargo install --force cbindgen
 to install `cbindgen`. Then generate the bindings by:
 
 ```sh
-cbindgen --config cbindgen.toml --create zhouyi --output headname_youset.h
+cbindgen --config cbindgen.toml --crate zhouyi --output headname_youset.h
 ```
 
 #### In python

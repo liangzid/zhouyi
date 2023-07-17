@@ -22,15 +22,15 @@ path = "src/explain_gua.rs"
 test = true
 bench = false
 
-# [lib]
-# name = "main"
-# path = "src/explain_gua.rs"
-
 [lib]
-name = "zhouyipy"
-# path = "src/py_lib.rs"
+name = "zhouyi"
 path = "src/explain_gua.rs"
-crate-type = ["cdylib"]
+
+# [lib]
+# name = "zhouyipy"
+# # path = "src/py_lib.rs"
+# path = "src/explain_gua.rs"
+# crate-type = ["cdylib"]
 
 [dependencies]
 serde_json="1.0"
