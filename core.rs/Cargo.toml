@@ -1,0 +1,30 @@
+[package]
+name = "zhouyi"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "zhouyi_build_test"
+path = "src/model.rs"
+test = true
+bench = false
+
+[[bin]]
+name = "divination_test"
+path = "src/divination.rs"
+test = true
+bench = false
+
+[[bin]]
+name = "query_test"
+path = "src/explain_gua.rs"
+test = true
+bench = false
+
+[dependencies]
+serde_json="1.0"
+serde = { version = "1.0", features = ["derive"] }
+rand = "0.8"
+
+
