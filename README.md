@@ -129,6 +129,34 @@ path = "src/explain_gua.rs"
 crate-type = ["cdylib"]
 ```
 
+## zhouyi_ui
+
+1. Set the compile environment.
+
+```sh
+sudo apt-get install libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev libxkbcommon-dev libssl-dev
+```
+
+2. Run natively
+
+```sh
+cargo run --release
+```
+
+3. Run WASM
+
+```sh
+1. install trunk
+cargo install --locked trunk
+
+2. locally debug
+trunk serve # on http://127.0.0.1:8080/index.html#dev
+
+3. release WSAM
+trunk build --release
+```
+
+
 ## Contact author
 
 Feel free to send me emails or open issues for this repository.
