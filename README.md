@@ -3,6 +3,22 @@
 A classical, effective, flexible, and open-sourced divination application
 for traditional-chinese *zhouyi* theory.
 
+
+Here is some examples of `./zhouyi_ui` implemented with `egui`, in Chinese. English version comes soon.
+
+<img
+  src="./imgs/zhouyi_ui_light.png"
+  title="light"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+
+
+
+<img
+  src="./imgs/zhouyi_ui_dark.png"
+  title="dark"
+  style="display: inline-block; margin: 0 auto; max-width: 300px">
+
+
 ## core.rs
 
 ### introduction
