@@ -1,15 +1,18 @@
 use std::{collections::HashMap, hash::Hash};
 
 use chrono::{DateTime, Local};
-use egui::{emath::align, util::History, Color32, FontData, FontDefinitions, FontFamily, TextFormat};
+use egui::{
+    emath::align, util::History, Color32, FontData, FontDefinitions, FontFamily, TextFormat,
+};
 use env_logger::fmt::Color;
-use zhouyi::show_text_divinate;
 use rfd::FileDialog;
 use serde_json;
+use zhouyi::show_text_divinate;
+use egui_extras::{Size,StripBuilder};
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
-#[serde(default)] // if we add new fields, give them default values when deserializing old state
+#[serde(default)]// if we add new fields, give them default values when deserializing old state
 pub struct ZhouyiUI {
     // settings, meta-information
     divination_type: String,
@@ -34,12 +37,22 @@ pub struct ZhouyiUI {
         HashMap<String, String>,
         Vec<String>,
         Vec<String>,
-        String, // inps
-        String, // time
-        String, //place
-	String, // analysis
-	Vec<(String,String)> // comments with (text, time)
+        String,                // inps
+        String,                // time
+        String,                //place
+        String,                // analysis
+        Vec<(String, String)>, // comments with (text, time)
     )>,
+
+    place: String,
+    analyse: String,
+    comments: Vec<(String, String)>,
+    temp_comment: String,
+    pop_open:bool,
+    current_point:usize,
+    is_open_import:bool,
+    is_open_export:bool,
+    hm:HashMap<String,String>,
 
     // Example stuff:
     label: String,
@@ -84,6 +97,15 @@ impl Default for ZhouyiUI {
 	    inps:"明天的我会快乐么".to_owned(),
         is_visual:false,
         historys:vec![],
+	    place:"无关".to_owned(),
+	    analyse:"".to_owned(),
+	    comments:vec![],
+	    temp_comment:"".to_owned(),
+	    pop_open:false,
+	    current_point:0,
+	    is_open_import:false,
+	    is_open_export:false,
+	    hm:HashMap::new(),
         }
     }
 }
@@ -153,84 +175,45 @@ impl eframe::App for ZhouyiUI {
             inps,
             is_visual,
             historys,
+            place,
+            analyse,
+            comments,
+            temp_comment,
+	    pop_open,
+	    current_point,
+	    is_open_import,
+	    is_open_export,
+	    hm,
         } = self;
-        // let mut label=&self.label;
-        // let mut value=&self.value;
 
-        // Examples of how to create different panels and windows.
-        // Pick whichever suits you.
-        // Tip: a good default choice is to just keep the `CentralPanel`.
-        // For inspiration and more examples, go to https://emilk.github.io/egui
-
-        // #[cfg(not(target_arch = "wasm32"))] // no File->Quit on web pages!
-        // egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
-        //     // The top panel is often a good place for a menu bar:
-        //     egui::menu::bar(ui, |ui| {
-        //         ui.menu_button("File", |ui| {
-        //             if ui.button("Quit").clicked() {
-        //                 _frame.close();
-        //             }
-        //         });
-        //     });
-        // });
-
-        // egui::SidePanel::left("side_panel").show(ctx, |ui| {
-        //     ui.heading("Side Panel");
-
-        //     ui.horizontal(|ui| {
-        //         ui.label("Write something: ");
-        //         ui.text_edit_singleline(label);
-        //     });
-
-        //     ui.add(egui::Slider::new(value, 0.0..=10.0).text("value"));
-        //     if ui.button("Increment").clicked() {
-        //         *value += 1.0;
-        //     }
-
-        //     ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
-        //         ui.horizontal(|ui| {
-        //             ui.spacing_mut().item_spacing.x = 0.0;
-        //             ui.label("powered by ");
-        //             ui.hyperlink_to("egui", "https://github.com/emilk/egui");
-        //             ui.label(" and ");
-        //             ui.hyperlink_to(
-        //                 "eframe",
-        //                 "https://github.com/emilk/egui/tree/master/crates/eframe",
-        //             );
-        //             ui.label(".");
-        //         });
-        //     });
-        // });
-        
-	let now = Local::now().format("%F-%T").to_string();
-	let mut place: String = "无关".to_owned();
-	let mut analyse=String::from("");
-	let mut comments:Vec<(String,String)>=vec![];
-        if !*is_visual {
+        let now = Local::now().format("%F-%T").to_string();
+        // let mut place: String = "无关".to_owned();
+        // let mut analyse=String::from("");
+        // let mut comments:Vec<(String,String)>=vec![];
+        if true {
             egui::CentralPanel::default().show(ctx, |ui| {
+                let mut color_blue: Color32;
                 if *is_dark_theme {
                     ctx.set_visuals(egui::Visuals::dark());
+                    color_blue = Color32::from_rgb(255, 255, 1);
                 } else {
                     ctx.set_visuals(egui::Visuals::light());
+                    color_blue = Color32::from_rgb(33, 24, 68);
                 }
                 let (default_color, strong_color) = if ui.visuals().dark_mode {
                     (Color32::LIGHT_GRAY, Color32::WHITE)
                 } else {
                     (Color32::DARK_GRAY, Color32::BLACK)
-                };    
+                };
                 ui.horizontal(|ui| {
                     ui.label("主题");
-                    ui
-                        .radio_value(is_dark_theme, false, "☀️亮色")
-                        .clicked();
-                    ui
-                        .radio_value(is_dark_theme, true, "🌙暗色")
-                        .clicked();
+                    ui.radio_value(is_dark_theme, false, "☀️亮色").clicked();
+                    ui.radio_value(is_dark_theme, true, "🌙暗色").clicked();
                 });
 
-                if ui.button("Change Theme").clicked() {
-                    *is_dark_theme = !*is_dark_theme;
-                }
+                // if ui.button("Change Theme").clicked() {
+                //     *is_dark_theme = !*is_dark_theme;
+                // }
                 ui.text_edit_multiline(inps);
                 let mut track_divination = false;
                 ui.horizontal(|ui| {
@@ -261,33 +244,24 @@ impl eframe::App for ZhouyiUI {
 
                 ui.horizontal(|ui| {
                     ui.label("占卜地点");
-                    ui.text_edit_singleline(&mut place);
+		    ui.horizontal(|ui|{
+			ui.set_width(230.0);
+			ui.add(egui::TextEdit::singleline(place));
+		    });
                 });
 
                 let divinate_b = egui::Button::new("卜筮之");
                 if ui.add(divinate_b).clicked() {
                     *is_visual = true;
+		    // obtain the results of Gua
+		    let res = show_text_divinate(divination_type, inps);
 
-                    // obtain the results of Gua
-                    let res = show_text_divinate(divination_type, inps);
-
-                    // at current results to history
-                    let hm: HashMap<String, String> = res
-                        .0
-                        .iter()
-                        .map(|(k, v)| (String::from(*k), v.clone()))
-                        .collect();
-                    (*historys).push((
-                        hm,
-                        res.1.clone(),
-                        res.2.clone(),
-                        inps.clone(),
-                        String::from(now.clone()),
-                        place.clone(),
-			analyse.clone(),
-			comments.clone(),
-                    ));
-
+		    // at current results to history
+		    *hm = res
+			.0
+			.iter()
+			.map(|(k, v)| (String::from(*k), v.clone()))
+			.collect();
                     // update the divination results
                     *gua_name = res.0.get("name").unwrap().to_string();
                     *gua = res.0.get("gua").unwrap().to_string();
@@ -299,136 +273,262 @@ impl eframe::App for ZhouyiUI {
                     *subgua_bottom = res.0.get("gua_bottom").unwrap().to_string();
                     *yaos = res.1;
                     *yaos_xang = res.2;
+
                 }
 
-		ui.separator();
+                ui.separator();
+                // add the export and import button.
+                ui.horizontal(|ui| {
+                    ui.label("卜筮记录管理: ");
+                    if ui.button("导出").clicked() {
+                        if let Some(path) = rfd::FileDialog::new().save_file() {
+                            let res = serde_json::to_string(historys).unwrap();
+                            std::fs::write(path, res);
+                        }
+                    }
+                    if ui.button("导入").clicked() {
+                        if let Some(path) = rfd::FileDialog::new().pick_file() {
+                            let content = std::fs::read_to_string(path).unwrap();
+                            *historys = serde_json::from_str(&content).unwrap();
+                        }
+                    }
+                    if ui.button("文本方式导入").clicked() {
+			*is_open_import=true;
+                    }
+                    if ui.button("导出为可复制的文本").clicked() {
+			*is_open_export=true;
+                    }
+                    if ui.button("清空").clicked() {
+                        *historys = vec![];
+                        *comments = vec![];
+			*place = "".to_owned();
+			*analyse = "".to_owned();
+			*temp_comment = "".to_owned();
+			*pop_open = false;
+			*current_point = 0;
+			*is_open_import = false;
+			*is_open_export = false;
+			*is_visual=false;
+			
+                    }
+                });
+
+                ui.separator();
                 ui.heading("往-卜");
 
-                let scroll=egui::ScrollArea::vertical()
-                    .max_height(120.0)
+                let scroll = egui::ScrollArea::vertical()
+                    .max_height(400.0)
                     .auto_shrink([false; 2])
                     .show(ui, |ui| {
                         ui.vertical(|ui| {
-                            let mut i_h=0;
-                            for x in historys.clone() {
-                                let mut t_job=egui::text::LayoutJob::default();
-				t_job.append(
-				    &x.0.get("name").unwrap().clone(),
-				    0.0,
-				    TextFormat{
-					color: strong_color,
-				    ..Default::default()},
-				);
+                            let mut newhis = historys.clone();
+                            newhis.reverse();
+			    let mut i_x:u8=0;
+                            for x in newhis {
+                                let mut t_job = egui::text::LayoutJob::default();
+                                t_job.append(
+                                    &(x.0.get("name").unwrap().clone() + "   "),
+                                    0.0,
+                                    TextFormat {
+                                        color: strong_color,
+                                        ..Default::default()
+                                    },
+                                );
 
-				t_job.append(
-				    &x.4.clone(),
-				    0.0,
-				    TextFormat{
-					color: default_color,
-					background: Color32::from_rgb(128,32,32),
-				    ..Default::default()},
-				);
+                                t_job.append(
+                                    &x.4.clone(),
+                                    0.0,
+                                    TextFormat {
+                                        color: default_color,
+                                        background: Color32::from_rgb(239, 83, 80),
+                                        ..Default::default()
+                                    },
+                                );
 
-				t_job.append(
-				    "-",
-				    0.0,
-				    TextFormat{
-					color: strong_color,
-				    ..Default::default()},
-				);
+                                t_job.append(
+                                    "   ",
+                                    0.0,
+                                    TextFormat {
+                                        color: strong_color,
+                                        ..Default::default()
+                                    },
+                                );
 
-				t_job.append(
-				    &x.5.clone(),
-				    0.0,
-				    TextFormat{
-					color: default_color,
-					background: Color32::from_rgb(32,128,32),
-				    ..Default::default()},
-				);
-				
-				    ui.collapsing(t_job
-                                    // .on_hover_cursor(egui::CursorIcon::Help)
-                                    // .on_hover_ui(
-                                    //     |ui| {
-                                    //         ui.heading(x.0.get("name").unwrap().clone());
-                                    //         ui.label(x.0.get("gua").unwrap().clone());
-                                    //         ui.colored_label(
-                                    //             Color32::from_rgb(128, 140, 255),
-                                    //             x.0.get("duan").unwrap().clone(),
-                                    //         );
-                                    //         ui.colored_label(Color32::from_rgb(128, 128, 12),
-                                    //         x.0.get("xang").unwrap().clone());
+                                t_job.append(
+                                    &x.5.clone(),
+                                    0.0,
+                                    TextFormat {
+                                        color: default_color,
+                                        background: Color32::from_rgb(124, 179, 66),
+                                        ..Default::default()
+                                    },
+                                );
 
-                                    //         ui.separator();
+                                ui.collapsing(t_job, |ui| {
+                                    // question
+                                    ui.horizontal(|ui| {
+                                        ui.label("求卜： ");
+                                        ui.colored_label(color_blue.clone(), x.3.clone());
+                                    });
+                                    ui.separator();
+                                    ui.horizontal(|ui| {
+                                        ui.label("得卦");
+                                        ui.label(x.0.get("name").unwrap().clone())
+                                            .on_hover_cursor(egui::CursorIcon::Help)
+                                            .on_hover_ui(|ui| {
+                                                ui.heading(x.0.get("name").unwrap().clone());
+                                                ui.label(x.0.get("gua").unwrap().clone());
+                                                ui.colored_label(
+                                                    Color32::from_rgb(128, 140, 255),
+                                                    x.0.get("duan").unwrap().clone(),
+                                                );
+                                                ui.colored_label(
+                                                    Color32::from_rgb(128, 128, 12),
+                                                    x.0.get("xang").unwrap().clone(),
+                                                );
 
-                                    //         for i_yao in 0..yaos.len() {
-                                    //             ui.colored_label(
-                                    //                 Color32::from_rgb(3, 111, 4),
-                                    //                 x.1.clone()
-                                    //                 .get(i_yao).unwrap(),
-                                    //             );
-                                    //             ui.colored_label(
-                                    //                 Color32::from_rgb(111, 12, 4),
-                                    //                 x.2.clone()
-                                    //                 .get(i_yao).unwrap(),
-                                    //             );
-                                    //             ui.set_min_height(300.0);
-                                    //         }
-                                    //     },
-                                    // )
-                                    ,|ui|{
-					// analysis
-					ui.colored_label(Color32::from_rgb(255,255,1), x.6.clone());
-					// comments
-					ui.collapsing("批注",|ui|{
-					    egui::ScrollArea::vertical()
-						.max_height(60.).show(ui,|ui|{
-						    ui.vertical(|ui|{
-							let mut xx=x.7.clone();
-                            xx.reverse();
-                            for com in xx{
-							    ui.collapsing(com.1,|ui|{
-								ui.label(com.0);
-							    });
-							}
-						    });
-						});
-					    
-					})
-					
+                                                ui.separator();
 
-				    });
-                                    // // if gua_head.clicked(){
-                                    // //     *is_visual=true;
-                                    // // }
-                                    // ui.label((x.3).clone());
-                                    // ui.label(x.4.clone());
-                                    // ui.label(x.5.clone());
-
+                                                for i_yao in 0..yaos.len() {
+                                                    ui.colored_label(
+                                                        Color32::from_rgb(3, 111, 4),
+                                                        x.1.clone().get(i_yao).unwrap(),
+                                                    );
+                                                    ui.colored_label(
+                                                        Color32::from_rgb(111, 12, 4),
+                                                        x.2.clone().get(i_yao).unwrap(),
+                                                    );
+                                                    ui.set_min_height(300.0);
+                                                }
+                                            });
+                                    });
+                                    ui.separator();
+                                    // analysis
+                                    ui.horizontal(|ui| {
+                                        ui.label("分析: ");
+                                        ui.colored_label(color_blue.clone(), x.6.clone());
+                                    });
+                                    ui.separator();
+                                    // comments
+                                    ui.collapsing("批注/应验", |ui| {
+                                        egui::ScrollArea::vertical().max_height(100.)
+					    .min_scrolled_width(200.0).show(
+                                            ui,
+                                            |ui| {
+                                                if ui.button("记录之").clicked() {
+						    *pop_open=true;
+						    *current_point=(*historys).len()-1-(i_x as usize);
+                                                }
+                                                ui.vertical(|ui| {
+                                                    let mut xx = x.7.clone();
+                                                    xx.reverse();
+                                                    for com in xx {
+                                                        ui.collapsing(com.1, |ui| {
+                                                            ui.label(com.0);
+                                                        });
+                                                    }
+                                                });
+                                            },
+                                        );
+                                    })
+                                });
+                                // // if gua_head.clicked(){
+                                // //     *is_visual=true;
+                                // // }
+                                // ui.label((x.3).clone());
+                                // ui.label(x.4.clone());
+                                // ui.label(x.5.clone());
+				i_x+=1
                             }
                         });
                     });
 
-                // add the export and import button.
-                ui.horizontal(|ui|{
-                    ui.label("卜筮记录管理: ");
-                    if ui.button("导出").clicked(){
-                        if let Some(path)=rfd::FileDialog::new().save_file(){
-                            let res=serde_json::to_string(historys).unwrap();
-                            std::fs::write(path,res);
-                        }
-                    }
-                    if ui.button("导入").clicked(){
-                        if let Some(path)=rfd::FileDialog::new().pick_file(){
-                            let content=std::fs::read_to_string(path).unwrap();
-                            *historys =serde_json::from_str(&content).unwrap();
-                        }
-                    }
-                    if ui.button("清空").clicked(){
-                        *historys=vec![];
-                    }
-                });
+		egui::Window::new("通过文本导入").default_width(300.0)
+		    .open(is_open_import)
+		    .show(ctx,|ui|{
+			let mut read_text:String="".to_owned();
+			ui.text_edit_multiline(&mut read_text);
+			if ui.button("毕").clicked(){
+			    *historys = serde_json::from_str(&read_text).unwrap();
+			}
+		    });
+		egui::Window::new("导出为文本").default_width(300.0)
+		    .open(is_open_export)
+		    .show(ctx,|ui|{
 
+			let scroll = egui::ScrollArea::vertical()
+			    .max_height(400.0)
+			    .auto_shrink([false;2])
+			    .show(ui, |ui| {
+			
+			let res = serde_json::to_string(historys).unwrap();
+			ui.vertical(|ui|{
+			    let mut is_copyed=false;
+			    if ui.button("复制之").clicked(){
+				is_copyed=true;
+				use clipboard::{ClipboardContext,ClipboardProvider};
+				let mut ctx:ClipboardContext = ClipboardProvider::new().unwrap();
+				let res = serde_json::to_string(historys).unwrap();
+				ctx.set_contents(res).unwrap();
+			    }
+			ui.label(res);
+			})
+			    });
+		    });
+		
+		// pop a new window to add the comments.
+		egui::Window::new("记录之")
+		    .default_width(320.0)
+		    .open(pop_open)
+		    .show(ctx, |ui| {
+			ui.horizontal(|ui| {
+			    ui.code("求卜：");
+			    ui.label(inps.clone());
+			});
+			ui.separator();
+			ui.heading(gua_name.clone());
+			ui.label(gua.clone()).on_hover_text(
+			    duan.clone() + &xang,
+			);
+			ui.separator();
+			for i_yao in 0..yaos.len() {
+			    ui.colored_label(
+				Color32::from_rgb(3, 111, 4),
+				yaos.get(i_yao).unwrap(),
+			    )
+			    .on_hover_text(
+				yaos_xang.get(i_yao).unwrap(),
+			    );
+			    ui.set_min_height(200.0);
+			}
+			ui.separator();
+			ui.vertical(|ui| {
+                    ui.heading("解语");
+                    ui.colored_label(color_blue.clone(),analyse.clone());
+                });
+		    ui.separator();
+		    ui.vertical(|ui| {
+			let mut xx = (*(historys.get(*current_point as usize).unwrap())).7.clone();
+			xx.reverse();
+			for com in xx {
+			    ui.collapsing(com.1, |ui| {
+				ui.label(com.0);
+			    });
+			}
+		    });
+		    ui.separator();
+		    ui.horizontal(|ui| {
+			ui.text_edit_singleline(
+			    temp_comment,
+			);
+			if ui.button("添加").clicked() {
+			    (*historys)[*current_point as usize].7.push((
+				temp_comment.clone(),
+				now.clone(),
+			    ));
+			}
+		    });
+		});
 
                 // ui.heading("eframe template");
                 // ui.hyperlink("https://github.com/emilk/eframe_template");
@@ -438,15 +538,17 @@ impl eframe::App for ZhouyiUI {
                 // ));
                 // egui::warn_if_debug_build(ui);
             });
-        } else {
-            egui::CentralPanel::default().show(ctx, |ui| {
-
-		ui.horizontal(|ui|{
-		    ui.code("求卜：");
-		    ui.label(inps.clone());
-		});
+        }
+					    egui::Window::new("结果")
+                                                        .default_width(340.0)
+                                                        .open(is_visual)
+                                                        .show(ctx, |ui| {
+                ui.horizontal(|ui| {
+                    ui.code("求卜：");
+                    ui.label(inps.clone());
+                });
                 ui.separator();
-		ui.heading(gua_name);
+                ui.heading(gua_name);
                 ui.label(gua.clone());
                 ui.colored_label(Color32::from_rgb(128, 140, 255), duan);
                 ui.colored_label(Color32::from_rgb(128, 128, 12), xang);
@@ -458,18 +560,32 @@ impl eframe::App for ZhouyiUI {
                     ui.colored_label(Color32::from_rgb(111, 12, 4), yaos_xang.get(i_yao).unwrap());
                     ui.set_min_height(300.0);
                 }
-		ui.separator();
-		ui.vertical(|ui|{
-		    ui.heading("解易");
-		    ui.label("  1. 以卦意察之\n  2.以诸爻审之\n 3. 3.写下预言");
-		    // ui.label("例：\n  1. ")
-		ui.text_edit_multiline(&mut analyse);
-		});
-                if ui.button("回返之").clicked() {
-                    *is_visual = false;
-                }
+                ui.separator();
+                ui.vertical(|ui| {
+                    ui.heading("解易");
+                    ui.label("  1. 以卦意察之\n  2. 以诸爻审之\n  3. 写下预言");
+                    ui.label("回车确认");
+                    // ui.label("例：\n  1. ")
+                    let response=ui.add(egui::TextEdit::multiline(analyse));
+		    if response.lost_focus(){
+                    (*historys).push((
+                        hm.clone(),
+                        yaos.clone(),
+                        yaos_xang.clone(),
+                        inps.clone(),
+                        String::from(now.clone()),
+                        place.clone(),
+                        analyse.clone(),
+                        comments.clone(),
+                    ));
+
+		    }
+
+                });
+                // if ui.button("回返之").clicked() {
+                //     *is_visual = false;
+                // }
             });
-        }
 
         if false {
             egui::Window::new("Window").show(ctx, |ui| {
