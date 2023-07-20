@@ -1,5 +1,0 @@
-[build]
-filehash = false
-
-[dependencies]
-getrandom = {version = "0.2", feature= ["js"]}
