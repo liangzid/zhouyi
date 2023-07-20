@@ -4,6 +4,8 @@ use model::{record_64_Gua,Gua,SubGua,query};
 use divination::{coin_divinate,dayanshi_divinate};
 use std::{collections::HashMap};
 use std::ffi::{CString,CStr,c_char};
+
+#[cfg(feature = "python")]
 use pyo3::prelude::*;
 
 #[no_mangle]
@@ -17,6 +19,7 @@ pub extern "C" fn divinate_c(typ: *const c_char,
     return_s    
 }
 
+#[cfg(feature = "python")]
 #[pyfunction]
 fn divinate_py(typ:String,event:String) ->String{
     let res=show_text_divinate(&typ,&event);
@@ -24,6 +27,7 @@ fn divinate_py(typ:String,event:String) ->String{
     res
 }
 
+#[cfg(feature = "python")]
 #[pymodule]
 fn zhouyipy(_py: Python<'_>, m: &PyModule) -> PyResult<()>{
     m.add_function(wrap_pyfunction!(divinate_py,m)?)?;

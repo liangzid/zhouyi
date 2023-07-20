@@ -3,6 +3,9 @@ name = "zhouyi"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+python = ["pyo3"]
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [[bin]]
 name = "zhouyi_build_test"
@@ -36,5 +39,5 @@ path = "src/explain_gua.rs"
 serde_json="1.0"
 serde = { version = "1.0", features = ["derive"] }
 rand = "0.8"
-pyo3 = "0.19.0"
+pyo3 = {version = "0.19.0", optional = true}
 
