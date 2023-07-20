@@ -8,7 +8,7 @@ fn main() -> eframe::Result<()> {
 
     let native_options = eframe::NativeOptions::default();
     eframe::run_native(
-        "eframe template",
+        "Zhouyi!",
         native_options,
         Box::new(|cc| Box::new(zhouyi_ui::ZhouyiUI::new(cc))),
     )
