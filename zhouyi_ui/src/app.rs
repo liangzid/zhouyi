@@ -5,7 +5,8 @@ use egui::{
     emath::align, util::History, Color32, FontData, FontDefinitions, FontFamily, TextFormat,
 };
 use env_logger::fmt::Color;
-use rfd::FileDialog;
+
+use rfd;
 use serde_json;
 use zhouyi::show_text_divinate;
 use egui_extras::{Size,StripBuilder};
@@ -280,18 +281,22 @@ impl eframe::App for ZhouyiUI {
                 // add the export and import button.
                 ui.horizontal(|ui| {
                     ui.label("卜筮记录管理: ");
+		    #[cfg(not(target_arch = "wasm32"))]
                     if ui.button("导出").clicked() {
                         if let Some(path) = rfd::FileDialog::new().save_file() {
                             let res = serde_json::to_string(historys).unwrap();
                             std::fs::write(path, res);
                         }
                     }
+
+		    #[cfg(not(target_arch = "wasm32"))]
                     if ui.button("导入").clicked() {
                         if let Some(path) = rfd::FileDialog::new().pick_file() {
                             let content = std::fs::read_to_string(path).unwrap();
                             *historys = serde_json::from_str(&content).unwrap();
                         }
                     }
+
                     if ui.button("文本方式导入").clicked() {
 			*is_open_import=true;
                     }
