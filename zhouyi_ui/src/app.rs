@@ -483,28 +483,34 @@ impl eframe::App for ZhouyiUI {
 		    .show(ctx, |ui| {
 			ui.horizontal(|ui| {
 			    ui.code("求卜：");
-			    ui.label(inps.clone());
+			    ui.label((historys.get(*current_point as usize).unwrap()).3.clone());
 			});
 			ui.separator();
-			ui.heading(gua_name.clone());
-			ui.label(gua.clone()).on_hover_text(
-			    duan.clone() + &xang,
+            let temp_map=historys.get(*current_point as usize)
+            .unwrap().0.clone();
+			ui.heading(temp_map.get("name").unwrap().clone());
+			ui.label(temp_map.get("gua").unwrap().clone()).on_hover_text(
+			    temp_map.get("duan").unwrap().clone() +
+                 &temp_map.get("xang").unwrap().clone(),
 			);
 			ui.separator();
-			for i_yao in 0..yaos.len() {
+            let temp_yaos=historys.get(*current_point).unwrap().1.clone();
+            let temp_yxs=historys.get(*current_point).unwrap().2.clone();
+			for i_yao in 0..temp_yaos.len() {
 			    ui.colored_label(
 				Color32::from_rgb(3, 111, 4),
-				yaos.get(i_yao).unwrap(),
+				temp_yaos.get(i_yao).unwrap(),
 			    )
 			    .on_hover_text(
-				yaos_xang.get(i_yao).unwrap(),
+				temp_yxs.get(i_yao).unwrap(),
 			    );
 			    ui.set_min_height(200.0);
 			}
 			ui.separator();
 			ui.vertical(|ui| {
                     ui.heading("解语");
-                    ui.colored_label(color_blue.clone(),analyse.clone());
+                    ui.colored_label(color_blue.clone(),historys.get(*current_point).unwrap()
+                    .6.clone());
                 });
 		    ui.separator();
 		    ui.vertical(|ui| {
