@@ -10,7 +10,7 @@ fn main() -> eframe::Result<()> {
     eframe::run_native(
         "Zhouyi!",
         native_options,
-        Box::new(|cc| Box::new(zhouyi_ui::ZhouyiUI::new(cc))),
+        Box::new(|cc| Box::new(zhouyi_ui::TemplateApp::new(cc))),
     )
 }
 
@@ -27,7 +27,7 @@ fn main() {
             .start(
                 "the_canvas_id", // hardcode it
                 web_options,
-                Box::new(|cc| Box::new(zhouyi_ui::ZhouyiUI::new(cc))),
+                Box::new(|cc| Box::new(zhouyi_ui::TemplateApp::new(cc))),
             )
             .await
             .expect("failed to start eframe");
