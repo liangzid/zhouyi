@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        cwd: zhouyi_ui
+        working-directory: ./zhouyi_ui
     steps:
       - uses: actions/checkout@v2 # repo checkout
       - uses: actions-rs/toolchain@v1 # get rust toolchain for wasm
