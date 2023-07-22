@@ -3,6 +3,7 @@
 A classical, effective, flexible, and open-sourced divination application
 for traditional-chinese *zhouyi* theory.
 
+Online demo: [here](https://liangzid.github.io/zhouyi/).
 
 Here is some examples of `./zhouyi_ui` implemented with `egui`, in Chinese. English version comes soon.
 
