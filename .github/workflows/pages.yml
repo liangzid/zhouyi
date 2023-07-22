@@ -25,7 +25,6 @@ jobs:
           toolchain: stable
           target: wasm32-unknown-unknown
           override: true
-      - name: Rust Cache # cache the rust build artefacts
       - name: Build # build
         uses: Swatinem/rust-cache@v1
         # "${GITHUB_REPOSITORY#*/}" evaluates into the name of the repository
