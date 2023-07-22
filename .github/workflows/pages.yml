@@ -17,7 +17,9 @@ permissions:
 jobs:
   build-github-pages:
     runs-on: ubuntu-latest
-    cwd: zhouyi_ui
+    defaults:
+      run:
+        cwd: zhouyi_ui
     steps:
       - uses: actions/checkout@v2 # repo checkout
       - uses: actions-rs/toolchain@v1 # get rust toolchain for wasm
