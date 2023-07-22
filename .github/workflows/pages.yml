@@ -25,6 +25,10 @@ jobs:
           toolchain: stable
           target: wasm32-unknown-unknown
           override: true
+      - name: Change directory
+        run: |
+	  cd zhouyi_ui
+	working-directory: ./
       - name: Rust Cache # cache the rust build artefacts
         uses: Swatinem/rust-cache@v1
       - name: Build # build
@@ -34,7 +38,6 @@ jobs:
         # relatively as eframe_template/favicon.ico. if we skip public-url option, the href paths will instead request username.github.io/favicon.ico which
         # will obviously return error 404 not found.
         run: wget -qO- https://github.com/thedodd/trunk/releases/latest/download/trunk-x86_64-unknown-linux-gnu.tar.gz | tar -xzf- && ./trunk build --release --public-url "${GITHUB_REPOSITORY#*/}"
-	working-directory: ./zhouyi_ui
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
