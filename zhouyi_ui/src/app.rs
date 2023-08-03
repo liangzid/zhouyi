@@ -477,7 +477,8 @@ impl eframe::App for TemplateApp {
 				// ctx.set_contents(res).unwrap();
 				ui.output_mut(|o| o.copied_text = res.to_string());
 			    }
-			ui.label(res);
+			// ui.label(res);
+			    code_view_ui(ui,&res);
 			})
 			    });
 		    });
@@ -608,4 +609,16 @@ impl eframe::App for TemplateApp {
             });
         }
     }
+}
+use egui::text::LayoutJob;
+
+/// View some code with syntax highlighting and selection.
+pub fn code_view_ui(ui: &mut egui::Ui, mut code: &str) {
+    ui.add(
+        egui::TextEdit::multiline(&mut code)
+            .font(egui::TextStyle::Monospace) // for cursor height
+            .code_editor()
+            .desired_rows(1)
+            .lock_focus(true),
+    );
 }
