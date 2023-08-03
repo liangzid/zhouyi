@@ -474,7 +474,8 @@ impl eframe::App for TemplateApp {
 				use clipboard::{ClipboardContext,ClipboardProvider};
 				let mut ctx:ClipboardContext = ClipboardProvider::new().unwrap();
 				let res = serde_json::to_string(historys).unwrap();
-				ctx.set_contents(res).unwrap();
+				// ctx.set_contents(res).unwrap();
+				ui.output_mut(|o| o.copied_text = res.to_string());
 			    }
 			ui.label(res);
 			})
