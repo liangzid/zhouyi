@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+	Zhouyi Divination!
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Zhouyi Divination!</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- add input box -->
+    <ion-input placeholder="Things you want to divinate:"></ion-input>
+  <!-- divination method select -->
+    <ion-select label="Divinate Method" placeholder="Dayanshi" okText="Okay" cancelText="Cancel">
+      <ion-select-option value="Dayanshi">Dayanshi</ion-select-option>
+      <ion-select-option value="CoinsThree">Coins Three</ion-select-option>
+    </ion-select>
+
+    <!-- divination time -->
+  <h4>Current Time</h4>
+  <ion-datetime></ion-datetime>
+
+  <!-- place -->
+  <ion-input placeholder="Divination Place:"></ion-input>
+
+    <ion-button>Divinate it!</ion-button>
+
+    <h3>Divination Records</h3>
+    <ion-button>Import</ion-button>
+    <ion-button>Export</ion-button>
+    <ion-button>Clear</ion-button>
+
+    <h3>History Records</h3>
+</ion-content>
