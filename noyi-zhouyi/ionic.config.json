@@ -1,0 +1,7 @@
+{
+  "name": "noyi-zhouyi",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
