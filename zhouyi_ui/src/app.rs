@@ -239,11 +239,15 @@ impl eframe::App for TemplateApp {
         // let mut analyse=String::from("");
         // let mut comments:Vec<(String,String)>=vec![];
         if true {
-            egui::Window::new("登录，以同步您的私有信息").default_width(300.0)
+	    let tt_login= match &lang{
+		"zh"=>"登录，以同步您的私有信息",
+		_=>"Login to async your information!",
+	    };
+            egui::Window::new(tt_login).default_width(300.0)
 		    .open(is_open_login)
 		    .show(ctx,|ui|{
                 
-                ui.heading("Login to your account!");
+                // ui.heading("Login to your account!");
                 ui.horizontal(|ui|{
                     ui.label("Email:");
                     ui.text_edit_singleline(email);
@@ -252,13 +256,20 @@ impl eframe::App for TemplateApp {
                     ui.label("Password:");
                     password_ui(ui,pwd)
                 });
-                ui.small("no less than 8 characters.");
-            
+			match &lang{
+			    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。");
+			    _=>ui.small("no less than 8 characters.");
+			}
             ui.horizontal(|ui|{
-                if ui.button("I forget the password").clicked(){
+		let tt_fgt=match &lang{
+		    "zh"=>"忘记密码？"，
+			_=>"I forget the password",
+		};
+                if ui.button(tt_fgt).clicked(){
                     let _=1;
                 }
-                if ui.button("Login.").clicked(){
+		let tt_lgi=match &lang{"zh"=>"登录",_=>"Login."};
+                if ui.button(tt_lgi).clicked(){
                     let _x=1;
 		    let res=query_login(email,pwd);
 		    if res.0=="Ok"{
@@ -273,43 +284,66 @@ impl eframe::App for TemplateApp {
 	    		ui.label("Incorrect emails or passwords.");
 		    }
                 }
-                if ui.button("No account? Sign Up").clicked(){
+		let tt_sgu=match &lang{"zh"=>"注册账号",_=>"No account? Sign Up"};
+                if ui.button(tt_sgu).clicked(){
                     // *is_open_login=false;
                     *is_open_signup=true;
                 }
             });
 		    });
 
-            egui::Window::new("注册，以同步您的私有信息").default_width(300.0)
+	    let tt_sguu=match &lang{"zh"=>"注册，以同步您的私有信息",
+				   _=>"Sign up, to sync your information"};
+            egui::Window::new(tt_sguu).default_width(300.0)
 		    .open(is_open_signup)
 		    .show(ctx,|ui|{
                 
-                ui.heading("Sign Up Now!");
+                // ui.heading("Sign Up Now!");
                 ui.horizontal(|ui|{
-                    ui.label("Email:");
+		    match &lang{
+			"zh"=>ui.label("邮箱：");
+			_=>ui.label("Email:");
+		    }
                     ui.text_edit_singleline(email);
                 });
                 ui.horizontal(|ui|{
-                    ui.label("Password:");
+		    match &lang{
+			"zh"=>ui.label("密码：");
+			_=>ui.label("Password:");
+		    }
+                    
                     password_ui(ui,pwd)
                 });
-                ui.small("no less than 8 characters.");
+		match &lang{
+		    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。");
+		    _=>ui.small("no less than 8 characters.");
+		}
             
                 ui.horizontal(|ui|{
-                    ui.label("Password Again:");
+		    match &lang{
+"zh"=>ui.label("再次输入:");
+_=>ui.label("Password Again:");
+		    }
+                    
                     password_ui(ui,pwd2)
                 });
 
                 if pwd!=pwd2{
+		    let tt_pic=match &lang{
+			"zh"=>"密码不一致",
+			_=>"Password inconsistant"
+		    }
                     ui.colored_label(egui::Color32::RED,
-                         "Password inconsistant");
+                         tt_pic);
                 }
 
             ui.horizontal(|ui|{
-                if ui.button("Now Sign Up!").clicked(){
+		let tt_sgu_b=match &lang{"zh"=>"注册",_=>"Now Sign Up!"};
+		let tt_sgu_b_ah=match &lang{"zh"=>"转至登录页面",_=>"Already have a account? Login."};
+                if ui.button(tt_sgu_b).clicked(){
                     let _x=1;
                 }
-                if ui.button("Already have a account? Login.").clicked(){
+                if ui.button(tt_sgu_b_ah).clicked(){
                     *is_open_login=true;
                     // *is_open_signup=false;
                 }
@@ -332,9 +366,13 @@ impl eframe::App for TemplateApp {
                     (Color32::DARK_GRAY, Color32::BLACK)
                 };
                 ui.horizontal(|ui| {
-                    ui.label("主题");
-                    ui.radio_value(is_dark_theme, false, "☀️亮色").clicked();
-                    ui.radio_value(is_dark_theme, true, "🌙暗色").clicked();
+		    match &lang{"zh"=>{
+			ui.label("主题");
+		    }
+			       _=>ui.label("Theme:");
+		    }
+		    ui.radio_value(is_dark_theme, false, "☀️").clicked();
+		    ui.radio_value(is_dark_theme, true, "🌙").clicked();
                 });
 
                 // if ui.button("Change Theme").clicked() {
@@ -343,40 +381,55 @@ impl eframe::App for TemplateApp {
                 ui.text_edit_multiline(inps);
                 let mut track_divination = false;
                 ui.horizontal(|ui| {
-                    ui.label("卜法");
+		    match &lang{"zh"=>ui.label("卜法");_=>ui.label("Divination method")}
+		    match &lang{
+			"zh"=>{
                     track_divination |= ui
                         .radio_value(divination_type, "dayanshi".to_owned(), "大衍筮法")
                         .clicked();
                     track_divination |= ui
                         .radio_value(divination_type, "coin".to_owned(), "铜钱爻")
                         .clicked();
+			}
+			_=>{
+                    track_divination |= ui
+                        .radio_value(divination_type, "dayanshi".to_owned(), "Dayanshi-method")
+                        .clicked();
+                    track_divination |= ui
+                        .radio_value(divination_type, "coin".to_owned(), "Coin-method")
+                        .clicked();
+
+			}}
                 });
 
                 let mut track_lang = true;
                 let mut lang = "zh".to_owned();
                 ui.horizontal(|ui| {
-                    ui.label("语言");
+		    match &lang {"zh"=>ui.label("语言");_=>ui.label("Language");}
                     track_lang |= ui.radio_value(&mut lang, "zh".to_owned(), "中文").clicked();
                     track_lang |= ui
                         .radio_value(&mut lang, "en".to_owned(), "English")
                         .clicked();
                 });
                 ui.horizontal(|ui| {
-                    ui.label("占卜时刻");
+		    match &lang {"zh"=>ui.label("占卜时刻");_=>ui.label("Divination Time");}
                     let label = egui::widgets::Label::new(now.clone());
                     ui.add(label);
                     ui.ctx().request_repaint();
                 });
 
                 ui.horizontal(|ui| {
-                    ui.label("占卜地点");
+		    match &lang {"zh"=>ui.label("占卜地点");_=>ui.label("Divination Position");}
 		    ui.horizontal(|ui|{
 			ui.set_width(230.0);
 			ui.add(egui::TextEdit::singleline(place));
 		    });
                 });
 
-                let divinate_b = egui::Button::new("卜筮之");
+                let divinate_b =match &lang{
+		    "zh"=>egui::Button::new("卜筮之"),
+		    _=>egui::Button::new("Divinate it!"),
+		} ;
                 if ui.add(divinate_b).clicked() {
                     *is_visual = true;
 		    // obtain the results of Gua
@@ -405,16 +458,21 @@ impl eframe::App for TemplateApp {
 
                 ui.separator();
                 // add the export and import button.
-                ui.heading("卜筮记录管理");
+		match &lang {"zh"=>ui.heading("卜筮记录管理");_=>ui.heading("Records Management");}
                 ui.horizontal(|ui|{
-                    ui.label("当前状态：");
+		    match &lang {"zh"=>ui.label("当前状态：");_=>ui.label("Current State");}
 		    if (*login_state).eq(&0){
-			    ui.label("未登录");
+			match &lang {"zh"=>ui.label("未登录");
+				    _=>ui.label("Visitor, not logged in");}
 		    }
 		    else{
-			    ui.label(format!("User {} logged in.",email));
+			match &lang {"zh"=>ui.label(format!("账户 {} 登录.",email));
+				    _=>ui.label(format!("User {} logged in.",email));}
 		    }
                 });
+
+		match &lang{
+		    "zh" =>{
 
                 ui.label("卜筮：✔");
                 ui.label("数据于当前设备缓存：✔");
@@ -424,14 +482,35 @@ impl eframe::App for TemplateApp {
                     ui.label("AI检索：✖");
                 }
                 else{
-                    ui.label("数据导出/导入：✖");
-                    ui.label("跨设备云端存储：✖");
+                    ui.label("数据导出/导入：✔");
+                    ui.label("跨设备云端存储：✔");
                     ui.label("AI检索：马上推出");
                 }
-                
+		    }
+
+		    _=>{
+
+                ui.label("Divination：✔");
+                ui.label("Store history in local deivce：✔");
+                if activation_state=="not_activate"{
+                    ui.label("Records Import/Export：✖");
+                    ui.label("Cloud Storage and sync：✖");
+                    ui.label("AI-based Retrieval：✖");
+                }
+                else{
+                    ui.label("Records Import/Export：✔");
+                    ui.label("Cloud Storage and sync：✔");
+                    ui.label("AI-based Retrieval：comming soon");
+                }
+		    }
+
+		}
 
 
                 ui.horizontal(|ui|{
+		    match &lang{
+			"zh"=>{
+
                     if ui.button("登录").clicked(){
                         *is_open_login=true;
                     }
@@ -443,11 +522,32 @@ impl eframe::App for TemplateApp {
 			*user_type="nothing".to_owned();
 			*activation_state="not_activate".to_owned();
 		    }
+
+			}
+			_=>{
+                    if ui.button("Log in").clicked(){
+                        *is_open_login=true;
+                    }
+                    if ui.button("Sign up").clicked(){
+                        *is_open_signup=true;
+                    }
+		    if ui.button("Quit account").clicked(){
+			*login_state=0;
+			*user_type="nothing".to_owned();
+			*activation_state="not_activate".to_owned();
+		    }
+
+			}
+		    }
                 });
                 ui.horizontal(|ui| {
                     
 		    #[cfg(not(target_arch = "wasm32"))]
-                    if ui.button("导出").clicked() {
+		    let tt_export=match &lang{
+			"zh"=>"导出",
+			_=>"export"
+		    }
+                    if ui.button(tt_export).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;
                         }
@@ -465,7 +565,11 @@ impl eframe::App for TemplateApp {
                     });
 
 		    #[cfg(not(target_arch = "wasm32"))]
-                    if ui.button("导入").clicked() {
+		    let tt_import=match &lang{
+			"zh"=>"导入",
+			_=>"import"
+		    }
+                    if ui.button(tt_import).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;    
                         }
@@ -477,7 +581,11 @@ impl eframe::App for TemplateApp {
                         }
                     }
 
-                    if ui.button("文本方式导入").clicked() {
+		    let tt_imports=match &lang{
+			"zh"=>"文本方式导入",
+			_=>"import from string"
+		    };
+                    if ui.button(tt_imports).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;    
                         }
@@ -485,7 +593,11 @@ impl eframe::App for TemplateApp {
                             *is_open_import=true;
                         }
                     }
-                    if ui.button("导出为可复制的文本").clicked() {
+		    let tt_exports=match &lang{
+			"zh"=>"导出为可复制的文本",
+			_=>"export as string"
+		    };
+                    if ui.button(tt_exports).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;    
                         }
@@ -493,7 +605,11 @@ impl eframe::App for TemplateApp {
 			                *is_open_export=true;
                         }
                     }
-                    if ui.button("清空").clicked() {
+		    let tt_clear=match &lang{
+			"zh"=>"清空",
+			_=>"clear"
+		    };
+                    if ui.button(tt_clear).clicked() {
                         *historys = vec![];
                         *comments = vec![];
 			*place = "".to_owned();
@@ -509,7 +625,12 @@ impl eframe::App for TemplateApp {
                 });
 
                 ui.separator();
-                ui.heading("往-卜");
+
+		let tt_h=match &lang{
+		    "zh"=>"往-卜",
+		    _=>"History"
+		};
+                ui.heading(tt_h);
 
                 let scroll = egui::ScrollArea::vertical()
                     .max_height(400.0)
@@ -562,12 +683,15 @@ impl eframe::App for TemplateApp {
                                 ui.collapsing(t_job, |ui| {
                                     // question
                                     ui.horizontal(|ui| {
-                                        ui.label("求卜： ");
+					match &lang{"zh"=>ui.label("求卜： ");
+					_=>ui.label("Event divanated:");}
+                                        
                                         ui.colored_label(color_blue.clone(), x.3.clone());
                                     });
                                     ui.separator();
                                     ui.horizontal(|ui| {
-                                        ui.label("得卦");
+					match &lang{"zh"=>ui.label("得卦");
+					_=>ui.label("Results of GUA:");}
                                         ui.label(x.0.get("name").unwrap().clone())
                                             .on_hover_cursor(egui::CursorIcon::Help)
                                             .on_hover_ui(|ui| {
@@ -600,17 +724,28 @@ impl eframe::App for TemplateApp {
                                     ui.separator();
                                     // analysis
                                     ui.horizontal(|ui| {
-                                        ui.label("分析: ");
+					match &lang{"zh"=>ui.label("分析：");
+					_=>ui.label("Analysis:");}
                                         ui.colored_label(color_blue.clone(), x.6.clone());
                                     });
                                     ui.separator();
                                     // comments
-                                    ui.collapsing("批注/应验", |ui| {
+				    let tt_com=match &lang{
+					"zh"=>"批注/应验",
+					_=>"Comments/Whether comes true"
+				    };
+                                    ui.collapsing(tt_com, |ui| {
                                         egui::ScrollArea::vertical().max_height(100.)
 					    .min_scrolled_width(200.0).show(
                                             ui,
                                             |ui| {
-                                                if ui.button("记录之").clicked() {
+
+						// comments
+						let tt_com=match &lang{
+						    "zh"=>"记录之",
+						    _=>"Record it now."
+						};
+                                                if ui.button(tt_com).clicked() {
 						    *pop_open=true;
 						    *current_point=(*historys).len()-1-(i_x as usize);
                                                 }
@@ -638,16 +773,19 @@ impl eframe::App for TemplateApp {
                         });
                     });
 
-		egui::Window::new("通过文本导入").default_width(300.0)
+		let tt_done=match &lang{"zh"=>"毕",_=>"Done."};
+		let tt_cp=match &lang{"zh"=>"复制之",_=>"Copy it."};
+
+		egui::Window::new(tt_imports).default_width(300.0)
 		    .open(is_open_import)
 		    .show(ctx,|ui|{
 			let mut read_text:String="".to_owned();
 			ui.text_edit_multiline(&mut read_text);
-			if ui.button("毕").clicked(){
+			if ui.button(tt_done).clicked(){
 			    *historys = serde_json::from_str(&read_text).unwrap();
 			}
 		    });
-		egui::Window::new("导出为文本").default_width(300.0)
+		egui::Window::new(tt_exports).default_width(300.0)
 		    .open(is_open_export)
 		    .show(ctx,|ui|{
 
@@ -659,7 +797,7 @@ impl eframe::App for TemplateApp {
 			let res = serde_json::to_string(historys).unwrap();
 			ui.vertical(|ui|{
 			    let mut is_copyed=false;
-			    if ui.button("复制之").clicked(){
+			    if ui.button(tt_cp).clicked(){
 				is_copyed=true;
 				use clipboard::{ClipboardContext,ClipboardProvider};
 				let mut ctx:ClipboardContext = ClipboardProvider::new().unwrap();
@@ -673,13 +811,21 @@ impl eframe::App for TemplateApp {
 			    });
 		    });
 		
+						let tt_com=match &lang{
+						    "zh"=>"记录之",
+						    _=>"Record it now."
+						};
+						let tt_qiubu=match &lang{
+						    "zh"=>"求卜：",
+						    _=>"Things divinated:"
+						};
 		// pop a new window to add the comments.
-		egui::Window::new("记录之")
+		egui::Window::new(tt_com)
 		    .default_width(320.0)
 		    .open(pop_open)
 		    .show(ctx, |ui| {
 			ui.horizontal(|ui| {
-			    ui.code("求卜：");
+			    ui.code(tt_qiubu);
 			    ui.label((historys.get(*current_point as usize).unwrap()).3.clone());
 			});
 			ui.separator();
@@ -705,7 +851,8 @@ impl eframe::App for TemplateApp {
 			}
 			ui.separator();
 			ui.vertical(|ui| {
-                    ui.heading("解语");
+		match &lang{"zh"=>ui.heading("解语"); _=>ui.heading("Your analysis:");}
+                    
                     ui.colored_label(color_blue.clone(),historys.get(*current_point).unwrap()
                     .6.clone());
                 });
@@ -724,7 +871,8 @@ impl eframe::App for TemplateApp {
 			ui.text_edit_singleline(
 			    temp_comment,
 			);
-			if ui.button("添加").clicked() {
+			let tt_add=match &lang{"zh"=>"添加",_=>"Add"};
+			if ui.button(tt_add).clicked() {
 			    (*historys)[*current_point as usize].7.push((
 				temp_comment.clone(),
 				now.clone(),
@@ -742,12 +890,14 @@ impl eframe::App for TemplateApp {
                 // egui::warn_if_debug_build(ui);
             });
         }
-					    egui::Window::new("结果")
+
+			let tt_res=match &lang{"zh"=>"结果",_=>"Results"};
+					    egui::Window::new(tt_res)
                                                         .default_width(340.0)
                                                         .open(is_visual)
                                                         .show(ctx, |ui| {
                 ui.horizontal(|ui| {
-                    ui.code("求卜：");
+                    ui.code(tt_qiubu);
                     ui.label(inps.clone());
                 });
                 ui.separator();
@@ -765,9 +915,18 @@ impl eframe::App for TemplateApp {
                 }
                 ui.separator();
                 ui.vertical(|ui| {
+		    match &lang{
+			"zh"=>{
                     ui.heading("解易");
                     ui.label("  1. 以卦意察之\n  2. 以诸爻审之\n  3. 写下预言");
-                    ui.label("回车确认");
+			}
+			_=>{
+                    ui.heading("Analyse it:");
+                    ui.label("  1. Observe it in the context of the oracle's meaning.\n  2. Examine it by the hexagrams.\n  3. Write down your prophecy.");
+
+			}
+
+		    }
                     // ui.label("例：\n  1. ")
                     let response=ui.add(egui::TextEdit::multiline(analyse));
 		    if response.lost_focus(){
