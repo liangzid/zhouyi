@@ -11,6 +11,8 @@ use serde_json;
 use zhouyi::show_text_divinate;
 use egui_extras::{Size,StripBuilder};
 
+use crate::communicate::{query_login};
+
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)]// if we add new fields, give them default values when deserializing old state
@@ -53,6 +55,21 @@ pub struct TemplateApp {
     current_point:usize,
     is_open_import:bool,
     is_open_export:bool,
+    is_open_login:bool,
+    is_open_signup:bool,
+
+     //account related
+     email:String,
+     pwd:String,
+     pwd2:String,
+
+    login_state:i8,
+    user_type:String,
+    activation_state:String,
+    utype_ls:Vec<String>,
+    activation_ls:Vec<String>,
+    is_open_activate_help:bool,
+     
     hm:HashMap<String,String>,
 
     // Example stuff:
@@ -106,6 +123,22 @@ impl Default for TemplateApp {
 	    current_point:0,
 	    is_open_import:false,
 	    is_open_export:false,
+        is_open_login:true,
+        is_open_signup:false,
+
+        //account related
+        email:"".to_owned(),
+        pwd:"".to_owned(),
+        pwd2:"".to_owned(),
+	    login_state:0,
+	    user_type:"nothing".to_owned(),
+	    activation_state:"not_activate".to_owned(),
+	    utype_ls:vec!["nothing".to_owned(),"regular".to_owned(),
+			  "VIP1".to_owned()],
+	    activation_ls:vec!["not_activate".to_owned(),
+			       "activate".to_owned(),
+	    ],
+        is_open_activate_help:false,
 	    hm:HashMap::new(),
         }
     }
@@ -184,15 +217,107 @@ impl eframe::App for TemplateApp {
 	    current_point,
 	    is_open_import,
 	    is_open_export,
+        is_open_login,
+        is_open_signup,
+
+        //account related
+        email,
+        pwd,
+        pwd2,
+	    login_state,
+	    user_type,
+	    activation_state,
+
+        utype_ls,
+        activation_ls,
+        is_open_activate_help,
+
 	    hm,
         } = self;
-
         let now = Local::now().format("%F-%T").to_string();
         // let mut place: String = "无关".to_owned();
         // let mut analyse=String::from("");
         // let mut comments:Vec<(String,String)>=vec![];
         if true {
+            egui::Window::new("登录，以同步您的私有信息").default_width(300.0)
+		    .open(is_open_login)
+		    .show(ctx,|ui|{
+                
+                ui.heading("Login to your account!");
+                ui.horizontal(|ui|{
+                    ui.label("Email:");
+                    ui.text_edit_singleline(email);
+                });
+                ui.horizontal(|ui|{
+                    ui.label("Password:");
+                    password_ui(ui,pwd)
+                });
+                ui.small("no less than 8 characters.");
+            
+            ui.horizontal(|ui|{
+                if ui.button("I forget the password").clicked(){
+                    let _=1;
+                }
+                if ui.button("Login.").clicked(){
+                    let _x=1;
+		    let res=query_login(email,pwd);
+		    if res.0=="Ok"{
+			*login_state=res.1.parse().unwrap();
+			*user_type=res.2;
+			*activation_state=res.3;
+		    }
+		    else if res.0=="pwd_error"{
+    			ui.label("Incorrect emails or passwords.");
+		    }
+		    else{
+	    		ui.label("Incorrect emails or passwords.");
+		    }
+                }
+                if ui.button("No account? Sign Up").clicked(){
+                    // *is_open_login=false;
+                    *is_open_signup=true;
+                }
+            });
+		    });
+
+            egui::Window::new("注册，以同步您的私有信息").default_width(300.0)
+		    .open(is_open_signup)
+		    .show(ctx,|ui|{
+                
+                ui.heading("Sign Up Now!");
+                ui.horizontal(|ui|{
+                    ui.label("Email:");
+                    ui.text_edit_singleline(email);
+                });
+                ui.horizontal(|ui|{
+                    ui.label("Password:");
+                    password_ui(ui,pwd)
+                });
+                ui.small("no less than 8 characters.");
+            
+                ui.horizontal(|ui|{
+                    ui.label("Password Again:");
+                    password_ui(ui,pwd2)
+                });
+
+                if pwd!=pwd2{
+                    ui.colored_label(egui::Color32::RED,
+                         "Password inconsistant");
+                }
+
+            ui.horizontal(|ui|{
+                if ui.button("Now Sign Up!").clicked(){
+                    let _x=1;
+                }
+                if ui.button("Already have a account? Login.").clicked(){
+                    *is_open_login=true;
+                    // *is_open_signup=false;
+                }
+            });
+		    });
+
             egui::CentralPanel::default().show(ctx, |ui| {
+
                 let mut color_blue: Color32;
                 if *is_dark_theme {
                     ctx.set_visuals(egui::Visuals::dark());
@@ -255,7 +380,8 @@ impl eframe::App for TemplateApp {
                 if ui.add(divinate_b).clicked() {
                     *is_visual = true;
 		    // obtain the results of Gua
-		    let res = show_text_divinate(divination_type, inps);
+		    let res = show_text_divinate(divination_type,
+                 inps);
 
 		    // at current results to history
 		    *hm = res
@@ -279,29 +405,93 @@ impl eframe::App for TemplateApp {
 
                 ui.separator();
                 // add the export and import button.
+                ui.heading("卜筮记录管理");
+                ui.horizontal(|ui|{
+                    ui.label("当前状态：");
+		    if (*login_state).eq(&0){
+			    ui.label("未登录");
+		    }
+		    else{
+			    ui.label(format!("User {} logged in.",email));
+		    }
+                });
+
+                ui.label("卜筮：✔");
+                ui.label("数据于当前设备缓存：✔");
+                if activation_state=="not_activate"{
+                    ui.label("数据导出/导入：✖");
+                    ui.label("跨设备云端存储：✖");
+                    ui.label("AI检索：✖");
+                }
+                else{
+                    ui.label("数据导出/导入：✖");
+                    ui.label("跨设备云端存储：✖");
+                    ui.label("AI检索：马上推出");
+                }
+                
+
+
+                ui.horizontal(|ui|{
+                    if ui.button("登录").clicked(){
+                        *is_open_login=true;
+                    }
+                    if ui.button("注册").clicked(){
+                        *is_open_signup=true;
+                    }
+		    if ui.button("注销").clicked(){
+			*login_state=0;
+			*user_type="nothing".to_owned();
+			*activation_state="not_activate".to_owned();
+		    }
+                });
                 ui.horizontal(|ui| {
-                    ui.label("卜筮记录管理: ");
+                    
 		    #[cfg(not(target_arch = "wasm32"))]
                     if ui.button("导出").clicked() {
-                        if let Some(path) = rfd::FileDialog::new().save_file() {
-                            let res = serde_json::to_string(historys).unwrap();
-                            std::fs::write(path, res);
+                        if activation_state=="not_activate"{
+                            *is_open_activate_help=true;
+                        }
+                        else{
+                            if let Some(path) = rfd::FileDialog::new().save_file() {
+                                let res = serde_json::to_string(historys).unwrap();
+                                std::fs::write(path, res);
+                            }
                         }
                     }
+                    egui::Window::new("Notion").open(is_open_activate_help)
+                    .show(ctx, |ui| {
+                        ui.label("Sorry, you have no permission to do this operation!");
+                        ui.hyperlink_to("Update your account now!", "https://liangzid.github.io/");
+                    });
 
 		    #[cfg(not(target_arch = "wasm32"))]
                     if ui.button("导入").clicked() {
-                        if let Some(path) = rfd::FileDialog::new().pick_file() {
-                            let content = std::fs::read_to_string(path).unwrap();
-                            *historys = serde_json::from_str(&content).unwrap();
+                        if activation_state=="not_activate"{
+                            *is_open_activate_help=true;    
+                        }
+                        else{
+                            if let Some(path) = rfd::FileDialog::new().pick_file() {
+                                let content = std::fs::read_to_string(path).unwrap();
+                                *historys = serde_json::from_str(&content).unwrap();
+                            }
                         }
                     }
 
                     if ui.button("文本方式导入").clicked() {
-			*is_open_import=true;
+                        if activation_state=="not_activate"{
+                            *is_open_activate_help=true;    
+                        }
+                        else{
+                            *is_open_import=true;
+                        }
                     }
                     if ui.button("导出为可复制的文本").clicked() {
-			*is_open_export=true;
+                        if activation_state=="not_activate"{
+                            *is_open_activate_help=true;    
+                        }
+                        else{
+			                *is_open_export=true;
+                        }
                     }
                     if ui.button("清空").clicked() {
                         *historys = vec![];
@@ -622,3 +812,62 @@ pub fn code_view_ui(ui: &mut egui::Ui, mut code: &str) {
             .lock_focus(true),
     );
 }
+
+
+
+#[allow(clippy::ptr_arg)] // false positive
+pub fn password_ui(ui: &mut egui::Ui, password: &mut String) -> egui::Response {
+    // This widget has its own state — show or hide password characters (`show_plaintext`).
+    // In this case we use a simple `bool`, but you can also declare your own type.
+    // It must implement at least `Clone` and be `'static`.
+    // If you use the `persistence` feature, it also must implement `serde::{Deserialize, Serialize}`.
+
+    // Generate an id for the state
+    let state_id = ui.id().with("show_plaintext");
+
+    // Get state for this widget.
+    // You should get state by value, not by reference to avoid borrowing of [`Memory`].
+    let mut show_plaintext = ui.data_mut(|d| d.get_temp::<bool>(state_id).unwrap_or(false));
+
+    // Process ui, change a local copy of the state
+    // We want TextEdit to fill entire space, and have button after that, so in that case we can
+    // change direction to right_to_left.
+    let result = ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+        // Toggle the `show_plaintext` bool with a button:
+        let response = ui
+            .add(egui::SelectableLabel::new(show_plaintext, "👁"))
+            .on_hover_text("Show/hide password");
+
+        if response.clicked() {
+            show_plaintext = !show_plaintext;
+        }
+
+        // Show the password field:
+        ui.add_sized(
+            ui.available_size(),
+            egui::TextEdit::singleline(password).password(!show_plaintext),
+        );
+    });
+
+    // Store the (possibly changed) state:
+    ui.data_mut(|d| d.insert_temp(state_id, show_plaintext));
+
+    // All done! Return the interaction response so the user can check what happened
+    // (hovered, clicked, …) and maybe show a tooltip:
+    result.response
+}
+
+// A wrapper that allows the more idiomatic usage pattern: `ui.add(…)`
+/// Password entry field with ability to toggle character hiding.
+///
+/// ## Example:
+/// ``` ignore
+/// ui.add(password(&mut my_password));
+/// ```
+pub fn password(password: &mut String) -> impl egui::Widget + '_ {
+    move |ui: &mut egui::Ui| password_ui(ui, password)
+}
+
+// pub fn url_to_file_source_code() -> String {
+//     format!("https://github.com/emilk/egui/blob/master/{}", file!())
+// }
