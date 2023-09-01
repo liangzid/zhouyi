@@ -18,6 +18,7 @@ use crate::communicate::{query_login};
 #[serde(default)]// if we add new fields, give them default values when deserializing old state
 pub struct TemplateApp {
     // settings, meta-information
+    lang:String,
     divination_type: String,
     is_dark_theme: bool,
 
@@ -86,6 +87,7 @@ impl Default for TemplateApp {
             label: "Hello World!".to_owned(),
             value: 2.7,
 
+        lang:"en".to_owned(),
 	    divination_type:"dayanshi".to_owned(),
 	    is_dark_theme:false,
 	    gua_name: "乾".to_owned(),
@@ -194,6 +196,8 @@ impl eframe::App for TemplateApp {
         let Self {
             label,
             value,
+
+            lang,
             divination_type,
             is_dark_theme,
             gua_name,
@@ -239,7 +243,7 @@ impl eframe::App for TemplateApp {
         // let mut analyse=String::from("");
         // let mut comments:Vec<(String,String)>=vec![];
         if true {
-	    let tt_login= match &lang{
+	    let tt_login= match lang.as_str(){
 		"zh"=>"登录，以同步您的私有信息",
 		_=>"Login to async your information!",
 	    };
@@ -256,19 +260,19 @@ impl eframe::App for TemplateApp {
                     ui.label("Password:");
                     password_ui(ui,pwd)
                 });
-			match &lang{
-			    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。");
-			    _=>ui.small("no less than 8 characters.");
-			}
+			match lang.as_str(){
+			    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。"),
+			    _=>ui.small("no less than 8 characters."),
+			};
             ui.horizontal(|ui|{
-		let tt_fgt=match &lang{
-		    "zh"=>"忘记密码？"，
+		let tt_fgt=match lang.as_str(){
+		    "zh"=>"忘记密码？",
 			_=>"I forget the password",
 		};
                 if ui.button(tt_fgt).clicked(){
                     let _=1;
                 }
-		let tt_lgi=match &lang{"zh"=>"登录",_=>"Login."};
+		let tt_lgi=match lang.as_str(){"zh"=>"登录",_=>"Login."};
                 if ui.button(tt_lgi).clicked(){
                     let _x=1;
 		    let res=query_login(email,pwd);
@@ -284,7 +288,7 @@ impl eframe::App for TemplateApp {
 	    		ui.label("Incorrect emails or passwords.");
 		    }
                 }
-		let tt_sgu=match &lang{"zh"=>"注册账号",_=>"No account? Sign Up"};
+		let tt_sgu=match lang.as_str(){"zh"=>"注册账号",_=>"No account? Sign Up"};
                 if ui.button(tt_sgu).clicked(){
                     // *is_open_login=false;
                     *is_open_signup=true;
@@ -292,7 +296,7 @@ impl eframe::App for TemplateApp {
             });
 		    });
 
-	    let tt_sguu=match &lang{"zh"=>"注册，以同步您的私有信息",
+	    let tt_sguu=match lang.as_str(){"zh"=>"注册，以同步您的私有信息",
 				   _=>"Sign up, to sync your information"};
             egui::Window::new(tt_sguu).default_width(300.0)
 		    .open(is_open_signup)
@@ -300,46 +304,46 @@ impl eframe::App for TemplateApp {
                 
                 // ui.heading("Sign Up Now!");
                 ui.horizontal(|ui|{
-		    match &lang{
-			"zh"=>ui.label("邮箱：");
-			_=>ui.label("Email:");
-		    }
+		        match lang.as_str(){
+			    "zh"=>ui.label("邮箱："),
+			_   =>ui.label("Email:"),
+		        };
                     ui.text_edit_singleline(email);
                 });
                 ui.horizontal(|ui|{
-		    match &lang{
-			"zh"=>ui.label("密码：");
-			_=>ui.label("Password:");
-		    }
+		    match lang.as_str(){
+			"zh"=>ui.label("密码："),
+			_=>ui.label("Password:"),
+		    };
                     
                     password_ui(ui,pwd)
                 });
-		match &lang{
-		    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。");
-		    _=>ui.small("no less than 8 characters.");
-		}
+		match lang.as_str(){
+		    "zh"=>ui.small("不少于8个字符，仅数字、字母与特殊符号。"),
+		    _=>ui.small("no less than 8 characters."),
+		};
             
                 ui.horizontal(|ui|{
-		    match &lang{
-"zh"=>ui.label("再次输入:");
-_=>ui.label("Password Again:");
-		    }
+		    match lang.as_str(){
+"zh"=>ui.label("再次输入:"),
+_=>ui.label("Password Again:"),
+		    };
                     
                     password_ui(ui,pwd2)
                 });
 
                 if pwd!=pwd2{
-		    let tt_pic=match &lang{
+		    let tt_pic=match lang.as_str(){
 			"zh"=>"密码不一致",
 			_=>"Password inconsistant"
-		    }
+		    };
                     ui.colored_label(egui::Color32::RED,
                          tt_pic);
                 }
 
             ui.horizontal(|ui|{
-		let tt_sgu_b=match &lang{"zh"=>"注册",_=>"Now Sign Up!"};
-		let tt_sgu_b_ah=match &lang{"zh"=>"转至登录页面",_=>"Already have a account? Login."};
+		let tt_sgu_b=match lang.as_str(){"zh"=>"注册",_=>"Now Sign Up!"};
+		let tt_sgu_b_ah=match lang.as_str(){"zh"=>"转至登录页面",_=>"Already have a account? Login."};
                 if ui.button(tt_sgu_b).clicked(){
                     let _x=1;
                 }
@@ -366,10 +370,10 @@ _=>ui.label("Password Again:");
                     (Color32::DARK_GRAY, Color32::BLACK)
                 };
                 ui.horizontal(|ui| {
-		    match &lang{"zh"=>{
+		    match lang.as_str(){"zh"=>{
 			ui.label("主题");
 		    }
-			       _=>ui.label("Theme:");
+			       _=>{ui.label("Theme:");}
 		    }
 		    ui.radio_value(is_dark_theme, false, "☀️").clicked();
 		    ui.radio_value(is_dark_theme, true, "🌙").clicked();
@@ -381,8 +385,8 @@ _=>ui.label("Password Again:");
                 ui.text_edit_multiline(inps);
                 let mut track_divination = false;
                 ui.horizontal(|ui| {
-		    match &lang{"zh"=>ui.label("卜法");_=>ui.label("Divination method")}
-		    match &lang{
+		    match lang.as_str(){"zh"=>ui.label("卜法"),_=>ui.label("Divination method")};
+		    match lang.as_str(){
 			"zh"=>{
                     track_divination |= ui
                         .radio_value(divination_type, "dayanshi".to_owned(), "大衍筮法")
@@ -403,30 +407,30 @@ _=>ui.label("Password Again:");
                 });
 
                 let mut track_lang = true;
-                let mut lang = "zh".to_owned();
+                // let mut lang.as_str() = "zh".to_owned();
                 ui.horizontal(|ui| {
-		    match &lang {"zh"=>ui.label("语言");_=>ui.label("Language");}
-                    track_lang |= ui.radio_value(&mut lang, "zh".to_owned(), "中文").clicked();
+		    match lang.as_str() {"zh"=>ui.label("语言"),_=>ui.label("Language"),};
+                    track_lang |= ui.radio_value(lang, "zh".to_owned(), "中文").clicked();
                     track_lang |= ui
-                        .radio_value(&mut lang, "en".to_owned(), "English")
+                        .radio_value(lang, "en".to_owned(), "English")
                         .clicked();
                 });
                 ui.horizontal(|ui| {
-		    match &lang {"zh"=>ui.label("占卜时刻");_=>ui.label("Divination Time");}
+		    match lang.as_str() {"zh"=>ui.label("占卜时刻"),_=>ui.label("Divination Time"),};
                     let label = egui::widgets::Label::new(now.clone());
                     ui.add(label);
                     ui.ctx().request_repaint();
                 });
 
                 ui.horizontal(|ui| {
-		    match &lang {"zh"=>ui.label("占卜地点");_=>ui.label("Divination Position");}
+		    match lang.as_str() {"zh"=>ui.label("占卜地点"),_=>ui.label("Divination Position"),};
 		    ui.horizontal(|ui|{
 			ui.set_width(230.0);
 			ui.add(egui::TextEdit::singleline(place));
 		    });
                 });
 
-                let divinate_b =match &lang{
+                let divinate_b =match lang.as_str(){
 		    "zh"=>egui::Button::new("卜筮之"),
 		    _=>egui::Button::new("Divinate it!"),
 		} ;
@@ -458,20 +462,20 @@ _=>ui.label("Password Again:");
 
                 ui.separator();
                 // add the export and import button.
-		match &lang {"zh"=>ui.heading("卜筮记录管理");_=>ui.heading("Records Management");}
+		match lang.as_str() {"zh"=>ui.heading("卜筮记录管理"),_=>ui.heading("Records Management"),};
                 ui.horizontal(|ui|{
-		    match &lang {"zh"=>ui.label("当前状态：");_=>ui.label("Current State");}
+		    match lang.as_str() {"zh"=>ui.label("当前状态："),_=>ui.label("Current State"),};
 		    if (*login_state).eq(&0){
-			match &lang {"zh"=>ui.label("未登录");
-				    _=>ui.label("Visitor, not logged in");}
+			match lang.as_str() {"zh"=>ui.label("未登录"),
+				    _=>ui.label("Visitor, not logged in"),}
 		    }
 		    else{
-			match &lang {"zh"=>ui.label(format!("账户 {} 登录.",email));
-				    _=>ui.label(format!("User {} logged in.",email));}
+			match lang.as_str() {"zh"=>ui.label(format!("账户 {} 登录.",email)),
+				    _=>ui.label(format!("User {} logged in.",email)),}
 		    }
                 });
 
-		match &lang{
+		match lang.as_str(){
 		    "zh" =>{
 
                 ui.label("卜筮：✔");
@@ -508,7 +512,7 @@ _=>ui.label("Password Again:");
 
 
                 ui.horizontal(|ui|{
-		    match &lang{
+		    match lang.as_str(){
 			"zh"=>{
 
                     if ui.button("登录").clicked(){
@@ -543,10 +547,10 @@ _=>ui.label("Password Again:");
                 ui.horizontal(|ui| {
                     
 		    #[cfg(not(target_arch = "wasm32"))]
-		    let tt_export=match &lang{
+		    let tt_export=match lang.as_str(){
 			"zh"=>"导出",
 			_=>"export"
-		    }
+		    };
                     if ui.button(tt_export).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;
@@ -565,10 +569,10 @@ _=>ui.label("Password Again:");
                     });
 
 		    #[cfg(not(target_arch = "wasm32"))]
-		    let tt_import=match &lang{
+		    let tt_import=match lang.as_str(){
 			"zh"=>"导入",
 			_=>"import"
-		    }
+		    };
                     if ui.button(tt_import).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;    
@@ -581,7 +585,7 @@ _=>ui.label("Password Again:");
                         }
                     }
 
-		    let tt_imports=match &lang{
+		    let tt_imports=match lang.as_str(){
 			"zh"=>"文本方式导入",
 			_=>"import from string"
 		    };
@@ -593,7 +597,7 @@ _=>ui.label("Password Again:");
                             *is_open_import=true;
                         }
                     }
-		    let tt_exports=match &lang{
+		    let tt_exports=match lang.as_str(){
 			"zh"=>"导出为可复制的文本",
 			_=>"export as string"
 		    };
@@ -605,7 +609,7 @@ _=>ui.label("Password Again:");
 			                *is_open_export=true;
                         }
                     }
-		    let tt_clear=match &lang{
+		    let tt_clear=match lang.as_str(){
 			"zh"=>"清空",
 			_=>"clear"
 		    };
@@ -626,7 +630,7 @@ _=>ui.label("Password Again:");
 
                 ui.separator();
 
-		let tt_h=match &lang{
+		let tt_h=match lang.as_str(){
 		    "zh"=>"往-卜",
 		    _=>"History"
 		};
@@ -683,15 +687,15 @@ _=>ui.label("Password Again:");
                                 ui.collapsing(t_job, |ui| {
                                     // question
                                     ui.horizontal(|ui| {
-					match &lang{"zh"=>ui.label("求卜： ");
-					_=>ui.label("Event divanated:");}
+					match lang.as_str(){"zh"=>ui.label("求卜： "),
+					_=>ui.label("Event divanated:"),};
                                         
                                         ui.colored_label(color_blue.clone(), x.3.clone());
                                     });
                                     ui.separator();
                                     ui.horizontal(|ui| {
-					match &lang{"zh"=>ui.label("得卦");
-					_=>ui.label("Results of GUA:");}
+					match lang.as_str(){"zh"=>ui.label("得卦"),
+					_=>ui.label("Results of GUA:"),};
                                         ui.label(x.0.get("name").unwrap().clone())
                                             .on_hover_cursor(egui::CursorIcon::Help)
                                             .on_hover_ui(|ui| {
@@ -724,13 +728,13 @@ _=>ui.label("Password Again:");
                                     ui.separator();
                                     // analysis
                                     ui.horizontal(|ui| {
-					match &lang{"zh"=>ui.label("分析：");
-					_=>ui.label("Analysis:");}
+					match lang.as_str(){"zh"=>ui.label("分析："),
+					_=>ui.label("Analysis:"),};
                                         ui.colored_label(color_blue.clone(), x.6.clone());
                                     });
                                     ui.separator();
                                     // comments
-				    let tt_com=match &lang{
+				    let tt_com=match lang.as_str(){
 					"zh"=>"批注/应验",
 					_=>"Comments/Whether comes true"
 				    };
@@ -741,7 +745,7 @@ _=>ui.label("Password Again:");
                                             |ui| {
 
 						// comments
-						let tt_com=match &lang{
+						let tt_com=match lang.as_str(){
 						    "zh"=>"记录之",
 						    _=>"Record it now."
 						};
@@ -773,9 +777,12 @@ _=>ui.label("Password Again:");
                         });
                     });
 
-		let tt_done=match &lang{"zh"=>"毕",_=>"Done."};
-		let tt_cp=match &lang{"zh"=>"复制之",_=>"Copy it."};
-
+		let tt_done=match lang.as_str(){"zh"=>"毕",_=>"Done."};
+		let tt_cp=match lang.as_str(){"zh"=>"复制之",_=>"Copy it."};
+        let tt_imports=match lang.as_str(){
+			"zh"=>"文本方式导入",
+			_=>"import from string"
+		    };
 		egui::Window::new(tt_imports).default_width(300.0)
 		    .open(is_open_import)
 		    .show(ctx,|ui|{
@@ -785,6 +792,10 @@ _=>ui.label("Password Again:");
 			    *historys = serde_json::from_str(&read_text).unwrap();
 			}
 		    });
+            let tt_exports=match lang.as_str(){
+                "zh"=>"导出为可复制的文本",
+                _=>"export as string"
+                };
 		egui::Window::new(tt_exports).default_width(300.0)
 		    .open(is_open_export)
 		    .show(ctx,|ui|{
@@ -811,11 +822,11 @@ _=>ui.label("Password Again:");
 			    });
 		    });
 		
-						let tt_com=match &lang{
+						let tt_com=match lang.as_str(){
 						    "zh"=>"记录之",
 						    _=>"Record it now."
 						};
-						let tt_qiubu=match &lang{
+						let tt_qiubu=match lang.as_str(){
 						    "zh"=>"求卜：",
 						    _=>"Things divinated:"
 						};
@@ -851,7 +862,7 @@ _=>ui.label("Password Again:");
 			}
 			ui.separator();
 			ui.vertical(|ui| {
-		match &lang{"zh"=>ui.heading("解语"); _=>ui.heading("Your analysis:");}
+		match lang.as_str(){"zh"=>ui.heading("解语"), _=>ui.heading("Your analysis:"),};
                     
                     ui.colored_label(color_blue.clone(),historys.get(*current_point).unwrap()
                     .6.clone());
@@ -871,7 +882,7 @@ _=>ui.label("Password Again:");
 			ui.text_edit_singleline(
 			    temp_comment,
 			);
-			let tt_add=match &lang{"zh"=>"添加",_=>"Add"};
+			let tt_add=match lang.as_str(){"zh"=>"添加",_=>"Add"};
 			if ui.button(tt_add).clicked() {
 			    (*historys)[*current_point as usize].7.push((
 				temp_comment.clone(),
@@ -891,12 +902,17 @@ _=>ui.label("Password Again:");
             });
         }
 
-			let tt_res=match &lang{"zh"=>"结果",_=>"Results"};
+			let tt_res=match lang.as_str(){"zh"=>"结果",_=>"Results"};
 					    egui::Window::new(tt_res)
                                                         .default_width(340.0)
                                                         .open(is_visual)
                                                         .show(ctx, |ui| {
                 ui.horizontal(|ui| {
+                    
+                    let tt_qiubu=match lang.as_str(){
+                        "zh"=>"求卜：",
+                        _=>"Things divinated:"
+                    };
                     ui.code(tt_qiubu);
                     ui.label(inps.clone());
                 });
@@ -915,7 +931,7 @@ _=>ui.label("Password Again:");
                 }
                 ui.separator();
                 ui.vertical(|ui| {
-		    match &lang{
+		    match lang.as_str(){
 			"zh"=>{
                     ui.heading("解易");
                     ui.label("  1. 以卦意察之\n  2. 以诸爻审之\n  3. 写下预言");
