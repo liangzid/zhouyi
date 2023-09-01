@@ -2,5 +2,5 @@
 
 mod app;
 pub use app::TemplateApp;
-mod communicate;
-pub use communicate::{query_login};
+// mod communicate;
+// pub use communicate::{query_login};
