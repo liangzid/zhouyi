@@ -6,9 +6,12 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-sled="0.34"
+# sled="0.34"
+async-std="1.12"
+futures="0.3.21"
+sea-orm-migration="^0.12"
 sea-orm={version="0.12", features=["sqlx-sqlite",
-			 "runtime-tokio-rustls",
+			 "runtime-async-std-native-tls",
 			 "macros",
 			 ]}
 
@@ -17,3 +20,4 @@ name = "new"
 path = "src/db_management.rs"
 test=true
 bench=false
+
