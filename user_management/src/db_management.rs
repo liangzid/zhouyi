@@ -1,8 +1,11 @@
 // use sled;
 // use async_std;
-use std::collections::{HashMap};
-use rusqlite::{params,Connection, Result};
+use std::{collections::{HashMap}, hash::Hash};
+use rusqlite::{params,Connection, Result,ToSql,Error, types::ToSqlOutput};
+use rusqlite;
 
+mod container_wrapper;
+use crate::container_wrapper::{DictStrs,Vec2Str,VecStr};
 
 #[derive(Clone,Debug,PartialEq,)]
 pub struct OriginalModel {
@@ -33,7 +36,7 @@ pub struct Account {
 pub struct EventRecord {
     pub id: String,
     pub email:String,
-    pub gua: HashMap<String,String>,
+    pub gua: DictStrs,
     pub yaos:Vec<String>,
     pub yaoxangs:Vec<String>,
     pub inps:String,
@@ -47,6 +50,7 @@ pub struct EventRecord {
 const DB_URL:&str="../zhouyitest1.db";
 const DB_NAME:&str = "zhouyi_overall";
 
+#[derive(Debug,)]
 struct DBManagement{
     DB_URL:String,
     conn:Connection,
@@ -98,7 +102,7 @@ fn open_db(url:&str)->DBManagement{
 // "OK" -> ok
 // "Email already exists."
 // "Others"
-pub fn create_account(self,email:&str,pwd:&str)->String{
+pub fn create_account(&self,email:&str,pwd:&str)->String{
     // query if there exists a email
     let query=format!("SELECT * FROM account WHERE email='{}'",email);
     // let query=format!("SELECT * FROM account");
@@ -130,10 +134,161 @@ pub fn create_account(self,email:&str,pwd:&str)->String{
     "Ok".to_owned()
 }
 
-pub fn activate_account(self,email:&str,)->String{
-    
+pub fn activate_account(&self,email:&str,)->String{
+    let query=format!("SELECT activation_state
+     FROM account WHERE email='{}'",email);
+    // let query=format!("SELECT * FROM account");
+    let mut stmt=self.conn.prepare(&query).unwrap();
+    if stmt.exists([]).unwrap(){
+
+        // if already exists, give a special code.
+        let mut rows=stmt.query([]).unwrap();
+        let mut names:Vec<String>=Vec::new();
+        let state:String=rows.next().unwrap().expect("").get(0).unwrap();
+        if state.as_str()=="not_activate"{
+            
+            self.conn.execute("UPDATE account
+            SET activation_state = 'activate'
+            WHERE email = ?1",
+            [email]);
+            println!("activation acount finded!");
+            return "Ok".to_owned();
+        }
+        else{
+            return "Already activated.".to_owned();
+        }
+        
+    }
+    else{
+        return "Email not exists.".to_owned();
+    }
 }
 
+// not validated.
+pub fn verify_login(&self,email:&str,pwd:&str)->(String,String,String,String){
+    
+    // 1. query if there exist of correct
+    let sql=format!("SELECT activation_state, user_state
+    FROM account
+    WHERE email = '{}' AND pwd = '{}'",email,pwd);
+    let mut stmt=self.conn.prepare(&sql).unwrap();
+    if stmt.exists([]).unwrap(){
+        let mut rows=stmt.query([]).unwrap();
+        let acs:String=rows.next().unwrap().expect("").get(0).unwrap();
+        let uss:String=rows.next().unwrap().expect("").get(1).unwrap();
+        ("Ok".to_owned(),"1".to_owned(),acs,uss)
+    }
+    else{
+        ("No match".to_owned(),
+        "0".to_owned(),
+        "not_activate".to_owned(),
+        "nothing".to_owned(),
+    )
+    }
+    // 2. return other informations.
+}
+
+
+pub fn get_records(&self,email:&str)->Vec<(
+    DictStrs,
+    Vec<String>,
+    Vec<String>,
+    String,
+    String,
+    String,
+    String,
+    Vec<(String,String)>,
+)>{
+
+    // 1. query database
+    let sql=format!("SELECT gua, yaos, yaoxangs,
+     inps, time, palce, analysis, comments
+     FROM EventRecord
+     WHERE email='{}'",email);
+    let mut stmt=self.conn.prepare(&sql).unwrap();
+    
+    let mut all_datas: Vec<(DictStrs,
+         Vec<String>, 
+         Vec<String>,
+        String,
+        String,
+        String,
+        String,
+        Vec<(String, String)>)>=vec![];
+    let mut rows=stmt.query([]).unwrap();
+
+    while let record = rows.next().unwrap().expect(""){
+        all_datas.push((
+            record.get(0).unwrap(),
+            record.get(1).unwrap(),
+            record.get(2).unwrap(),
+
+            record.get(3).unwrap(),
+            record.get(4).unwrap(),
+            record.get(5).unwrap(),
+            record.get(6).unwrap(),
+            
+            record.get(7).unwrap(),
+        ));
+    }
+    all_datas
+}
+
+// pub fn merge_history(&self, email:&str)
+
+// very straightforward, push one record up.
+pub fn push_records(&self,
+    email:&str,
+    data:(DictStrs, //gua
+    Vec<String>,  //yaos
+    Vec<String>, //yaos' xang
+    String, // inps
+    String, // time
+    String, //place
+    String, //analysis
+    Vec<(String, String)> //comments
+    ))->String{
+        
+        // 1. query database
+        
+        let time=data.4;
+        
+        let sql=format!("SELECT id
+        FROM EventRecord
+        WHERE time='{}' AND email='{}'",&time,email);
+        let mut stmt=self.conn.prepare(&sql).unwrap();
+        if stmt.exists([]).unwrap(){
+            let item_id:i32=stmt.query([]).unwrap().next()
+            .unwrap().expect("").get(0).unwrap();
+
+            let params=params![data.0,
+            data.1,data.2,data.3,data.4,
+            data.5,data.6,data.7,data.8,item_id];
+            self.conn.execute("UPDATE EventRecord
+            SET gua = ?1,
+            yaos = ?2,
+            yaoxangs = ?3,
+            inps = ?4,
+            time = ?5,
+            place = ?6,
+            analysis = ?7,
+            comments = ?8
+            WHERE id= ?9", params);
+            
+            return "Ok".to_owned();
+        }
+        else{
+            self.conn.execute("INSERT INTO EventRecord
+            (email, gua, yaos, yaoxangs, inps, time, place, analysis, comments)
+            VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9)",
+            [email,data.0,data.1,data.2,&data.3,&data.4,&data.5,&data.6,data.7,data.8]
+            );
+
+            return "Ok".to_owned();
+
+        }
+        
+}
 
 
 }
@@ -182,9 +337,10 @@ pub fn activate_account(self,email:&str,)->String{
 
 fn main(){
     // let dbm= DBManagement::new_dbs("test111.db");
-    let dbm= DBManagement::open_db("test111.db");
-    let res=dbm.create_account("222root@123.com","123456");
+    let mut dbm= DBManagement::open_db("test111.db");
+    let res=dbm.create_account("333root@123.com","123456");
     // let res=dbm.create_account("root111@123.com","123456");
-    
     println!("{:?}",res);
-}
+    let res=dbm.activate_account("222root@123.com");
+    println!("{:?}",res);
+    }
