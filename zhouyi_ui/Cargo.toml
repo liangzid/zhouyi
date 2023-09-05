@@ -4,7 +4,7 @@ version = "0.1.0"
 authors = ["Zi Liang <2273067585@qq.com>"]
 edition = "2021"
 rust-version = "1.65"
-
+default-run = "main"
 [features]
 # chrono = ["egui_extras/datepicker", "dep:chrono"]
 # js = ["zhouyi_ui/js"]
@@ -34,6 +34,9 @@ chrono = { version = "0.4"}
 # chrono = { version = "0.4", optional=true, features = ["js-sys", "wasmbind"] }
 egui_extras = { version = "0.22.0"}
 
+reqwest={version = "0.11",features = ["json"]}
+tokio={version="1",features=["full"]}
+
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
 env_logger = "0.10"
@@ -62,3 +65,16 @@ opt-level = 2
 # If you fork https://github.com/emilk/egui you can test with:
 # egui = { path = "../egui/crates/egui" }
 # eframe = { path = "../egui/crates/eframe" }
+
+[[bin]]
+name="main"
+path="src/main.rs"
+test=true
+bench=false
+
+[[bin]]
+name="interface"
+path="src/app/communicate.rs"
+test=true
+bench=false
+

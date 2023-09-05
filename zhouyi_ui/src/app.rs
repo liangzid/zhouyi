@@ -11,7 +11,8 @@ use serde_json;
 use zhouyi::show_text_divinate;
 use egui_extras::{Size,StripBuilder};
 
-use crate::communicate::{query_login};
+mod communicate;
+use communicate::{query_login};
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -275,8 +276,9 @@ impl eframe::App for TemplateApp {
 		let tt_lgi=match lang.as_str(){"zh"=>"登录",_=>"Login."};
                 if ui.button(tt_lgi).clicked(){
                     let _x=1;
-		    let res=query_login(email,pwd);
-		    if res.0=="Ok"{
+		    // let res=query_login(email,pwd);
+		    let res=("","","".to_owned(),"".to_owned());
+            if res.0=="Ok"{
 			*login_state=res.1.parse().unwrap();
 			*user_type=res.2;
 			*activation_state=res.3;

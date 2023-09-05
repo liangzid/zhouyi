@@ -29,8 +29,8 @@ async fn main() {
 
     let app=Router::new()
     .route("/zhouyi/login", post(login))
-    .route("/zhouyi/syncup", post(sync_down))
-    .route("/zhouyi/syncdown", post(sync_up))
+    .route("/zhouyi/tolocal", post(sync_down))
+    .route("/zhouyi/pushup", post(sync_up))
     .with_state(pool);
 
     let addr=SocketAddr::from(([127, 0,0,1],3933));
@@ -52,7 +52,7 @@ async fn login(State(pool):State<Pool<SqliteConnectionManager>>,
         let pwd=&inner.pwd;
 
         // 1. query if there exist of correct
-        let sql=format!("SELECT activation_state, user_state
+        let sql=format!("SELECT activation_state, user_type
         FROM account
         WHERE email = '{}' AND pwd = '{}'",email,pwd);
         let mut stmt=conn.prepare(&sql).unwrap();
