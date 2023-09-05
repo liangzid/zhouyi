@@ -1,15 +1,24 @@
 // use sled;
 // use async_std;
 use std::{collections::{HashMap}, hash::Hash};
-use rusqlite::{params,Connection, Result,ToSql,Error, types::ToSqlOutput};
-use rusqlite;
+use ::rusqlite::{params,Connection, Result,ToSql,Error, types::ToSqlOutput};
+use ::rusqlite;
 use std::string::String;
 
-mod formats;
-use crate::formats::{Account,EventRecord};
+use crate::formats::EventRecord;
+// use crate::formats::{EventRecord};
 
+use rocket::fairing::AdHoc;
+// use rocket::response::content::Json;
+use rocket::serde::json::Json;
+use rocket::{Rocket, Build};
+use rocket::response::{Debug, status::Created};
+
+use rocket_sync_db_pools::rusqlite;
+
+#[database("rusqlite")]
 #[derive(Debug,)]
-struct DBManagement{
+pub struct DBManagement{
     DB_URL:String,
     conn:Connection,
 }
@@ -47,7 +56,7 @@ pub fn new_dbs(dbpath:&str)->DBManagement{
     ).unwrap();
     conn.execute("INSERT INTO account (email, pwd, activation_state, user_type) VALUES (?1, ?2,?3,?4)",
 		 ("root@123.com","noyi123","activate","regular"));
-    DBManagement{DB_URL:String::from(DB_URL),conn:conn}
+    DBManagement{DB_URL:String::from("test111.db"),conn:conn}
     
 }
 
