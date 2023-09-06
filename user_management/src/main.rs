@@ -31,6 +31,8 @@ async fn main() {
     .route("/zhouyi/login", post(login))
     .route("/zhouyi/tolocal", post(sync_down))
     .route("/zhouyi/pushup", post(sync_up))
+    .route("/zhouyi/signup", post(create_account))
+    .route("/zhouyi/activate", post(activate))
     .with_state(pool);
 
     let addr=SocketAddr::from(([127, 0,0,1],3933));
@@ -74,6 +76,71 @@ async fn login(State(pool):State<Pool<SqliteConnectionManager>>,
         }
         
     }
+
+async fn create_account(State(pool):State<Pool<SqliteConnectionManager>>,
+    account:Json<Account>) ->String{
+        let inner=account.0;
+        let conn=pool.get().unwrap();
+        
+        let email=&inner.email;
+        let pwd=&inner.pwd;
+        println!("email: {} pwd: {}",email,pwd);
+
+        // 1. query if there exist of correct
+        let sql=format!("SELECT activation_state, user_type
+        FROM account
+        WHERE email = '{}' AND pwd = '{}'",email,pwd);
+        let mut stmt=conn.prepare(&sql).unwrap();
+        if !stmt.exists([]).unwrap(){
+
+            conn.execute("INSERT INTO account (email, pwd,
+        activation_state, user_type) VALUES (?1, ?2, ?3, ?4)",
+			      [email,pwd,"not_activate","nothing"]);
+            let res=("Ok".to_owned(),"1".to_owned(),
+		     "not_activate".to_owned(),
+		     "nothing".to_owned());
+            format!("{}/{}/{}/{}",res.0,res.1,res.2,res.3)
+        }
+        else{
+            let res=("Email already exists".to_owned(),
+            "0".to_owned(),
+            "not_activate".to_owned(),
+            "nothing".to_owned(),);
+            format!("{}/{}/{}/{}",res.0,res.1,res.2,res.3)
+        }
+    }
+
+async fn activate(State(pool):State<Pool<SqliteConnectionManager>>,
+			  email:String) ->String{
+    let conn=pool.get().unwrap();
+    let query=format!("SELECT activation_state
+     FROM account WHERE email='{}'",&email);
+    let mut stmt=conn.prepare(&query).unwrap();
+    if stmt.exists([]).unwrap(){
+        // if already exists, give a special code.
+        let mut rows=stmt.query([]).unwrap();
+        let mut names:Vec<String>=Vec::new();
+        let state:String=rows.next().unwrap().expect("").get(0).unwrap();
+        if state.as_str()=="not_activate"{
+            
+            conn.execute("UPDATE account
+            SET activation_state = 'activate'
+            WHERE email = ?1",
+            [&email]);
+            println!("activation acount finded!");
+            return "Ok".to_owned();
+        }
+        else{
+            return "Already activated.".to_owned();
+        }
+        
+    }
+    else{
+        return "Email not exists.".to_owned();
+    }
+}
+
+
 
 async fn sync_down(State(pool):State<Pool<SqliteConnectionManager>>,
     email:String
@@ -159,7 +226,4 @@ async fn sync_up(State(pool):State<Pool<SqliteConnectionManager>>,
 
     }
 }
-
-
-
 
