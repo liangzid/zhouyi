@@ -28,7 +28,7 @@ tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 
 [[bin]]
 name = "db"
-path = "src/db_management.rs"
+path = "src/initial_db.rs"
 test=true
 bench=false
 
