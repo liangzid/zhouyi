@@ -30,7 +30,8 @@ pub async fn signup(email:&str, pwd:&str)->(String,String,String,String){
         user_type:"nothing".to_owned(),
     };
     let cl=reqwest::Client::new();
-    let res=cl.post("http://localhost:3933/zhouyi/signup")
+    // let res=cl.post("http://localhost:3933/zhouyi/signup")
+    let res=cl.post("http://viceversaai.icu:3933/zhouyi/signup")
     .json(&a)
     .send()
     .await.unwrap().text().await.unwrap();
@@ -45,8 +46,9 @@ pub async fn signup(email:&str, pwd:&str)->(String,String,String,String){
 
 pub async fn activate(email:&str)->String{
     let cl=reqwest::Client::new();
-    let res=cl.post("http://localhost:3933/zhouyi/activate")
-	.body(email.to_owned())
+    // let res=cl.post("http://localhost:3933/zhouyi/activate")
+	let res=cl.post("http://viceversaai.icu:3933/zhouyi/activate")
+    .body(email.to_owned())
 	.send()
 	.await.unwrap().text().await.unwrap();
     res
@@ -59,7 +61,8 @@ pub async fn query_login(email:&str, pwd:&str)->(String,String,String,String){
         user_type:"nothing".to_owned(),
     };
     let cl=reqwest::Client::new();
-    let res=cl.post("http://localhost:3933/zhouyi/login")
+    // let res=cl.post("http://localhost:3933/zhouyi/login")
+    let res=cl.post("http://viceversaai.icu:3933/zhouyi/login")
     .json(&a)
     .send()
     .await.unwrap().text().await.unwrap();
@@ -90,7 +93,8 @@ pub fn merge_history(email:&String,historys:Vec<(
 pub async fn push_record(record:EventRecord)->String{
     // let e_s=serde_json::to_string(&record).unwrap();
     let cl=reqwest::Client::new();
-    let res=cl.post("http://localhost:3933/zhouyi/pushup")
+    // let res=cl.post("http://localhost:3933/zhouyi/pushup")
+    let res=cl.post("http://viceversaai.icu:3933/zhouyi/pushup")
     .json(&record)
     .send()
     .await.unwrap().text().await.unwrap();
@@ -138,14 +142,15 @@ pub async fn get_history(email:&str)->Vec<(
     Vec<(String,String)>,
 )>{
     let cl=reqwest::Client::new();
-    let res:Vec<EventRecord>=cl.post("http://localhost:3933/zhouyi/tolocal")
+    // let res:Vec<EventRecord>=cl.post("http://localhost:3933/zhouyi/tolocal")
+    let res:Vec<EventRecord>=cl.post("http://viceversaai.icu:3933/zhouyi/tolocal")
     .body(email.to_owned())
     .send()
     .await.unwrap()
     .json().await.unwrap();
 
     // let datas:Vec<EventRecord> =serde_json::from_str(&res).unwrap();
-    let mut ds=vec![];
+    let mut ds: Vec<(HashMap<String, String>, Vec<String>, Vec<String>, String, String, String, String, Vec<(String, String)>)>=vec![];
     for d in res{
         ds.push((d.gua,d.yaos,d.yaoxangs,d.inps,d.time,d.place,d.analysis,d.comments));
     }

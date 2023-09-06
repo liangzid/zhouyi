@@ -35,7 +35,7 @@ async fn main() {
     .route("/zhouyi/activate", post(activate))
     .with_state(pool);
 
-    let addr=SocketAddr::from(([127, 0,0,1],3933));
+    let addr=SocketAddr::from(([127, 0,0,1],443));
     // let listener=tokio::net::TcpListener::bind(addr)
     // .await.unwrap();
     tracing::debug!("listening on {}", addr);
