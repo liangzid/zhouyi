@@ -252,7 +252,7 @@ impl eframe::App for TemplateApp {
         if true {
 	    let tt_login= match lang.as_str(){
 		"zh"=>"登录，以同步您的私有信息",
-		_=>"Login to async your information!",
+		_=>"Login to sync your information!",
 	    };
             egui::Window::new(tt_login).default_width(300.0)
 		    .open(is_open_login)
