@@ -12,7 +12,10 @@ use zhouyi::show_text_divinate;
 use egui_extras::{Size,StripBuilder};
 
 mod communicate;
-use communicate::{query_login,get_history,push_record,merge_records};
+use communicate::{query_login,get_history,
+		  push_record,merge_records,
+		  signup,activate
+};
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -59,6 +62,7 @@ pub struct TemplateApp {
     is_open_export:bool,
     is_open_login:bool,
     is_open_signup:bool,
+    is_open_payment_qr:bool,
 
      //account related
      email:String,
@@ -128,6 +132,7 @@ impl Default for TemplateApp {
 	    is_open_export:false,
         is_open_login:true,
         is_open_signup:false,
+        is_open_payment_qr:false,
 
         //account related
         email:"".to_owned(),
@@ -193,7 +198,7 @@ impl eframe::App for TemplateApp {
 
     /// Called each time the UI needs repainting, which may be many times per second.
     /// Put your widgets into a `SidePanel`, `TopPanel`, `CentralPanel`, `Window` or `Area`.
-    fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
+    fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
         let Self {
             label,
             value,
@@ -224,6 +229,7 @@ impl eframe::App for TemplateApp {
 	    is_open_export,
         is_open_login,
         is_open_signup,
+	    is_open_payment_qr,
 
         //account related
         email,
@@ -277,7 +283,8 @@ impl eframe::App for TemplateApp {
                 if ui.button(tt_lgi).clicked(){
                     let _x=1;
 		    
-            let rt=tokio::runtime::Runtime::new().unwrap();
+            let rt=tokio::runtime::Builder::new_current_thread()
+                    .enable_all().build().unwrap();
             let mut res=("".to_owned(),
             "0".to_owned(),"nothing".to_owned(),"not_activate".to_owned());
             rt.block_on(async{
@@ -301,6 +308,7 @@ impl eframe::App for TemplateApp {
                     // *is_open_login=false;
                     *is_open_signup=true;
                 }
+		
             });
 		    });
 
@@ -353,6 +361,27 @@ _=>ui.label("Password Again:"),
 		let tt_sgu_b=match lang.as_str(){"zh"=>"注册",_=>"Now Sign Up!"};
 		let tt_sgu_b_ah=match lang.as_str(){"zh"=>"转至登录页面",_=>"Already have a account? Login."};
                 if ui.button(tt_sgu_b).clicked(){
+                    let rt=tokio::runtime::Builder::new_current_thread()
+                    .enable_all().build().unwrap();
+		    let mut res=("".to_owned(),"".to_owned(),
+			     "not_activate".to_owned(),"nothing".to_owned(),
+		    );
+		    rt.block_on(async{
+			res=signup(&email,&pwd).await;
+		    });
+
+		    if res.0=="Ok"{
+			*login_state=res.1.parse().unwrap();
+			*user_type=res.2;
+			*activation_state=res.3;
+		    }
+		    else if res.0=="pwd_error"{
+    			ui.label(&res.0);
+		    }
+		    else{
+	    		ui.label(&res.0);
+		    }
+
                     let _x=1;
                 }
                 if ui.button(tt_sgu_b_ah).clicked(){
@@ -386,10 +415,19 @@ _=>ui.label("Password Again:"),
 		    ui.radio_value(is_dark_theme, false, "☀️").clicked();
 		    ui.radio_value(is_dark_theme, true, "🌙").clicked();
                 });
+            let tt_pay=match lang.as_str(){
+		    "zh"=>"赞助本网站", _=>"Donate"
+		    };
+		    if ui.button(tt_pay).clicked(){
+		        *is_open_payment_qr=true;
+		    }
 
                 // if ui.button("Change Theme").clicked() {
                 //     *is_dark_theme = !*is_dark_theme;
                 // }
+                let tt_prompt=match lang.as_str(){"zh"=>"输入占卜内容",
+                    _=>"Input your divination events."};
+                ui.label(tt_prompt);
                 ui.text_edit_multiline(inps);
                 let mut track_divination = false;
                 ui.horizontal(|ui| {
@@ -558,7 +596,7 @@ _=>ui.label("Password Again:"),
 		    let tt_export=match lang.as_str(){
 			"zh"=>"导出",
 			_=>"export"
-		    };
+		    };      #[cfg(not(target_arch = "wasm32"))]
                     if ui.button(tt_export).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;
@@ -576,11 +614,87 @@ _=>ui.label("Password Again:"),
                         ui.hyperlink_to("Update your account now!", "https://liangzid.github.io/");
                     });
 
-		    #[cfg(not(target_arch = "wasm32"))]
+                    egui::Window::new("").default_width(280.0)
+                    .open(is_open_payment_qr)
+                    .show(ctx, |ui| {
+			let tt_donate=match lang.as_str(){
+			    "zh"=>"如果你喜欢这个项目，可以请作者喝杯奶茶，哈哈哈！开支：\n Server cost: 750 CHY /year\n Domain name cost: 88  CHY /year",
+			    _=>"Donate to support this site, and me!\n Server cost: 750 CHY /year\n Domain name cost: 88  CHY /year"
+			};
+			ui.label(tt_donate);
+            let wechat_img=include_bytes!("../data/wechat_qr.jpg");
+            use image::GenericImageView;
+            let image=image::load_from_memory(wechat_img).
+            expect("failed load img");
+            let img_buffer=image.to_rgba8();
+            let size = (image.width() as usize, image.height() as usize);
+            let pixels = img_buffer.into_vec();
+            // assert_eq!(size.0 * size.1 * 4, pixels.len());
+            // let pixels: Vec<_> = pixels
+            //     .chunks_exact(4)
+            //     .map(|p| egui::Color32::from_rgba_unmultiplied(p[0], p[1], p[2], p[3]))
+            //     .collect();
+
+            // // Allocate a texture:
+            // let wechat_texture = frame
+            //     .tex_allocator()
+            //     .alloc_srgba_premultiplied(size, &pixels);
+
+            let size=[size.0,size.1];
+            // let pixels=pixels.iter().map(|x| x/64)
+            // .collect::<Vec<_>>();
+            let x=egui::ColorImage::from_rgba_premultiplied(size,&pixels);
+
+			let wechat_texture: egui::TextureHandle =
+				ui.ctx().load_texture(
+				    "../data/wechat_qr.jpg",
+				    x,
+				    Default::default()
+				);
+            let mut size=wechat_texture.size_vec2();
+            size.x=size.x/4.0;
+            size.y=size.y/4.0;
+			ui.image(&wechat_texture,size);
+
+            let wechat_img=include_bytes!("../data/alipay_qr.jpg");
+            let image=image::load_from_memory(wechat_img).
+            expect("failed load img");
+            let img_buffer=image.to_rgba8();
+            let size = (image.width() as usize, image.height() as usize);
+            let pixels = img_buffer.into_vec();
+            // assert_eq!(size.0 * size.1 * 4, pixels.len());
+            // let pixels: Vec<_> = pixels
+            //     .chunks_exact(4)
+            //     .map(|p| egui::Color32::from_rgba_unmultiplied(p[0], p[1], p[2], p[3]))
+            //     .collect();
+
+            // // Allocate a texture:
+            // let wechat_texture = frame
+            //     .tex_allocator()
+            //     .alloc_srgba_premultiplied(size, &pixels);
+
+            let size=[size.0,size.1];
+            // let pixels=pixels.iter().map(|x| x/64)
+            // .collect::<Vec<_>>();
+            let x=egui::ColorImage::from_rgba_premultiplied(size,&pixels);
+
+			let wechat_texture: egui::TextureHandle =
+				ui.ctx().load_texture(
+				    "../data/wechat_qr.jpg",
+				    x,
+				    Default::default()
+				);
+            let mut size=wechat_texture.size_vec2();
+            size.x=size.x/4.0;
+            size.y=size.y/4.0;
+			ui.image(&wechat_texture,size);
+                    });
+
+		    
 		    let tt_import=match lang.as_str(){
 			"zh"=>"导入",
 			_=>"import"
-		    };
+		    };      #[cfg(not(target_arch = "wasm32"))]
                     if ui.button(tt_import).clicked() {
                         if activation_state=="not_activate"{
                             *is_open_activate_help=true;    
@@ -645,7 +759,8 @@ _=>ui.label("Password Again:"),
                 ui.heading(tt_h);
                 let dfc_b=match lang.as_str(){"zh"=>"从云端下载",_=>"Download from cloud"};
                 if ui.button(dfc_b).clicked(){
-                    let rt=tokio::runtime::Runtime::new().unwrap();
+                    let rt=tokio::runtime::Builder::new_current_thread()
+                    .enable_all().build().unwrap();
                     rt.block_on(async{
                         let mut res=get_history(&email,).await;
                         *historys=res;
@@ -654,8 +769,9 @@ _=>ui.label("Password Again:"),
 
                 let mer_b=match lang.as_str(){"zh"=>"本地信息同步",_=>"Sync to cloud"};
                 if ui.button(mer_b).clicked(){
-                    let rt=tokio::runtime::Runtime::new().unwrap();
-                    rt.block_on(async{
+                    let rt=tokio::runtime::Builder::new_current_thread()
+                    .enable_all().build().unwrap();
+                    tokio::runtime::Runtime::block_on(&rt,async{
                         let mut res=merge_records(&email,historys).await;
                     });
                 }

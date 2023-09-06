@@ -24,6 +24,34 @@ pub struct EventRecord {
     pub comments:Vec<(String,String)>,
 }
 
+pub async fn signup(email:&str, pwd:&str)->(String,String,String,String){
+    let a=Account{email:email.to_owned(),pwd:pwd.to_owned(),
+        activation_state:"not_activate".to_owned(),
+        user_type:"nothing".to_owned(),
+    };
+    let cl=reqwest::Client::new();
+    let res=cl.post("http://localhost:3933/zhouyi/signup")
+    .json(&a)
+    .send()
+    .await.unwrap().text().await.unwrap();
+    println!("--->{:?}",&res);
+    let v:Vec<&str>=res.as_str().split('/').collect();
+    (v.get(0).unwrap().to_owned().to_owned(),
+    v.get(1).unwrap().to_owned().to_owned(),
+    v.get(2).unwrap().to_owned().to_owned(),
+    v.get(3).unwrap().to_owned().to_owned())
+
+}
+
+pub async fn activate(email:&str)->String{
+    let cl=reqwest::Client::new();
+    let res=cl.post("http://localhost:3933/zhouyi/activate")
+	.body(email.to_owned())
+	.send()
+	.await.unwrap().text().await.unwrap();
+    res
+}
+
 // query and return the login state
 pub async fn query_login(email:&str, pwd:&str)->(String,String,String,String){
     let a=Account{email:email.to_owned(),pwd:pwd.to_owned(),
@@ -126,7 +154,8 @@ pub async fn get_history(email:&str)->Vec<(
 
 
 fn main(){
-    let rt=tokio::runtime::Runtime::new().unwrap();
+    let rt=tokio::runtime::Builder::new_current_thread()
+                    .enable_all().build().unwrap();
     rt.block_on(async{
         let res=query_login("helloworld@123.com","111").await;
         println!("{:?}",res);
