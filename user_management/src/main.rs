@@ -5,6 +5,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
+use axum::response::Html;
 use r2d2::Pool;
 use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::params;
@@ -28,6 +29,7 @@ async fn main() {
     let pool=r2d2::Pool::new(manager).unwrap();
 
     let app=Router::new()
+    .route("/zhouyi/",get(index))
     .route("/zhouyi/login", post(login))
     .route("/zhouyi/tolocal", post(sync_down))
     .route("/zhouyi/pushup", post(sync_up))
@@ -43,6 +45,11 @@ async fn main() {
     .serve(app.into_make_service())
     .await.unwrap();
 
+}
+
+async fn index(State(pool):State<Pool<SqliteConnectionManager>>,)->Html<String>{
+    let txt=std::fs::read_to_string("../zhouyi_ui/index.html").unwrap();
+    Html(txt)
 }
 
 async fn login(State(pool):State<Pool<SqliteConnectionManager>>,
