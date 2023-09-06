@@ -246,28 +246,28 @@ pub fn push_records(&self,
 }
 
 fn main(){
-    // let dbm= DBManagement::new_dbs("test111.db");
-    let mut dbm= DBManagement::open_db("test111.db");
-    let res=dbm.create_account("333root@123.com","123456");
-    // let res=dbm.create_account("root111@123.com","123456");
-    println!("{:?}",res);
-    let res=dbm.activate_account("222root@123.com");
-    println!("{:?}",res);
+    let dbm= DBManagement::new_dbs("test111.db");
+    // let mut dbm= DBManagement::open_db("test111.db");
+    // let res=dbm.create_account("333root@123.com","123456");
+    // // let res=dbm.create_account("root111@123.com","123456");
+    // println!("{:?}",res);
+    // let res=dbm.activate_account("222root@123.com");
+    // println!("{:?}",res);
 
     // record management
-    let mut record1=EventRecord::default();
-    record1.email="222root@123.com".to_owned();
+    // let mut record1=EventRecord::default();
+    // record1.email="222root@123.com".to_owned();
     
-    dbm.push_records(record1);
+    // dbm.push_records(record1);
 
-    let mut record2=EventRecord::default();
-    record2.email="222root@123.com".to_owned();
-    record2.analysis="great".to_owned();
-    record2.time="1111".to_owned();
-    dbm.push_records(record2);
+    // let mut record2=EventRecord::default();
+    // record2.email="222root@123.com".to_owned();
+    // record2.analysis="great".to_owned();
+    // record2.time="1111".to_owned();
+    // dbm.push_records(record2);
 
-    let res=dbm.get_records("222root@123.com");
-    println!("{:?}",res);
+    // let res=dbm.get_records("222root@123.com");
+    // println!("{:?}",res);
     
 
 
