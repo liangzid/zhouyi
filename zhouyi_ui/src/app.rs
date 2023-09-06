@@ -12,7 +12,7 @@ use zhouyi::show_text_divinate;
 use egui_extras::{Size,StripBuilder};
 
 mod communicate;
-use communicate::{query_login};
+use communicate::{query_login,get_history,push_record,merge_records};
 
 /// We derive Deserialize/Serialize so we can persist app state on shutdown.
 #[derive(serde::Deserialize, serde::Serialize)]
@@ -276,9 +276,15 @@ impl eframe::App for TemplateApp {
 		let tt_lgi=match lang.as_str(){"zh"=>"登录",_=>"Login."};
                 if ui.button(tt_lgi).clicked(){
                     let _x=1;
-		    // let res=query_login(email,pwd);
-		    let res=("","","".to_owned(),"".to_owned());
-            if res.0=="Ok"{
+		    
+            let rt=tokio::runtime::Runtime::new().unwrap();
+            let mut res=("".to_owned(),
+            "0".to_owned(),"nothing".to_owned(),"not_activate".to_owned());
+            rt.block_on(async{
+                // println!("email:{}，pwd:{}",&email,&pwd);
+                res=query_login(&email,&pwd).await;
+            });
+		    if res.0=="Ok"{
 			*login_state=res.1.parse().unwrap();
 			*user_type=res.2;
 			*activation_state=res.3;
@@ -637,6 +643,22 @@ _=>ui.label("Password Again:"),
 		    _=>"History"
 		};
                 ui.heading(tt_h);
+                let dfc_b=match lang.as_str(){"zh"=>"从云端下载",_=>"Download from cloud"};
+                if ui.button(dfc_b).clicked(){
+                    let rt=tokio::runtime::Runtime::new().unwrap();
+                    rt.block_on(async{
+                        let mut res=get_history(&email,).await;
+                        *historys=res;
+                    });
+                }
+
+                let mer_b=match lang.as_str(){"zh"=>"本地信息同步",_=>"Sync to cloud"};
+                if ui.button(mer_b).clicked(){
+                    let rt=tokio::runtime::Runtime::new().unwrap();
+                    rt.block_on(async{
+                        let mut res=merge_records(&email,historys).await;
+                    });
+                }
 
                 let scroll = egui::ScrollArea::vertical()
                     .max_height(400.0)

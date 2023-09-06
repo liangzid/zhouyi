@@ -69,6 +69,35 @@ pub async fn push_record(record:EventRecord)->String{
     res
 }
 
+pub async fn merge_records(email:&str, historys:&Vec<(
+    HashMap<String,String>,
+    Vec<String>,
+    Vec<String>,
+    String,
+    String,
+    String,
+    String,
+    Vec<(String,String)>,
+)>)->String{
+    for his in historys{
+        // if there exist this records:
+        let eventrecord=EventRecord{
+            email:email.to_owned(),
+            gua:his.0.clone(),
+            yaos:his.1.clone(),
+            yaoxangs:his.2.clone(),
+            inps:his.3.clone(),
+            time:his.4.clone(),
+            place:his.5.clone(),
+            analysis:his.6.clone(),
+            comments:his.7.clone()
+        };
+        let res=push_record(eventrecord).await;
+        println!("{:?}",res);
+    }
+    "Ok".to_owned()
+}
+
 // sync the history info from server to local devices(email)
 pub async fn get_history(email:&str)->Vec<(
     HashMap<String,String>,

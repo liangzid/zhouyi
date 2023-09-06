@@ -50,6 +50,7 @@ async fn login(State(pool):State<Pool<SqliteConnectionManager>>,
         
         let email=&inner.email;
         let pwd=&inner.pwd;
+        println!("email: {} pwd: {}",email,pwd);
 
         // 1. query if there exist of correct
         let sql=format!("SELECT activation_state, user_type
@@ -58,8 +59,9 @@ async fn login(State(pool):State<Pool<SqliteConnectionManager>>,
         let mut stmt=conn.prepare(&sql).unwrap();
         if stmt.exists([]).unwrap(){
             let mut rows=stmt.query([]).unwrap();
-            let acs:String=rows.next().unwrap().expect("").get(0).unwrap();
-            let uss:String=rows.next().unwrap().expect("").get(1).unwrap();
+            let row=rows.next().unwrap().expect("");
+            let acs:String=row.get(0).unwrap();
+            let uss:String=row.get(1).unwrap();
             let res=("Ok".to_owned(),"1".to_owned(),acs,uss);
             format!("{}/{}/{}/{}",res.0,res.1,res.2,res.3)
         }
