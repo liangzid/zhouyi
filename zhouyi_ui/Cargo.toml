@@ -35,7 +35,10 @@ chrono = { version = "0.4"}
 egui_extras = { version = "0.22.0"}
 
 reqwest={version = "0.11",features = ["json"]}
-tokio={version="1",features=["full"]}
+tokio={version="1",features=["sync","macros","io-util","rt","time"]}
+# mio={version="0.8",features = ["os-poll", "net"]}
+
+image = { version = "0.23", default-features = false, features = ["png","jpeg"] }
 
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
@@ -72,9 +75,9 @@ path="src/main.rs"
 test=true
 bench=false
 
-[[bin]]
-name="interface"
-path="src/app/communicate.rs"
-test=true
-bench=false
+# [[bin]]
+# name="interface"
+# path="src/app/communicate.rs"
+# test=true
+# bench=false
 
