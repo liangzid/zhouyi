@@ -29,7 +29,6 @@ async fn main() {
     let pool=r2d2::Pool::new(manager).unwrap();
 
     let app=Router::new()
-    .route("/zhouyi/",get(index))
     .route("/zhouyi/login", post(login))
     .route("/zhouyi/tolocal", post(sync_down))
     .route("/zhouyi/pushup", post(sync_up))
@@ -37,7 +36,7 @@ async fn main() {
     .route("/zhouyi/activate", post(activate))
     .with_state(pool);
 
-    let addr=SocketAddr::from(([172,18,20,205],3933));
+    let addr=SocketAddr::from(([0,0,0,0],3933));
     // let listener=tokio::net::TcpListener::bind(addr)
     // .await.unwrap();
     tracing::debug!("listening on {}", addr);
