@@ -1,0 +1,88 @@
+<!--pages/result/result.wxml-->
+<view class="container">
+  <!-- 卦象显示 -->
+  <view class="gua-display">
+    <!-- 卦象符号 -->
+    <view class="gua-symbol">
+      <view class="symbol-text">{{guaDetail.guaName}}</view>
+      <view class="symbol-icon">{{guaDetail.lowerGua !== undefined ? (baGua[guaDetail.lowerGua].icon + baGua[guaDetail.upperGua].icon) : ''}}</view>
+    </view>
+
+    <!-- 卦名和解释 -->
+    <view class="gua-info">
+      <view class="gua-name">{{guaDetail.guaName}}卦</view>
+      <view class="gua-xiang">{{guaDetail.guaXiang}}</view>
+    </view>
+
+    <!-- 变卦提示 -->
+    <view class="bian-tip" wx:if="{{hasBian}}">
+      <text>本卦 {{guaDetail.guaName}} → 变卦 {{bianGuaDetail.guaName}}</text>
+    </view>
+  </view>
+
+  <!-- Tab 切换 -->
+  <view class="tab-bar" wx:if="{{hasBian}}">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">
+      本卦
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">
+      变卦
+    </view>
+  </view>
+
+  <!-- 卦象六爻 -->
+  <view class="yao-display">
+    <view class="yao-title">六爻</view>
+    <view class="yao-list">
+      <block wx:for="{{results}}" wx:key="index">
+        <view class="yao-item">
+          <text class="yao-name">{{yaoTypes[5-index]}}</text>
+          <text class="yao-type {{item.type === '老阳' || item.type === '老阴' ? 'bian' : ''}}">{{item.type}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 卦辞区域 -->
+  <view class="content-section">
+    <view class="section-title">卦辞</view>
+    <view class="section-content gua-ci">
+      {{currentTab === 0 ? guaDetail.guaCi : bianGuaDetail.guaCi}}
+    </view>
+  </view>
+
+  <!-- 彖传 -->
+  <view class="content-section">
+    <view class="section-title">彖传</view>
+    <view class="section-content">
+      {{currentTab === 0 ? guaDetail.duan : bianGuaDetail.duan}}
+    </view>
+  </view>
+
+  <!-- 大象传 -->
+  <view class="content-section">
+    <view class="section-title">大象传</view>
+    <view class="section-content">
+      {{currentTab === 0 ? guaDetail.xiang : bianGuaDetail.xiang}}
+    </view>
+  </view>
+
+  <!-- 爻辞 -->
+  <view class="content-section">
+    <view class="section-title">爻辞</view>
+    <view class="yao-ci-list">
+      <block wx:for="{{currentTab === 0 ? guaDetail.yaoCi : bianGuaDetail.yaoCi}}" wx:key="index">
+        <view class="yao-ci-item">
+          <text class="yao-ci-label">{{yaoTypes[5-index]}}</text>
+          <text class="yao-ci-text">{{item}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="action-btns">
+    <button class="copy-btn" bindtap="copyGuaCi">复制卦辞</button>
+    <button class="share-btn" open-type="share">分享结果</button>
+  </view>
+</view>

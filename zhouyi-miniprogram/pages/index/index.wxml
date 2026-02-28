@@ -1,0 +1,49 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 标题 -->
+  <view class="title">周易算卦</view>
+  <view class="subtitle">心诚则灵</view>
+
+  <!-- 算卦方式选择 -->
+  <view class="type-selector">
+    <view
+      class="type-btn {{divinationType === 'dayanshi' ? 'active' : ''}}"
+      bindtap="selectType"
+      data-type="dayanshi"
+    >
+      <text class="type-name">大衍筮法</text>
+      <text class="type-desc">传统算法，更精准</text>
+    </view>
+    <view
+      class="type-btn {{divinationType === 'coin' ? 'active' : ''}}"
+      bindtap="selectType"
+      data-type="coin"
+    >
+      <text class="type-name">铜钱卦</text>
+      <text class="type-desc">简单快速</text>
+    </view>
+  </view>
+
+  <!-- 摇卦动画区域 -->
+  <view class="divination-area">
+    <view class="coin-animation {{isDivinating ? 'animating' : ''}}">
+      <view class="coin">
+        <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☰' : '☷') : '□'}}</text>
+      </view>
+    </view>
+
+    <!-- 起卦按钮 -->
+    <view class="start-btn" bindtap="startDivination" wx:if="{{!isDivinating}}">
+      <text>起卦</text>
+    </view>
+    <view class="start-btn disabled" wx:else>
+      <text>摇卦中...</text>
+    </view>
+  </view>
+
+  <!-- 说明文字 -->
+  <view class="tips">
+    <text wx:if="{{divinationType === 'dayanshi'}}">大衍筮法：取五十根蓍草，排除一根，余四十九根，通过"分二、挂一、揲四、归奇"的操作，得到老阴、少阳、少阴、老阳，生成六爻。</text>
+    <text wx:else>铜钱卦：抛三枚铜钱，正面多则为阳，背面多则为阴，三正为老阳，三背为老阴，简便快速。</text>
+  </view>
+</view>

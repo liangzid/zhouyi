@@ -1,0 +1,211 @@
+/* pages/result/result.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  padding: 40rpx 30rpx 60rpx;
+  box-sizing: border-box;
+}
+
+/* 卦象显示 */
+.gua-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+  border-bottom: 1rpx solid rgba(232, 213, 183, 0.1);
+  margin-bottom: 30rpx;
+}
+
+.gua-symbol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.symbol-text {
+  font-size: 72rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.symbol-icon {
+  font-size: 48rpx;
+  color: #c9a86c;
+  letter-spacing: 20rpx;
+}
+
+.gua-info {
+  text-align: center;
+}
+
+.gua-name {
+  font-size: 40rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.gua-xiang {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.bian-tip {
+  margin-top: 20rpx;
+  padding: 12rpx 24rpx;
+  background: rgba(232, 213, 183, 0.1);
+  border-radius: 20rpx;
+}
+
+.bian-tip text {
+  font-size: 24rpx;
+  color: #e8d5b7;
+}
+
+/* Tab 切换 */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.tab-item {
+  font-size: 30rpx;
+  color: #666;
+  padding: 16rpx 30rpx;
+  border-radius: 30rpx;
+  transition: all 0.3s ease;
+}
+
+.tab-item.active {
+  color: #e8d5b7;
+  background: rgba(232, 213, 183, 0.15);
+}
+
+/* 六爻显示 */
+.yao-display {
+  margin-bottom: 30rpx;
+}
+
+.yao-title {
+  font-size: 28rpx;
+  color: #888;
+  margin-bottom: 16rpx;
+}
+
+.yao-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  justify-content: center;
+}
+
+.yao-item {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  padding: 12rpx 20rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8rpx;
+}
+
+.yao-name {
+  font-size: 24rpx;
+  color: #888;
+}
+
+.yao-type {
+  font-size: 26rpx;
+  color: #e8d5b7;
+}
+
+.yao-type.bian {
+  color: #ff6b6b;
+}
+
+/* 内容区块 */
+.content-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  color: #c9a86c;
+  margin-bottom: 16rpx;
+  padding-left: 16rpx;
+  border-left: 4rpx solid #c9a86c;
+}
+
+.section-content {
+  font-size: 26rpx;
+  color: #b0b0b0;
+  line-height: 1.9;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12rpx;
+}
+
+.gua-ci {
+  font-size: 28rpx;
+  color: #e8d5b7;
+  font-weight: 500;
+}
+
+/* 爻辞列表 */
+.yao-ci-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.yao-ci-item {
+  display: flex;
+  gap: 16rpx;
+  padding: 16rpx;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8rpx;
+}
+
+.yao-ci-label {
+  font-size: 24rpx;
+  color: #c9a86c;
+  min-width: 60rpx;
+}
+
+.yao-ci-text {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.8;
+  flex: 1;
+}
+
+/* 操作按钮 */
+.action-btns {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 40rpx;
+}
+
+.copy-btn,
+.share-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+}
+
+.copy-btn {
+  background: rgba(232, 213, 183, 0.15);
+  color: #e8d5b7;
+  border: 1rpx solid rgba(232, 213, 183, 0.3);
+}
+
+.share-btn {
+  background: linear-gradient(135deg, #e8d5b7 0%, #c9a86c 100%);
+  color: #1a1a2e;
+  font-weight: bold;
+}

@@ -1,0 +1,151 @@
+/* pages/index/index.wxss */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  padding: 60rpx 40rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: #e8d5b7;
+  text-align: center;
+  margin-bottom: 20rpx;
+  letter-spacing: 8rpx;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #8b8b8b;
+  text-align: center;
+  margin-bottom: 80rpx;
+}
+
+/* 算卦方式选择 */
+.type-selector {
+  display: flex;
+  justify-content: center;
+  gap: 30rpx;
+  margin-bottom: 80rpx;
+}
+
+.type-btn {
+  width: 240rpx;
+  padding: 30rpx 20rpx;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2rpx solid rgba(232, 213, 183, 0.2);
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.type-btn.active {
+  background: rgba(232, 213, 183, 0.15);
+  border-color: #e8d5b7;
+  box-shadow: 0 0 20rpx rgba(232, 213, 183, 0.2);
+}
+
+.type-name {
+  font-size: 32rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+}
+
+.type-desc {
+  font-size: 22rpx;
+  color: #888;
+}
+
+/* 算卦区域 */
+.divination-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.coin-animation {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 60rpx;
+}
+
+.coin {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e8d5b7 0%, #c9a86c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20rpx auto;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.3);
+}
+
+.coin.animating {
+  animation: shake 0.08s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.coin-text {
+  font-size: 60rpx;
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+/* 起卦按钮 */
+.start-btn {
+  width: 280rpx;
+  height: 90rpx;
+  background: linear-gradient(135deg, #e8d5b7 0%, #c9a86c 100%);
+  border-radius: 45rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(232, 213, 183, 0.3);
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+.start-btn text {
+  font-size: 34rpx;
+  color: #1a1a2e;
+  font-weight: bold;
+  letter-spacing: 4rpx;
+}
+
+.start-btn.disabled {
+  background: #444;
+  box-shadow: none;
+}
+
+.start-btn.disabled text {
+  color: #888;
+}
+
+/* 说明文字 */
+.tips {
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12rpx;
+  max-width: 600rpx;
+}
+
+.tips text {
+  font-size: 24rpx;
+  color: #666;
+  line-height: 1.8;
+  text-align: center;
+  display: block;
+}
