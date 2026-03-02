@@ -137,15 +137,20 @@ function dayanshiDivinate() {
  * @returns {Object} - 卦象信息
  */
 function calculateGua(yaoResults) {
-  // 下卦（初爻到三爻）
-  let lowerGua = yaoResults[0].yao * 4 + yaoResults[1].yao * 2 + yaoResults[2].yao;
-  // 上卦（四爻到六爻）
-  let upperGua = yaoResults[3].yao * 4 + yaoResults[4].yao * 2 + yaoResults[5].yao;
+  // 下卦（初爻到三爻）：初爻*1 + 二爻*2 + 三爻*4
+  let lowerGua = yaoResults[0].yao * 1 + yaoResults[1].yao * 2 + yaoResults[2].yao * 4;
+  // 上卦（四爻到六爻）：四爻*1 + 五爻*2 + 上爻*4
+  let upperGua = yaoResults[3].yao * 1 + yaoResults[4].yao * 2 + yaoResults[5].yao * 4;
+
+  // 八卦位序：0-乾,1-兑,2-离,3-震,4-巽,5-坎,6-艮,7-坤
+  // 需要翻转，使 0=乾, 7=坤
+  lowerGua = 7 - lowerGua;
+  upperGua = 7 - upperGua;
 
   return {
     lowerGua,
     upperGua,
-    guaIndex: lowerGua * 8 + upperGua
+    guaIndex: upperGua * 8 + lowerGua
   };
 }
 
