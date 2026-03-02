@@ -1,157 +1,184 @@
 /**
  * 核心算卦算法
  * 实现两种起卦方式：铜钱卦和大衍筮法
+ * 完全对应 Rust core.rs 中的实现
  */
-
-// 随机生成 0 或 1
-function random01() {
-  return Math.random() < 0.5 ? 0 : 1;
-}
 
 /**
- * 铜钱卦 - 简单的随机起卦
- * 抛6次铜钱，每次结果：
- * - 2个正面以上为阳爻 (1)
- * - 2个正面以下为阴爻 (0)
- * - 3个正面为老阳 (变爻)
- * - 3个背面为老阴 (变爻)
+ * 铜钱卦 - 简单随机起卦
+ * 与 Rust divination.rs 中的 coin_divinate 保持一致
  */
-function coinDivinate() {
+function coinDivinate(event) {
   const results = [];
+  const typeLabels = [];
 
-  for (let i = 0; i < 6; i++) {
-    // 抛3次铜钱，正面记1，背面记0
-    let heads = 0;
-    for (let j = 0; j < 3; j++) {
-      heads += random01();
-    }
-
-    let yao;
-    let type; // '少阳', '少阴', '老阳', '老阴'
-
-    if (heads === 3) {
-      yao = 1; // 老阳 - 阳爻变
-      type = '老阳';
-    } else if (heads === 2) {
-      yao = 1; // 少阳 - 阳爻
-      type = '少阳';
-    } else if (heads === 1) {
-      yao = 0; // 少阴 - 阴爻
-      type = '少阴';
-    } else {
-      yao = 0; // 老阴 - 阴爻变
-      type = '老阴';
-    }
-
-    results.push({ yao, type, detail: `第${i + 1}爻: ${type}` });
+  for (let times = 0; times < 6; times++) {
+    const x = Math.random() < 0.5 ? 0 : 1;
+    results.push(x);
   }
 
-  return results;
+  results.reverse();
+  
+  return results.map((yao, index) => ({
+    yao,
+    type: yao === 1 ? '少阳' : '少阴',
+    detail: `第${index + 1}爻: ${yao === 1 ? '少阳' : '少阴'}`
+  }));
 }
 
 /**
  * 大衍筮法 - 传统周易算法
- * 使用蓍草进行复杂计算，得到老阴、少阳、少阴、老阳
+ * 完全对应 Rust divination.rs 中的 dayanshi_divinate
  */
-function dayanshiDivinate() {
+function dayanshiDivinate(event) {
   const results = [];
+  const detailedList = [];
+  const strList = [];
 
-  for (let i = 0; i < 6; i++) {
-    // 大衍之数五十，其用四十有九
-    let total = 49;
+  for (let iYao = 0; iYao < 6; iYao++) {
+    let shecao = 49;
+    const thisDetailedList = [];
 
-    // 分而为二以象两
-    let part1 = Math.floor(Math.random() * (total + 1));
-    let part2 = total - part1;
+    for (let repetTimes = 0; repetTimes < 3; repetTimes++) {
+      let split1 = Math.floor(Math.random() * (shecao + 1));
+      let split2 = shecao - split1;
 
-    // 挂一以象三
-    let selected = Math.random() < 0.5 ? 0 : 1;
-    if (part1 === 1) selected = 1;
-    if (part2 === 1) selected = 0;
+      if (repetTimes === 0) {
+        let selectedIndex = Math.random() < 0.5 ? 0 : 1;
+        if (split1 === 1 || split1 === 0) {
+          selectedIndex = 1;
+        } else if (split2 === 1 || split2 === 0) {
+          selectedIndex = 0;
+        }
 
-    if (selected === 0) {
-      part1 -= 1;
-    } else {
-      part2 -= 1;
-    }
-
-    // 揲四（数之以四以象四时）- 重复3次
-    let yuSum = 0;
-
-    for (let round = 0; round < 3; round++) {
-      let yu1 = part1 % 4;
-      let yu2 = part2 % 4;
-
-      if (part1 === 0) {
-        yu1 = 4;
-        part2 -= 4;
-      } else if (part2 === 0) {
-        yu2 = 4;
-        part1 -= 4;
-      } else if (yu1 === 0) {
-        yu1 = 4;
-        yu2 = 4;
+        if (selectedIndex === 0) {
+          split1 = split1 - 1;
+        } else {
+          split2 = split2 - 1;
+        }
       }
 
-      if (yu1 === 4 && yu2 === 4) {
-        // 老阴阳
+      if (split1 === 0) {
+        thisDetailedList.push([0, 4]);
+        split2 -= 4;
+      } else if (split2 === 0) {
+        thisDetailedList.push([4, 0]);
+        split1 -= 4;
+      } else if (split1 % 4 === 0) {
+        thisDetailedList.push([4, 4]);
+        split1 -= 4;
+        split2 -= 4;
       } else {
-        yuSum += (yu1 === 4 ? 0 : yu1) + (yu2 === 4 ? 0 : yu2);
+        const yu1 = split1 % 4;
+        const yu2 = split2 % 4;
+        thisDetailedList.push([yu1, yu2]);
+        split1 -= yu1;
+        split2 -= yu2;
       }
 
-      part1 -= yu1;
-      part2 -= yu2;
+      shecao = split1 + split2;
     }
 
-    // 根据余数判断
+    const xangList = [];
+    for (const element of thisDetailedList) {
+      if (element[0] !== element[1]) {
+        xangList.push(1);
+      } else {
+        xangList.push(0);
+      }
+    }
+
+    thisDetailedList.reverse();
+    detailedList.push(thisDetailedList);
+    
+    const res = xangList.reduce((a, b) => a + b, 0);
     let type;
     let yao;
 
-    if (yuSum === 0) {
+    if (res === 0) {
       type = '老阴';
       yao = 0;
-    } else if (yuSum === 1) {
+    } else if (res === 1) {
       type = '少阳';
       yao = 1;
-    } else if (yuSum === 2) {
+    } else if (res === 2) {
       type = '少阴';
       yao = 0;
-    } else if (yuSum === 3) {
+    } else if (res === 3) {
       type = '老阳';
-      yao = 1;
-    } else {
-      // 兜底处理
-      type = '少阳';
       yao = 1;
     }
 
-    results.push({ yao, type, detail: `第${i + 1}爻: ${type}` });
+    strList.push(type);
+    results.push({ yao, type, detail: `第${iYao + 1}爻: ${type}` });
   }
+
+  results.reverse();
+  detailedList.reverse();
+  strList.reverse();
 
   return results;
 }
 
+// 八卦编号与 Rust 一致：0-乾,1-坤,2-震,3-艮,4-离,5-坎,6-兑,7-巽
+const baGuaNames = ['乾', '坤', '震', '艮', '离', '坎', '兑', '巽'];
+
+// 八卦二进制映射（从下到上）
+const baGuaNum = {
+  '111': 0,  // 乾
+  '000': 1,  // 坤
+  '001': 2,  // 震
+  '100': 3,  // 艮
+  '101': 4,  // 离
+  '010': 5,  // 坎
+  '011': 6,  // 兑
+  '110': 7,  // 巽
+};
+
 /**
  * 根据6爻结果计算卦象
- * @param {Array} yaoResults - 6个爻的结果数组
+ * 与 Rust 逻辑保持一致
+ * @param {Array} yaoResults - 6个爻的结果数组（从初爻到上爻的顺序）
  * @returns {Object} - 卦象信息
  */
 function calculateGua(yaoResults) {
-  // 下卦（初爻到三爻）：初爻*1 + 二爻*2 + 三爻*4
-  let lowerGua = yaoResults[0].yao * 1 + yaoResults[1].yao * 2 + yaoResults[2].yao * 4;
-  // 上卦（四爻到六爻）：四爻*1 + 五爻*2 + 上爻*4
-  let upperGua = yaoResults[3].yao * 1 + yaoResults[4].yao * 2 + yaoResults[5].yao * 4;
+  const yaoValues = yaoResults.map(r => r.yao);
+  
+  const lowerBinary = String(yaoValues[0]) + String(yaoValues[1]) + String(yaoValues[2]);
+  const upperBinary = String(yaoValues[3]) + String(yaoValues[4]) + String(yaoValues[5]);
 
-  // 八卦位序：0-乾,1-兑,2-离,3-震,4-巽,5-坎,6-艮,7-坤
-  // 需要翻转，使 0=乾, 7=坤
-  lowerGua = 7 - lowerGua;
-  upperGua = 7 - upperGua;
+  const lowerGua = baGuaNum[lowerBinary] || 0;
+  const upperGua = baGuaNum[upperBinary] || 0;
+
+  const guaName = baGuaNames[upperGua] + baGuaNames[lowerGua];
+  
+  const guaIndex = findGuaIndexByName(guaName);
 
   return {
     lowerGua,
     upperGua,
-    guaIndex: upperGua * 8 + lowerGua
+    guaIndex,
+    guaName
   };
+}
+
+/**
+ * 根据卦名找到对应的索引（按周易卦序）
+ */
+function findGuaIndexByName(guaName) {
+  const guaOrder = [
+    '乾乾', '坤坤', '坎震', '艮坎', '坎乾', '乾坎', '坤坎', '坎坤',
+    '巽乾', '乾兑', '坤乾', '乾坤', '乾离', '离乾', '坤艮', '震坤',
+    '兑震', '艮巽', '坤兑', '巽坤', '离震', '艮离', '艮坤', '坤震',
+    '震乾', '艮乾', '艮震', '兑巽', '坎坎', '离离', '兑艮', '巽震',
+    '艮乾', '震乾', '离地', '地离', '巽离', '离兑', '坎艮', '震坎',
+    '艮兑', '巽震', '兑乾', '乾巽', '兑坤', '坤巽', '兑坎', '坎巽',
+    '兑离', '离巽', '震震', '艮艮', '巽艮', '震兑', '震离', '离艮',
+    '巽巽', '兑兑', '巽坎', '坎兑', '巽兑', '震艮', '坎离', '离坎'
+  ];
+  
+  const index = guaOrder.indexOf(guaName);
+  return index !== -1 ? index : 0;
 }
 
 /**
@@ -160,7 +187,7 @@ function calculateGua(yaoResults) {
  * @returns {Object} - 变卦信息
  */
 function calculateBianGua(yaoResults) {
-  let bianYaoIndices = [];
+  const bianYaoIndices = [];
 
   yaoResults.forEach((result, index) => {
     if (result.type === '老阳' || result.type === '老阴') {
@@ -172,8 +199,7 @@ function calculateBianGua(yaoResults) {
     return { hasBian: false, bianYaoIndices: [], bianGuaIndex: null };
   }
 
-  // 计算变卦
-  let bianYaoResults = yaoResults.map((result, index) => {
+  const bianYaoResults = yaoResults.map((result, index) => {
     if (result.type === '老阳') {
       return { ...result, yao: 0, type: '老阴（变）' };
     } else if (result.type === '老阴') {
@@ -182,20 +208,24 @@ function calculateBianGua(yaoResults) {
     return result;
   });
 
-  let lowerGua = bianYaoResults[0].yao * 4 + bianYaoResults[1].yao * 2 + bianYaoResults[2].yao;
-  let upperGua = bianYaoResults[3].yao * 4 + bianYaoResults[4].yao * 2 + bianYaoResults[5].yao;
+  const bianGuaInfo = calculateGua(bianYaoResults);
 
   return {
     hasBian: true,
     bianYaoIndices,
-    bianGuaIndex: lowerGua * 8 + upperGua,
+    bianGuaIndex: bianGuaInfo.guaIndex,
+    bianGuaName: bianGuaInfo.guaName,
     bianYaoResults
   };
+}
+
+function setQuestionSeed(questionInfo) {
 }
 
 module.exports = {
   coinDivinate,
   dayanshiDivinate,
   calculateGua,
-  calculateBianGua
+  calculateBianGua,
+  setQuestionSeed
 };
