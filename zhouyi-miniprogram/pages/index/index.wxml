@@ -1,5 +1,19 @@
 <!--pages/index/index.wxml-->
 <view class="container">
+  <!-- 顶部登录区域 -->
+  <view class="user-area">
+    <block wx:if="{{isLoggedIn && userInfo}}">
+      <image class="user-avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <text class="user-name">{{userInfo.nickName}}</text>
+    </block>
+    <block wx:else>
+      <view class="login-btn" bindtap="login">
+        <text>登录</text>
+      </view>
+      <text class="login-tip">登录后可保存算卦记录</text>
+    </block>
+  </view>
+
   <!-- 标题 -->
   <view class="title">周易算卦</view>
   <view class="subtitle">心诚则灵</view>
@@ -28,7 +42,7 @@
   <view class="divination-area">
     <view class="coin-animation {{isDivinating ? 'animating' : ''}}">
       <view class="coin">
-        <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☰' : '☷') : '□'}}</text>
+        <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☰' : '☷') : '☰'}}</text>
       </view>
     </view>
 

@@ -6,6 +6,45 @@
   box-sizing: border-box;
 }
 
+/* 问事信息 */
+.question-info {
+  background: rgba(232, 213, 183, 0.08);
+  border: 1rpx solid rgba(232, 213, 183, 0.2);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.question-header {
+  font-size: 30rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid rgba(232, 213, 183, 0.15);
+}
+
+.question-item {
+  display: flex;
+  margin-bottom: 15rpx;
+}
+
+.question-item:last-child {
+  margin-bottom: 0;
+}
+
+.question-label {
+  font-size: 26rpx;
+  color: #888;
+  min-width: 140rpx;
+}
+
+.question-value {
+  font-size: 26rpx;
+  color: #e8d5b7;
+  flex: 1;
+}
+
 /* 卦象显示 */
 .gua-display {
   display: flex;

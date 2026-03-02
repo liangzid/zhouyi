@@ -9,25 +9,47 @@ Page({
     bianGuaDetail: null,
     hasBian: false,
     currentTab: 0, // 0: 本卦, 1: 变卦
-    yaoTypes: ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻']
+    yaoTypes: ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'],
+
+    // 问事信息
+    questionInfo: null,
+    showQuestionInfo: false
   },
 
   onLoad(options) {
-    const { results, guaIndex, bianGuaIndex } = options;
+    const { results, guaIndex, bianGuaIndex, questionInfo } = options;
 
     try {
       const resultsArr = JSON.parse(decodeURIComponent(results));
       const guaIndexNum = parseInt(guaIndex);
       const bianGuaIndexNum = parseInt(bianGuaIndex);
 
+      console.log('=== DEBUG result: guaIndex ===', guaIndexNum);
+      console.log('=== DEBUG result: bianGuaIndex ===', bianGuaIndexNum);
+
+      // 解析问事信息
+      let qInfo = null;
+      let showQuestionInfo = false;
+      if (questionInfo) {
+        try {
+          qInfo = JSON.parse(decodeURIComponent(questionInfo));
+          showQuestionInfo = !!qInfo.event;
+        } catch (e) {
+          console.log('解析问事信息失败', e);
+        }
+      }
+
+      // 使用索引查找卦象信息
       const guaDetail = guaData.getGuaByIndex(guaIndexNum);
+
+      console.log('=== DEBUG result: guaDetail ===', guaDetail ? guaDetail.guaName : 'null');
 
       let bianGuaDetail = null;
       let hasBian = false;
 
-      if (bianGuaIndexNum >= 0) {
+      if (!isNaN(bianGuaIndexNum) && bianGuaIndexNum >= 0) {
         bianGuaDetail = guaData.getGuaByIndex(bianGuaIndexNum);
-        hasBian = true;
+        hasBian = !!bianGuaDetail;
       }
 
       // 检查是否有变爻
@@ -37,13 +59,17 @@ Page({
         results: resultsArr,
         guaDetail,
         bianGuaDetail,
-        hasBian: hasBian && hasBianYao
+        hasBian: hasBian && hasBianYao,
+        questionInfo: qInfo,
+        showQuestionInfo: showQuestionInfo
       });
 
       // 设置导航栏标题
-      wx.setNavigationBarTitle({
-        title: `${guaDetail.guaName}卦`
-      });
+      if (guaDetail) {
+        wx.setNavigationBarTitle({
+          title: `${guaDetail.guaName}卦`
+        });
+      }
     } catch (e) {
       console.error('解析结果失败:', e);
       wx.showToast({

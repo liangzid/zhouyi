@@ -1,5 +1,26 @@
 <!--pages/result/result.wxml-->
 <view class="container">
+  <!-- 问事信息 -->
+  <view class="question-info" wx:if="{{showQuestionInfo && questionInfo}}">
+    <view class="question-header">本次问事</view>
+    <view class="question-item">
+      <text class="question-label">所问何事：</text>
+      <text class="question-value">{{questionInfo.event}}</text>
+    </view>
+    <view class="question-item" wx:if="{{questionInfo.locationText}}">
+      <text class="question-label">所在地点：</text>
+      <text class="question-value">{{questionInfo.locationText}}</text>
+    </view>
+    <view class="question-item" wx:if="{{questionInfo.currentTime}}">
+      <text class="question-label">当前时间：</text>
+      <text class="question-value">{{questionInfo.currentTime}}</text>
+    </view>
+    <view class="question-item" wx:if="{{questionInfo.targetTime}}">
+      <text class="question-label">目标时间：</text>
+      <text class="question-value">{{questionInfo.targetTime}}</text>
+    </view>
+  </view>
+
   <!-- 卦象显示 -->
   <view class="gua-display">
     <!-- 卦象符号 -->
