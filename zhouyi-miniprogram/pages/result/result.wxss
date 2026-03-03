@@ -165,20 +165,179 @@
   color: #ff6b6b;
 }
 
-/* 变卦样式 */
-.gua-name.bian-gua,
-.gua-xiang.bian-gua {
-  color: #ff9500;
+/* 八卦卦象显示 */
+.bagua-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+  padding: 30rpx;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20rpx;
 }
 
-.bian-yao-display {
-  background: rgba(255, 149, 0, 0.08);
-  border-radius: 16rpx;
-  padding: 20rpx;
+.bagua-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
 }
 
-.bian-yao {
-  color: #ff9500;
+.bagua-label {
+  font-size: 28rpx;
+  color: #c9a86c;
+  font-weight: bold;
+}
+
+.bagua-yaos {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.bagua-yao-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  cursor: pointer;
+}
+
+.yao-line {
+  width: 200rpx;
+  height: 12rpx;
+  border-radius: 6rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yao-line.yang {
+  background: #e8d5b7;
+}
+
+.yao-line.yin {
+  background: transparent;
+  border-top: 6rpx solid #e8d5b7;
+  border-bottom: 6rpx solid #e8d5b7;
+  height: 0;
+}
+
+.yao-line.bian-yao {
+  box-shadow: 0 0 10rpx rgba(255, 107, 107, 0.5);
+}
+
+.yao-line.changed {
+  box-shadow: 0 0 15rpx rgba(255, 149, 0, 0.6);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.bian-mark {
+  position: absolute;
+  right: -40rpx;
+  font-size: 20rpx;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.bagua-divider {
+  width: 200rpx;
+  height: 2rpx;
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 108, 0.5), transparent);
+  margin: 10rpx 0;
+}
+
+/* 爻辞弹窗 */
+.yao-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.yao-popup-content {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 1rpx solid rgba(201, 168, 108, 0.3);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  width: 80%;
+  max-width: 600rpx;
+}
+
+.yao-popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid rgba(201, 168, 108, 0.2);
+}
+
+.yao-popup-title {
+  font-size: 36rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+}
+
+.yao-popup-type {
+  font-size: 26rpx;
+  color: #e8d5b7;
+}
+
+.yao-popup-type.bian {
+  color: #ff6b6b;
+}
+
+.yao-popup-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.yao-popup-line {
+  width: 240rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+}
+
+.yao-popup-line.yang {
+  background: #e8d5b7;
+}
+
+.yao-popup-line.yin {
+  background: transparent;
+  border-top: 8rpx solid #e8d5b7;
+  border-bottom: 8rpx solid #e8d5b7;
+  height: 0;
+}
+
+.yao-popup-ci {
+  font-size: 28rpx;
+  color: #b0b0b0;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.yao-popup-close {
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(201, 168, 108, 0.1);
 }
 
 /* 内容区块 */

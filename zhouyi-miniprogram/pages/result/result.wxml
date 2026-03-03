@@ -23,12 +23,6 @@
 
   <!-- 卦象显示 -->
   <view class="gua-display">
-    <!-- 卦象符号 -->
-    <view class="gua-symbol">
-      <view class="symbol-text">{{guaDetail.guaName}}</view>
-      <view class="symbol-icon">{{guaDetail.lowerGua !== undefined ? (baGua[guaDetail.upperGua].icon + baGua[guaDetail.lowerGua].icon) : ''}}</view>
-    </view>
-
     <!-- 卦名和解释 -->
     <view class="gua-info">
       <view class="gua-name {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? guaDetail.guaName : bianGuaDetail.guaName}}卦</view>
@@ -51,16 +45,39 @@
     </view>
   </view>
 
-  <!-- 卦象六爻 -->
-  <view class="yao-display {{currentTab === 1 ? 'bian-yao-display' : ''}}">
-    <view class="yao-title {{currentTab === 1 ? 'bian-gua' : ''}}">六爻</view>
-    <view class="yao-list">
-      <block wx:for="{{results}}" wx:key="index">
-        <view class="yao-item">
-          <text class="yao-name">{{yaoTypes[(index + 3) % 6]}}</text>
-          <text class="yao-type {{item.type === '老阳' || item.type === '老阴' ? 'bian' : ''}} {{currentTab === 1 ? 'bian-yao' : ''}}">{{item.type}}</text>
-        </view>
-      </block>
+  <!-- 八卦卦象（竖向显示） -->
+  <view class="bagua-display">
+    <!-- 上卦：四爻、五爻、上爻 -->
+    <view class="bagua-item">
+      <view class="bagua-label">上卦 · {{currentTab === 0 ? baGua[guaDetail.upperGua].name : baGua[bianGuaDetail.upperGua].name}}</view>
+      <view class="bagua-yaos">
+        <block wx:for="{{currentTab === 0 ? upperYaoResults : upperYaoResultsBian}}" wx:key="index">
+          <view class="bagua-yao-item" bindtap="showYaoCi" data-index="{{index + 3}}" data-type="{{item.type}}" data-yao="{{item.yao}}">
+            <view class="yao-line {{item.yao === 1 ? 'yin' : 'yang'}} {{item.type === '老阳' || item.type === '老阴' ? 'bian-yao' : ''}}">
+              <text wx:if="{{item.type === '老阳' || item.type === '老阴'}}" class="bian-mark">变</text>
+            </view>
+            <text class="yao-name">{{yaoTypes[index + 3]}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 分隔线 -->
+    <view class="bagua-divider"></view>
+
+    <!-- 下卦：初爻、二爻、三爻 -->
+    <view class="bagua-item">
+      <view class="bagua-label">下卦 · {{currentTab === 0 ? baGua[guaDetail.lowerGua].name : baGua[bianGuaDetail.lowerGua].name}}</view>
+      <view class="bagua-yaos">
+        <block wx:for="{{currentTab === 0 ? lowerYaoResults : lowerYaoResultsBian}}" wx:key="index">
+          <view class="bagua-yao-item" bindtap="showYaoCi" data-index="{{index}}" data-type="{{item.type}}" data-yao="{{item.yao}}">
+            <view class="yao-line {{item.yao === 1 ? 'yin' : 'yang'}} {{item.type === '老阳' || item.type === '老阴' ? 'bian-yao' : ''}}">
+              <text wx:if="{{item.type === '老阳' || item.type === '老阴'}}" class="bian-mark">变</text>
+            </view>
+            <text class="yao-name">{{yaoTypes[index]}}</text>
+          </view>
+        </block>
+      </view>
     </view>
   </view>
 
@@ -88,13 +105,13 @@
     </view>
   </view>
 
-  <!-- 爻辞 -->
+  <!-- 爻辞列表 -->
   <view class="content-section">
     <view class="section-title">爻辞</view>
     <view class="yao-ci-list">
       <block wx:for="{{currentTab === 0 ? guaDetail.yaoCi : bianGuaDetail.yaoCi}}" wx:key="index">
         <view class="yao-ci-item">
-          <text class="yao-ci-label">{{yaoTypes[(index + 3) % 6]}}</text>
+          <text class="yao-ci-label">{{yaoTypes[index]}}</text>
           <text class="yao-ci-text">{{item}}</text>
         </view>
       </block>
@@ -105,5 +122,20 @@
   <view class="action-btns">
     <button class="copy-btn" bindtap="copyGuaCi">复制卦辞</button>
     <button class="share-btn" open-type="share">分享结果</button>
+  </view>
+
+  <!-- 爻辞弹窗 -->
+  <view class="yao-popup" wx:if="{{showYaoPopup}}" bindtap="closeYaoPopup">
+    <view class="yao-popup-content" catchtap="true">
+      <view class="yao-popup-header">
+        <text class="yao-popup-title">{{yaoTypes[selectedYaoIndex]}}</text>
+        <text class="yao-popup-type {{selectedYaoType === '老阳' || selectedYaoType === '老阴' ? 'bian' : ''}}">{{selectedYaoType}}</text>
+      </view>
+      <view class="yao-popup-body">
+        <view class="yao-popup-line {{selectedYaoYao === 1 ? 'yin' : 'yang'}}"></view>
+        <text class="yao-popup-ci">{{currentTab === 0 ? guaDetail.yaoCi[selectedYaoIndex] : bianGuaDetail.yaoCi[selectedYaoIndex]}}</text>
+      </view>
+      <view class="yao-popup-close">点击关闭</view>
+    </view>
   </view>
 </view>
