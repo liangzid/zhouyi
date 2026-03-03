@@ -57,7 +57,7 @@
     <view class="yao-list">
       <block wx:for="{{results}}" wx:key="index">
         <view class="yao-item">
-          <text class="yao-name">{{yaoTypes[index]}}</text>
+          <text class="yao-name">{{yaoTypes[(index + 3) % 6]}}</text>
           <text class="yao-type {{item.type === '老阳' || item.type === '老阴' ? 'bian' : ''}}">{{item.type}}</text>
         </view>
       </block>
@@ -94,7 +94,7 @@
     <view class="yao-ci-list">
       <block wx:for="{{currentTab === 0 ? guaDetail.yaoCi : bianGuaDetail.yaoCi}}" wx:key="index">
         <view class="yao-ci-item">
-          <text class="yao-ci-label">{{yaoTypes[index]}}</text>
+          <text class="yao-ci-label">{{yaoTypes[(index + 3) % 6]}}</text>
           <text class="yao-ci-text">{{item}}</text>
         </view>
       </block>

@@ -52,11 +52,17 @@ Page({
         hasBian = !!bianGuaDetail;
       }
 
+      // 交换六爻顺序：初↔四、二↔五、三↔上
+      const swappedResults = [
+        resultsArr[3], resultsArr[4], resultsArr[5],
+        resultsArr[0], resultsArr[1], resultsArr[2]
+      ];
+
       // 检查是否有变爻
-      const hasBianYao = resultsArr.some(r => r.type === '老阳' || r.type === '老阴');
+      const hasBianYao = swappedResults.some(r => r.type === '老阳' || r.type === '老阴');
 
       this.setData({
-        results: resultsArr,
+        results: swappedResults,
         guaDetail,
         bianGuaDetail,
         hasBian: hasBian && hasBianYao,
