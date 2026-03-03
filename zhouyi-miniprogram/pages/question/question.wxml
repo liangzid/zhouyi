@@ -1,0 +1,165 @@
+<!--pages/question/question.wxml-->
+<view class="container">
+  <!-- 步骤指示器 -->
+  <view class="step-indicator">
+    <view class="step-item {{currentStep >= 1 ? 'active' : ''}}">
+      <view class="step-dot">1</view>
+      <text class="step-text">问事</text>
+    </view>
+    <view class="step-line {{currentStep >= 2 ? 'active' : ''}}"></view>
+    <view class="step-item {{currentStep >= 2 ? 'active' : ''}}">
+      <view class="step-dot">2</view>
+      <text class="step-text">地点</text>
+    </view>
+    <view class="step-line {{currentStep >= 3 ? 'active' : ''}}"></view>
+    <view class="step-item {{currentStep >= 3 ? 'active' : ''}}">
+      <view class="step-dot">3</view>
+      <text class="step-text">时间</text>
+    </view>
+    <view class="step-line {{currentStep >= 4 ? 'active' : ''}}"></view>
+    <view class="step-item {{currentStep >= 4 ? 'active' : ''}}">
+      <view class="step-dot">4</view>
+      <text class="step-text">算卦</text>
+    </view>
+  </view>
+
+  <!-- 步骤1：问事 -->
+  <view class="step-content" wx:if="{{currentStep === 1}}">
+    <view class="step-title">您想问什么事情？</view>
+    <view class="step-tip">描述越详细越好，如"下周一去面试能成功吗"</view>
+    <view class="input-area">
+      <input
+        class="event-input"
+        type="text"
+        placeholder="请输入您想问的事情"
+        value="{{eventInput}}"
+        bindinput="onEventInput"
+        maxlength="50"
+      />
+    </view>
+    <view class="quick-select">
+      <text class="quick-label">快速选择：</text>
+      <view class="quick-tags">
+        <view
+          class="quick-tag {{event === item ? 'active' : ''}}"
+          wx:for="{{quickEvents}}"
+          wx:key="index"
+          data-event="{{item}}"
+          bindtap="selectQuickEvent"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="action-btns">
+      <view class="prev-btn" bindtap="prevStep">
+        <text>返回</text>
+      </view>
+      <view class="next-btn" bindtap="confirmEvent">
+        <text>下一步</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤2：地址 -->
+  <view class="step-content" wx:if="{{currentStep === 2}}">
+    <view class="step-title">当前所在地点</view>
+    <view class="location-tip">（可选，不提供不影响算卦）</view>
+
+    <view class="location-area">
+      <view class="location-btn" bindtap="getLocation" wx:if="{{!location}}">
+        <text wx:if="{{!locationLoading}}">点击获取当前位置</text>
+        <text wx:else>获取中...</text>
+      </view>
+      <view class="location-result" wx:if="{{location}}">
+        <text class="location-text">{{locationText}}</text>
+        <view class="location-change" bindtap="getLocation">
+          <text>重新获取</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="action-btns">
+      <view class="prev-btn" bindtap="prevStep">
+        <text>上一步</text>
+      </view>
+      <view class="next-btn" bindtap="skipLocation">
+        <text>下一步</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤3：时间 -->
+  <view class="step-content" wx:if="{{currentStep === 3}}">
+    <view class="step-title">当前时间确认</view>
+
+    <view class="time-display">
+      <text class="time-label">当前时间：</text>
+      <text class="time-value">{{currentTime}}</text>
+    </view>
+
+    <view class="time-toggle">
+      <view class="switch-label" bindtap="toggleTime">
+        <view class="switch {{!useCurrentTime ? 'active' : ''}}"></view>
+        <text>不需要引入当前时间</text>
+      </view>
+    </view>
+
+    <view class="action-btns">
+      <view class="prev-btn" bindtap="prevStep">
+        <text>上一步</text>
+      </view>
+      <view class="next-btn" bindtap="confirmTime">
+        <text>下一步</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤4：事件发生的时间 -->
+  <view class="step-content" wx:if="{{currentStep === 4}}">
+    <view class="step-title">事件发生的时间</view>
+    <view class="target-tip">您想预测的事情将发生在什么时候？（只需输入大致时间）</view>
+
+    <view class="input-area">
+      <input
+        class="event-input"
+        type="text"
+        placeholder="例如：明天上午、下周、年后..."
+        value="{{targetTime}}"
+        bindinput="onTargetTimeInput"
+        maxlength="30"
+      />
+    </view>
+
+    <view class="target-examples">
+      <text>例如：</text>
+      <text class="example">明天</text>
+      <text class="example">下周</text>
+      <text class="example">一个月后</text>
+      <text class="example">年后</text>
+    </view>
+
+    <!-- 摇卦动画区域 -->
+    <view class="divination-area">
+      <view class="coin-animation {{isDivinating ? 'animating' : ''}}">
+        <view class="coin">
+          <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☰' : '☷') : '☰'}}</text>
+        </view>
+      </view>
+
+      <!-- 起卦按钮 -->
+      <view class="start-btn" bindtap="startDivination" wx:if="{{!isDivinating}}">
+        <text>起卦</text>
+      </view>
+      <view class="start-btn disabled" wx:else>
+        <text>摇卦中...</text>
+      </view>
+    </view>
+
+    <view class="action-btns" wx:if="{{!isDivinating}}">
+      <view class="prev-btn" bindtap="prevStep">
+        <text>上一步</text>
+      </view>
+    </view>
+  </view>
+</view>
