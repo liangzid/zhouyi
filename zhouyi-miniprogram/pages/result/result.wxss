@@ -219,9 +219,21 @@
 
 .yao-line.yin {
   background: transparent;
-  border-top: 6rpx solid #e8d5b7;
-  border-bottom: 6rpx solid #e8d5b7;
-  height: 0;
+  border-top: none;
+  border-bottom: none;
+  height: 12rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.yao-line.yin::before,
+.yao-line.yin::after {
+  content: '';
+  width: 180rpx;
+  height: 4rpx;
+  background: #e8d5b7;
+  border-radius: 2rpx;
 }
 
 .yao-line.bian-yao {
@@ -320,9 +332,21 @@
 
 .yao-popup-line.yin {
   background: transparent;
-  border-top: 8rpx solid #e8d5b7;
-  border-bottom: 8rpx solid #e8d5b7;
-  height: 0;
+  border-top: none;
+  border-bottom: none;
+  height: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.yao-popup-line.yin::before,
+.yao-popup-line.yin::after {
+  content: '';
+  width: 220rpx;
+  height: 5rpx;
+  background: #e8d5b7;
+  border-radius: 3rpx;
 }
 
 .yao-popup-ci {
