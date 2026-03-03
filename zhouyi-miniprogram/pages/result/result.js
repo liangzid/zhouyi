@@ -1,5 +1,6 @@
 // pages/result/result.js
 const guaData = require('../../utils/gua_data.js');
+const divination = require('../../utils/divination.js');
 
 Page({
   data: {
@@ -53,19 +54,30 @@ Page({
       }
 
       // 交换六爻顺序：初↔四、二↔五、三↔上
-      const swappedResults = [
-        resultsArr[3], resultsArr[4], resultsArr[5],
-        resultsArr[0], resultsArr[1], resultsArr[2]
+      const swapYaoOrder = (arr) => [
+        arr[3], arr[4], arr[5],
+        arr[0], arr[1], arr[2]
       ];
 
-      // 检查是否有变爻
-      const hasBianYao = swappedResults.some(r => r.type === '老阳' || r.type === '老阴');
+      // 保存原始六爻数据（交换后）
+      const originalResults = swapYaoOrder(resultsArr);
+
+      // 计算变卦的六爻数据
+      let bianYaoResults = [];
+      if (hasBian) {
+        const bianInfo = divination.calculateBianGua(resultsArr);
+        if (bianInfo.bianYaoResults) {
+          bianYaoResults = swapYaoOrder(bianInfo.bianYaoResults);
+        }
+      }
 
       this.setData({
-        results: swappedResults,
+        results: originalResults,
+        originalResults,
+        bianYaoResults,
         guaDetail,
         bianGuaDetail,
-        hasBian: hasBian && hasBianYao,
+        hasBian,
         questionInfo: qInfo,
         showQuestionInfo: showQuestionInfo
       });
@@ -88,7 +100,26 @@ Page({
   // 切换 tab
   switchTab(e) {
     const index = parseInt(e.currentTarget.dataset.index);
-    this.setData({ currentTab: index });
+    const { originalResults, bianYaoResults, bianGuaDetail, guaDetail } = this.data;
+
+    // 根据 tab 切换六爻数据和标题
+    if (index === 1 && bianYaoResults.length > 0) {
+      this.setData({
+        currentTab: index,
+        results: bianYaoResults
+      });
+      wx.setNavigationBarTitle({
+        title: `${bianGuaDetail.guaName}卦`
+      });
+    } else {
+      this.setData({
+        currentTab: index,
+        results: originalResults
+      });
+      wx.setNavigationBarTitle({
+        title: `${guaDetail.guaName}卦`
+      });
+    }
   },
 
   // 复制卦辞
