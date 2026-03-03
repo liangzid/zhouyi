@@ -165,6 +165,22 @@
   color: #ff6b6b;
 }
 
+/* 变卦样式 */
+.gua-name.bian-gua,
+.gua-xiang.bian-gua {
+  color: #ff9500;
+}
+
+.bian-yao-display {
+  background: rgba(255, 149, 0, 0.08);
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.bian-yao {
+  color: #ff9500;
+}
+
 /* 内容区块 */
 .content-section {
   margin-bottom: 30rpx;

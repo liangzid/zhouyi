@@ -31,8 +31,8 @@
 
     <!-- 卦名和解释 -->
     <view class="gua-info">
-      <view class="gua-name">{{guaDetail.guaName}}卦</view>
-      <view class="gua-xiang">{{guaDetail.lowerGua !== undefined ? (baGua[guaDetail.upperGua].name + baGua[guaDetail.lowerGua].name) : guaDetail.guaXiang}}</view>
+      <view class="gua-name {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? guaDetail.guaName : bianGuaDetail.guaName}}卦</view>
+      <view class="gua-xiang {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? (guaDetail.lowerGua !== undefined ? (baGua[guaDetail.upperGua].name + baGua[guaDetail.lowerGua].name) : guaDetail.guaXiang) : (bianGuaDetail.lowerGua !== undefined ? (baGua[bianGuaDetail.upperGua].name + baGua[bianGuaDetail.lowerGua].name) : bianGuaDetail.guaXiang)}}</view>
     </view>
 
     <!-- 变卦提示 -->
@@ -52,13 +52,13 @@
   </view>
 
   <!-- 卦象六爻 -->
-  <view class="yao-display">
-    <view class="yao-title">六爻</view>
+  <view class="yao-display {{currentTab === 1 ? 'bian-yao-display' : ''}}">
+    <view class="yao-title {{currentTab === 1 ? 'bian-gua' : ''}}">六爻</view>
     <view class="yao-list">
       <block wx:for="{{results}}" wx:key="index">
         <view class="yao-item">
           <text class="yao-name">{{yaoTypes[(index + 3) % 6]}}</text>
-          <text class="yao-type {{item.type === '老阳' || item.type === '老阴' ? 'bian' : ''}}">{{item.type}}</text>
+          <text class="yao-type {{item.type === '老阳' || item.type === '老阴' ? 'bian' : ''}} {{currentTab === 1 ? 'bian-yao' : ''}}">{{item.type}}</text>
         </view>
       </block>
     </view>
