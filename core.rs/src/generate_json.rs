@@ -92,7 +92,7 @@ fn create_64_gua() -> Vec<Gua> {
         create_gua(&xun, &li, &feng, &huo, "觀"),
         // 噬嗑 賁 剝 復
         create_gua(&li, &zhen, &huo, &lei, "噬嗑"),
-        create_gua(&kan, &li, &shui, &huo, "賁"),
+        create_gua(&gen, &li, &shan, &huo, "賁"),
         create_gua(&kun, &gen, &di, &shan, "剝"),
         create_gua(&zhen, &kun, &lei, &di, "復"),
         // 无妄 大畜 颐 大过

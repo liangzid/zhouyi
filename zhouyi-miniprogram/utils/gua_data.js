@@ -1112,16 +1112,16 @@ const guaList = [
       "《象》曰：「白賁，無咎」，上得志也。"
     ],
     "binaryVec": [
-      0,
       1,
+      0,
       0,
       1,
       0,
       1
     ],
     "upperBinary": [
-      0,
       1,
+      0,
       0
     ],
     "lowerBinary": [
@@ -1129,12 +1129,12 @@ const guaList = [
       0,
       1
     ],
-    "upperGua": "坎",
+    "upperGua": "艮",
     "lowerGua": "离",
-    "upperXiang": "水",
+    "upperXiang": "山",
     "lowerXiang": "火",
-    "guaXiang": "水火",
-    "upperGuaIndex": 2,
+    "guaXiang": "山火",
+    "upperGuaIndex": 4,
     "lowerGuaIndex": 5
   },
   {

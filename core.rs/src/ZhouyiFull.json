@@ -992,16 +992,16 @@
       "《象》曰：「白賁，無咎」，上得志也。"
     ],
     "binary_vec": [
-      0,
       1,
+      0,
       0,
       1,
       0,
       1
     ],
     "upper_binary": [
-      0,
       1,
+      0,
       0
     ],
     "lower_binary": [
@@ -1009,11 +1009,11 @@
       0,
       1
     ],
-    "upper_gua": "坎",
+    "upper_gua": "艮",
     "lower_gua": "离",
-    "upper_xiang": "水",
+    "upper_xiang": "山",
     "lower_xiang": "火",
-    "gua_xiang": "水火"
+    "gua_xiang": "山火"
   },
   {
     "gua_index": 22,

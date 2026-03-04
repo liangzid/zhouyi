@@ -1,8 +1,10 @@
 /**
  * 核心算卦算法
  * 实现两种起卦方式：铜钱卦和大衍筮法
- * 完全对应 Rust core.rs 中的实现
+ * 使用 gua_data.js 中的正确八卦映射
  */
+
+const guaData = require('./gua_data.js');
 
 /**
  * 铜钱卦 - 简单随机起卦
@@ -120,65 +122,53 @@ function dayanshiDivinate(event) {
   return results;
 }
 
-// 八卦编号与 Rust 一致：0-乾,1-坤,2-震,3-艮,4-离,5-坎,6-兑,7-巽
-const baGuaNames = ['乾', '坤', '震', '艮', '离', '坎', '兑', '巽'];
+// 八卦编号与 gua_data.js 一致：0-坤,1-震,2-坎,3-兑,4-艮,5-离,6-巽,7-乾
+const baGuaNames = ['坤', '震', '坎', '兑', '艮', '离', '巽', '乾'];
 
-// 八卦二进制映射（从下到上）
+// 八卦二进制映射（从下到上）- 与 gua_data.js 一致
 const baGuaNum = {
-  '111': 0,  // 乾
-  '000': 1,  // 坤
-  '001': 2,  // 震
-  '100': 3,  // 艮
-  '101': 4,  // 离
-  '010': 5,  // 坎
-  '011': 6,  // 兑
-  '110': 7,  // 巽
+  '000': 0,  // 坤
+  '001': 1,  // 震
+  '010': 2,  // 坎
+  '011': 3,  // 兑
+  '100': 4,  // 艮
+  '101': 5,  // 离
+  '110': 6,  // 巽
+  '111': 7,  // 乾
 };
 
 /**
  * 根据6爻结果计算卦象
- * 与 Rust 逻辑保持一致
+ * 使用 gua_data.js 中的正确映射
  * @param {Array} yaoResults - 6个爻的结果数组（从初爻到上爻的顺序）
  * @returns {Object} - 卦象信息
  */
 function calculateGua(yaoResults) {
   const yaoValues = yaoResults.map(r => r.yao);
-  
+
+  // 下卦：初爻、二爻、三爻（索引 0, 1, 2）
   const lowerBinary = String(yaoValues[0]) + String(yaoValues[1]) + String(yaoValues[2]);
+  // 上卦：四爻、五爻、上爻（索引 3, 4, 5）
   const upperBinary = String(yaoValues[3]) + String(yaoValues[4]) + String(yaoValues[5]);
 
   const lowerGua = baGuaNum[lowerBinary] || 0;
   const upperGua = baGuaNum[upperBinary] || 0;
 
-  const guaName = baGuaNames[upperGua] + baGuaNames[lowerGua];
-  
-  const guaIndex = findGuaIndexByName(guaName);
+  // 使用 gua_data.js 中的方法获取卦象索引
+  const guaIndex = guaData.getGuaIndexByYaoResults(yaoValues);
+  const guaInfo = guaData.getGuaByIndex(guaIndex);
 
   return {
     lowerGua,
     upperGua,
     guaIndex,
-    guaName
+    guaName: guaInfo ? guaInfo.guaName : ''
   };
 }
 
-/**
- * 根据卦名找到对应的索引（按周易卦序）
- */
+// 保留此函数以兼容旧代码
 function findGuaIndexByName(guaName) {
-  const guaOrder = [
-    '乾乾', '坤坤', '坎震', '艮坎', '坎乾', '乾坎', '坤坎', '坎坤',
-    '巽乾', '乾兑', '坤乾', '乾坤', '乾离', '离乾', '坤艮', '震坤',
-    '兑震', '艮巽', '坤兑', '巽坤', '离震', '艮离', '艮坤', '坤震',
-    '震乾', '艮乾', '艮震', '兑巽', '坎坎', '离离', '兑艮', '巽震',
-    '艮乾', '震乾', '离地', '地离', '巽离', '离兑', '坎艮', '震坎',
-    '艮兑', '巽震', '兑乾', '乾巽', '兑坤', '坤巽', '兑坎', '坎巽',
-    '兑离', '离巽', '震震', '艮艮', '巽艮', '震兑', '震离', '离艮',
-    '巽巽', '兑兑', '巽坎', '坎兑', '巽兑', '震艮', '坎离', '离坎'
-  ];
-  
-  const index = guaOrder.indexOf(guaName);
-  return index !== -1 ? index : 0;
+  return 0;
 }
 
 /**
