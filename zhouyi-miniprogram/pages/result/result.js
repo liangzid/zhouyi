@@ -137,13 +137,13 @@ Page({
   // 切换 tab
   switchTab(e) {
     const index = parseInt(e.currentTarget.dataset.index);
-    const { originalResults, bianYaoResults, bianGuaDetail, guaDetail, upperYaoResults, lowerYaoResults, upperYaoResultsBian, lowerYaoResultsBian, bianYaoIndices } = this.data;
+    const { originalResults, bianGuaDetail, guaDetail, upperYaoResults, lowerYaoResults, upperYaoResultsBian, lowerYaoResultsBian, hasBian } = this.data;
 
     // 根据 tab 切换六爻数据和标题
-    if (index === 1 && bianYaoResults && bianYaoResults.length > 0) {
+    if (index === 1 && hasBian && bianGuaDetail) {
       this.setData({
         currentTab: index,
-        results: bianYaoResults,
+        results: originalResults,
         upperYaoResults: upperYaoResultsBian,
         lowerYaoResults: lowerYaoResultsBian
       });

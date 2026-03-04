@@ -26,7 +26,7 @@
     <!-- 卦名和解释 -->
     <view class="gua-info">
       <view class="gua-name {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? guaDetail.guaName : bianGuaDetail.guaName}}卦</view>
-      <view class="gua-xiang {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? (guaDetail.lowerGua !== undefined ? (baGua[guaDetail.upperGua].name + baGua[guaDetail.lowerGua].name) : guaDetail.guaXiang) : (bianGuaDetail.lowerGua !== undefined ? (baGua[bianGuaDetail.upperGua].name + baGua[bianGuaDetail.lowerGua].name) : bianGuaDetail.guaXiang)}}</view>
+      <view class="gua-xiang {{currentTab === 1 ? 'bian-gua' : ''}}">{{currentTab === 0 ? guaDetail.guaXiang : bianGuaDetail.guaXiang}}</view>
     </view>
 
     <!-- 变卦提示 -->
@@ -49,7 +49,7 @@
   <view class="bagua-display">
     <!-- 上卦：四爻、五爻、上爻 -->
     <view class="bagua-item">
-      <view class="bagua-label">上卦 · {{currentTab === 0 ? baGua[guaDetail.upperGua].name : baGua[bianGuaDetail.upperGua].name}}</view>
+      <view class="bagua-label">上卦 · {{currentTab === 0 ? guaDetail.upperGua : bianGuaDetail.upperGua}}</view>
       <view class="bagua-yaos">
         <block wx:for="{{currentTab === 0 ? upperYaoResults : upperYaoResultsBian}}" wx:key="index">
           <view class="bagua-yao-item" bindtap="showYaoCi" data-index="{{index + 3}}" data-type="{{item.type}}" data-yao="{{item.yao}}">
@@ -67,7 +67,7 @@
 
     <!-- 下卦：初爻、二爻、三爻 -->
     <view class="bagua-item">
-      <view class="bagua-label">下卦 · {{currentTab === 0 ? baGua[guaDetail.lowerGua].name : baGua[bianGuaDetail.lowerGua].name}}</view>
+      <view class="bagua-label">下卦 · {{currentTab === 0 ? guaDetail.lowerGua : bianGuaDetail.lowerGua}}</view>
       <view class="bagua-yaos">
         <block wx:for="{{currentTab === 0 ? lowerYaoResults : lowerYaoResultsBian}}" wx:key="index">
           <view class="bagua-yao-item" bindtap="showYaoCi" data-index="{{index}}" data-type="{{item.type}}" data-yao="{{item.yao}}">
