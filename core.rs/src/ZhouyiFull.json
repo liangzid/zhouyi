@@ -1,89 +1,11 @@
-// 自动生成的文件 - 由 generate_gua_data.js 生成
-// 此文件包含完整的64卦数据
-
-const baGua = [
+[
   {
-    "name": "坤",
-    "xiang": "地",
-    "binary": [
-      0,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "震",
-    "xiang": "雷",
-    "binary": [
-      0,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "坎",
-    "xiang": "水",
-    "binary": [
-      0,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "兑",
-    "xiang": "泽",
-    "binary": [
-      0,
-      1,
-      1
-    ]
-  },
-  {
-    "name": "艮",
-    "xiang": "山",
-    "binary": [
-      1,
-      0,
-      0
-    ]
-  },
-  {
-    "name": "离",
-    "xiang": "火",
-    "binary": [
-      1,
-      0,
-      1
-    ]
-  },
-  {
-    "name": "巽",
-    "xiang": "风",
-    "binary": [
-      1,
-      1,
-      0
-    ]
-  },
-  {
-    "name": "乾",
-    "xiang": "天",
-    "binary": [
-      1,
-      1,
-      1
-    ]
-  }
-];
-
-const guaList = [
-  {
-    "guaIndex": 0,
-    "guaName": "乾",
-    "guaCi": "乾，元亨，利貞。",
+    "gua_index": 0,
+    "gua_name": "乾",
+    "gua_ci": "乾，元亨，利貞。",
     "duan": "《彖》曰：大哉乾元，萬物資始，乃統天。雲行雨施，品物流形，大明終始，六位時成，時乘六龍以御天。乾道變化，各正性命，保合大和，乃利貞。",
     "xiang": "《象》曰：天行健，君子以自強不息。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：潛龍勿用。",
       "九二：見龍再田，利見大人。",
       "九三：君子終日乾乾，夕惕若，厲，無咎。",
@@ -92,7 +14,7 @@ const guaList = [
       "上九：亢龍有悔。",
       "用九：見群龍無首，吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：潛龍勿用，陽在下也。",
       "《象》曰：見龍在田，德施普也。",
       "《象》曰：終日乾乾，反復道也。",
@@ -101,7 +23,7 @@ const guaList = [
       "《象》曰：亢龍有悔，盈不可久也。",
       "《象》曰：用九，天德不可為首也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -109,31 +31,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "乾",
-    "lowerGua": "乾",
-    "upperXiang": "天",
-    "lowerXiang": "天",
-    "guaXiang": "天天",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 7
+    "upper_gua": "乾",
+    "lower_gua": "乾",
+    "upper_xiang": "天",
+    "lower_xiang": "天",
+    "gua_xiang": "天天"
   },
   {
-    "guaIndex": 1,
-    "guaName": "坤",
-    "guaCi": "坤，元亨，利牝馬之貞。君子有攸往，先迷后得主。利西南，得朋，東北，喪朋。安貞，吉。",
+    "gua_index": 1,
+    "gua_name": "坤",
+    "gua_ci": "坤，元亨，利牝馬之貞。君子有攸往，先迷后得主。利西南，得朋，東北，喪朋。安貞，吉。",
     "duan": "《彖》曰：至哉坤元！萬物資生，乃順承天。坤厚載物，德合無疆。含弘光大，品物咸亨。牝馬地類，行地無疆，柔順利貞。君子攸行，先迷失道，后順得常。西南得朋，乃與類行。東北喪朋，乃終有慶。安貞之吉，應地無疆。",
     "xiang": "《象》曰：地勢坤，君子以厚德載物。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：履霜，堅冰至。",
       "六二：直，方，大，不習無不利。",
       "六三：含章，可貞。或從王事，無成有終。",
@@ -142,7 +62,7 @@ const guaList = [
       "上六：龍戰於野，其血玄黃。",
       "用六：利永貞。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：履霜堅冰，陰始凝也。馴致其道，至堅冰也。",
       "《象》曰：六二之動，直以方也。不習無不利，地道光也。",
       "《象》曰：「含章，可貞」，以時發也。「或從王事」，知光大也。",
@@ -151,7 +71,7 @@ const guaList = [
       "《象》曰：「龍戰於野」，其道窮也。",
       "《象》曰：用六永貞，以大終也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       0,
@@ -159,31 +79,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "坤",
-    "lowerGua": "坤",
-    "upperXiang": "地",
-    "lowerXiang": "地",
-    "guaXiang": "地地",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 0
+    "upper_gua": "坤",
+    "lower_gua": "坤",
+    "upper_xiang": "地",
+    "lower_xiang": "地",
+    "gua_xiang": "地地"
   },
   {
-    "guaIndex": 2,
-    "guaName": "屯",
-    "guaCi": "屯，元亨，利貞，勿用有攸往，利建侯。",
+    "gua_index": 2,
+    "gua_name": "屯",
+    "gua_ci": "屯，元亨，利貞，勿用有攸往，利建侯。",
     "duan": "《彖》曰：屯，剛柔始交而難生，動乎險中，大亨貞。雷雨之動滿盈，天造草昧，宜建侯而不寧。",
     "xiang": "《象》曰：云雷，屯。君子以經綸。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：磐桓，利居貞，利建侯。",
       "六二：屯如邅如，乘馬班如，匪寇，婚媾。女子貞不字，十年乃字。",
       "六三：即鹿無虞，惟入于林中，君子几不如舍，往吝。",
@@ -191,7 +109,7 @@ const guaList = [
       "九五：屯其膏，小貞吉，大貞凶。",
       "上六：乘馬班如，泣血漣如。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：雖「磐桓」，志行正也。以貴下賤，大得民也。",
       "《象》曰：六二之難，乘剛也。十年乃字，反常也。",
       "《象》曰：「既鹿無虞」，以縱禽也。君子舍之，往吝窮也。",
@@ -199,7 +117,7 @@ const guaList = [
       "《象》曰：屯其膏，施未光也。",
       "《象》曰：「泣血漣如」，何可長也！"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -207,31 +125,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "坎",
-    "lowerGua": "震",
-    "upperXiang": "水",
-    "lowerXiang": "雷",
-    "guaXiang": "水雷",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 1
+    "upper_gua": "坎",
+    "lower_gua": "震",
+    "upper_xiang": "水",
+    "lower_xiang": "雷",
+    "gua_xiang": "水雷"
   },
   {
-    "guaIndex": 3,
-    "guaName": "蒙",
-    "guaCi": "蒙，亨。匪我求童蒙，童蒙求我。初噬告，再三瀆，瀆則不告。利貞。",
+    "gua_index": 3,
+    "gua_name": "蒙",
+    "gua_ci": "蒙，亨。匪我求童蒙，童蒙求我。初噬告，再三瀆，瀆則不告。利貞。",
     "duan": "《彖》曰：蒙，山下有險，險而止，蒙。蒙亨，以亨行，時中也。「匪我求童蒙，童蒙求我」，志應也。「初噬告」，以剛中也。「再三瀆，瀆則不告」，瀆蒙也。蒙以養正，聖功也。",
     "xiang": "《象》曰：山下出泉，蒙。君子以果行育德。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：發蒙，利用刑人，用說桎梏，以往吝。",
       "九二：包蒙吉。納婦吉。子克家。",
       "六三：勿用娶女，見金，夫不有躬，無攸利。",
@@ -239,7 +155,7 @@ const guaList = [
       "六五：童蒙，吉。",
       "上九：擊蒙。不利為寇，利御寇。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「利用刑人」，以正法也。",
       "《象》曰：「子克家」，剛柔接也。",
       "《象》曰：「勿用娶女」，行不順也。",
@@ -247,7 +163,7 @@ const guaList = [
       "《象》曰：童蒙之吉，順以巽也。",
       "《象》曰：利用御寇，上下順也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -255,31 +171,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "坎",
-    "upperXiang": "山",
-    "lowerXiang": "水",
-    "guaXiang": "山水",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 2
+    "upper_gua": "艮",
+    "lower_gua": "坎",
+    "upper_xiang": "山",
+    "lower_xiang": "水",
+    "gua_xiang": "山水"
   },
   {
-    "guaIndex": 4,
-    "guaName": "需",
-    "guaCi": "需，有孚，光亨，貞吉。利涉大川。",
+    "gua_index": 4,
+    "gua_name": "需",
+    "gua_ci": "需，有孚，光亨，貞吉。利涉大川。",
     "duan": "《彖》曰：需，須也。險在前也。剛健而不陷，其義不困窮矣。「需，有孚，光亨，貞吉」，位乎天位，以正中也。「利涉大川」，往有功也。",
     "xiang": "《象》曰：云上於天，需。君子以飲食宴樂。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：需于郊，利用恆，無咎。",
       "九二：需于沙，小有言，終吉。",
       "九三：需于泥，致寇至。",
@@ -287,7 +201,7 @@ const guaList = [
       "九五：需于酒食，貞吉。",
       "上六：入于穴，有不速之客三人來，敬之終吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「需于郊」，不犯難行也。「利用恆，無咎」，未失常也。",
       "《象》曰：「需于沙」，衍在中也。雖「小有言」，以終吉也。",
       "《象》曰：「需于泥」，災在外也。自我致寇，敬慎不敗也。",
@@ -295,7 +209,7 @@ const guaList = [
       "《象》曰：「酒食貞吉」，以中正也。",
       "《象》曰：不速之客來，「敬之終吉」，雖不當位，未大失也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -303,31 +217,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "坎",
-    "lowerGua": "乾",
-    "upperXiang": "水",
-    "lowerXiang": "天",
-    "guaXiang": "水天",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 7
+    "upper_gua": "坎",
+    "lower_gua": "乾",
+    "upper_xiang": "水",
+    "lower_xiang": "天",
+    "gua_xiang": "水天"
   },
   {
-    "guaIndex": 5,
-    "guaName": "讼",
-    "guaCi": "訟，有孚，窒惕，中吉，終凶。利見大人，不利涉大川。",
+    "gua_index": 5,
+    "gua_name": "讼",
+    "gua_ci": "訟，有孚，窒惕，中吉，終凶。利見大人，不利涉大川。",
     "duan": "《彖》曰：訟，上剛下險，險而健，訟。「訟，有孚窒惕，中吉」，剛來而得中也。「終凶」，訟不可成也。「利見大人」，尚中正也。「不利涉大川」，入于淵也。",
     "xiang": "《象》曰：天與水違行，訟。君子以作事謀始。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：不永所事，小有言，終吉。",
       "九二：不克訟，歸而逋，其邑人三百戶，無眚。",
       "六三：食舊德，貞厲，終吉。或從王事，無成。",
@@ -335,7 +247,7 @@ const guaList = [
       "九五：訟元吉。",
       "上九：或錫之鞶帶，終朝三褫之。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「不永所事」，訟不可長也。雖「有小言」，其辯明也。",
       "《象》曰：「不克訟」，歸而逋也。自下訟上，患至掇也。",
       "《象》曰：「食舊德」，從上吉也。",
@@ -343,7 +255,7 @@ const guaList = [
       "《象》曰：「訟元吉」，以中正也。",
       "《象》曰：以訟受服，亦不足敬也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -351,31 +263,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "坎",
-    "upperXiang": "天",
-    "lowerXiang": "水",
-    "guaXiang": "天水",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 2
+    "upper_gua": "乾",
+    "lower_gua": "坎",
+    "upper_xiang": "天",
+    "lower_xiang": "水",
+    "gua_xiang": "天水"
   },
   {
-    "guaIndex": 6,
-    "guaName": "師",
-    "guaCi": "師，貞丈人吉，無咎。",
+    "gua_index": 6,
+    "gua_name": "師",
+    "gua_ci": "師，貞丈人吉，無咎。",
     "duan": "《彖》曰：師，眾也。貞，正也。能以眾正，可以王矣。剛中而應，行險而順，以此毒天下，而民從之，吉又何咎矣。",
     "xiang": "《象》曰：地中有水，師。君子以容民畜眾。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：師出以律，否臧凶。",
       "九二：在師中，吉，無咎，王三錫命。",
       "六三：師或輿尸，凶。",
@@ -383,7 +293,7 @@ const guaList = [
       "六五：田有禽，利執言，無咎。長子帥師，弟子輿尸，貞凶。",
       "上六：大君有命，開國承家，小人勿用。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「師出以律」，失律凶也。",
       "《象》曰：「在師中，吉」，承天寵也。「王三錫命」，懷萬邦也。",
       "《象》曰：「師或輿尸」，大無功也。",
@@ -391,7 +301,7 @@ const guaList = [
       "《象》曰：「長子帥師」，以中行也。「弟子輿師」，使不當也。",
       "《象》曰：「大君有命」，以正功也。「小人勿用」，必亂邦也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       0,
@@ -399,31 +309,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "坤",
-    "lowerGua": "坎",
-    "upperXiang": "地",
-    "lowerXiang": "水",
-    "guaXiang": "地水",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 2
+    "upper_gua": "坤",
+    "lower_gua": "坎",
+    "upper_xiang": "地",
+    "lower_xiang": "水",
+    "gua_xiang": "地水"
   },
   {
-    "guaIndex": 7,
-    "guaName": "比",
-    "guaCi": "比，吉。原筮元永貞，無咎。不寧方來，后夫凶。",
+    "gua_index": 7,
+    "gua_name": "比",
+    "gua_ci": "比，吉。原筮元永貞，無咎。不寧方來，后夫凶。",
     "duan": "《彖》曰：比，吉也，比，輔也，下順從也。「原筮元永貞，無咎」，以剛中也。「不寧方來」，上下應也。「后夫凶」，其道窮也。",
     "xiang": "《象》曰：地上有水，比。先王以建萬國，親諸侯。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：有孚比之，無咎。有孚盈缶，終來有他，吉。",
       "六二：比之自內，貞吉。",
       "六三：比之匪人。",
@@ -431,7 +339,7 @@ const guaList = [
       "九五：顯比，王用三驅，失前禽，邑人不誡，吉。",
       "上六：比之無首，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：比之初六，「有他吉」也。",
       "《象》曰：「比之自內」，不自失也。",
       "《象》曰：「比之匪人」，不亦傷乎！",
@@ -439,7 +347,7 @@ const guaList = [
       "《象》曰：顯比之吉，位正中也。舍逆取順，「失前禽」也。「邑人不誡」，上使中也。",
       "《象》曰：「比之無首」，無所終也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -447,31 +355,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "坎",
-    "lowerGua": "坤",
-    "upperXiang": "水",
-    "lowerXiang": "地",
-    "guaXiang": "水地",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 0
+    "upper_gua": "坎",
+    "lower_gua": "坤",
+    "upper_xiang": "水",
+    "lower_xiang": "地",
+    "gua_xiang": "水地"
   },
   {
-    "guaIndex": 8,
-    "guaName": "小畜",
-    "guaCi": "小畜，亨。密云不雨，自我西郊。",
+    "gua_index": 8,
+    "gua_name": "小畜",
+    "gua_ci": "小畜，亨。密云不雨，自我西郊。",
     "duan": "《彖》曰：小畜，柔得位而上下應之，曰小畜。健而巽，剛中而志行，乃亨。「密云不雨」，尚往也。「自我西郊」，施未行也。",
     "xiang": "《象》曰：風行天上，小畜。君子以懿文德。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：復自道，何其咎？吉。",
       "九二：牽復，吉。",
       "九三：輿說輻，夫妻反目。",
@@ -479,7 +385,7 @@ const guaList = [
       "九五：有孚攣如，富以其鄰。",
       "上九：既雨既處，尚德載，婦貞厲。月几望，君子征凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「復自道」，其義吉也。",
       "《象》曰：「牽復」在中，亦不自失也。",
       "《象》曰：「夫妻反目」，不能正室也。",
@@ -487,7 +393,7 @@ const guaList = [
       "《象》曰：「有孚攣如」，不獨富也。",
       "《象》曰：「既雨既處」，德積載也。「君子征凶」，有所疑也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -495,31 +401,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "乾",
-    "upperXiang": "风",
-    "lowerXiang": "天",
-    "guaXiang": "风天",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 7
+    "upper_gua": "巽",
+    "lower_gua": "乾",
+    "upper_xiang": "风",
+    "lower_xiang": "天",
+    "gua_xiang": "风天"
   },
   {
-    "guaIndex": 9,
-    "guaName": "履",
-    "guaCi": "履，履虎尾，不咥人，亨。",
+    "gua_index": 9,
+    "gua_name": "履",
+    "gua_ci": "履，履虎尾，不咥人，亨。",
     "duan": "《彖》曰：履，柔履剛也。說而應乎乾，是以「履虎尾，不咥人，亨」。剛中正，履帝位而不疚，光明也。",
     "xiang": "《象》曰：上天下澤，履。君子以辨上下、定民志。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：素履往，無咎。",
       "九二：履道坦坦，幽人貞吉。",
       "六三：眇能視，跛能履，履虎尾，咥人，凶。武人為于大君。",
@@ -527,7 +431,7 @@ const guaList = [
       "九五：夬履，貞厲。",
       "上九：視履考祥，其旋元吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：素履之往，獨行愿也。",
       "《象》曰：「幽人貞吉」，中不自亂也。",
       "《象》曰：「眇能視」，不足以有明也。「跛能履」，不足以與行也。咥人之凶，位不當也。「武人為于大君」，志剛也。",
@@ -535,7 +439,7 @@ const guaList = [
       "《象》曰：「夬履，貞厲」，位正當也。",
       "《象》曰：元吉在上，大有慶也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -543,31 +447,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "兑",
-    "lowerGua": "乾",
-    "upperXiang": "泽",
-    "lowerXiang": "天",
-    "guaXiang": "泽天",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 7
+    "upper_gua": "兑",
+    "lower_gua": "乾",
+    "upper_xiang": "泽",
+    "lower_xiang": "天",
+    "gua_xiang": "泽天"
   },
   {
-    "guaIndex": 10,
-    "guaName": "泰",
-    "guaCi": "泰，小往大來，吉亨。",
+    "gua_index": 10,
+    "gua_name": "泰",
+    "gua_ci": "泰，小往大來，吉亨。",
     "duan": "《彖》曰：「泰，小往大來，吉亨」，則是天地交而萬物通也，上下交而其志同也。內陽而外陰，內健而外順，內君子而外小人，君子道長，小人道消也。",
     "xiang": "《象》曰：天地交，泰，后以財（裁）成天地之道，輔相天地之宜，以左右民。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：拔茅茹，以其夤，征吉。",
       "九二：包荒，用馮河，不遐遺，朋亡，得尚于中行。",
       "九三：無平不陂，無往不復，艱貞無咎。勿恤其孚，于食有福。",
@@ -575,7 +477,7 @@ const guaList = [
       "六五：帝乙歸妹，以祉元吉。",
       "上六：城復于隍，勿用師。自邑告命，貞吝。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「拔茅」「征吉」，志在外也。",
       "《象》曰：「包荒」，「得尚于中行」，以光大也。",
       "《象》曰：「無往不復」，天地際也。",
@@ -583,7 +485,7 @@ const guaList = [
       "《象》曰：「以祉元吉」，中以行愿也。",
       "《象》曰：「城復于隍」，其命亂也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       0,
@@ -591,31 +493,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "坤",
-    "lowerGua": "乾",
-    "upperXiang": "地",
-    "lowerXiang": "天",
-    "guaXiang": "地天",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 7
+    "upper_gua": "坤",
+    "lower_gua": "乾",
+    "upper_xiang": "地",
+    "lower_xiang": "天",
+    "gua_xiang": "地天"
   },
   {
-    "guaIndex": 11,
-    "guaName": "否",
-    "guaCi": "否，否之匪人，不利君子貞，大往小來。",
+    "gua_index": 11,
+    "gua_name": "否",
+    "gua_ci": "否，否之匪人，不利君子貞，大往小來。",
     "duan": "《彖》曰：「否之匪人，不利君子貞，大往小來」，則是天地不交而萬物不通也，上下不交而天下無邦也。內陰而外陽，內柔而外剛，內小人而外君子，小人道長，君子道消也。",
     "xiang": "《象》曰：天地不交，否。君子以儉德辟難，不可榮以祿。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：拔茅茹，以其夤，貞吉亨。",
       "六二：包承，小人吉，大人否亨。",
       "六三：包羞。",
@@ -623,7 +523,7 @@ const guaList = [
       "九五：休否，大人吉。其亡其亡，系于苞桑。",
       "上九：傾否，先否后喜。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「拔茅」貞吉，志在君也。",
       "《象》曰：「大人否亨」，不亂群也。",
       "《象》曰：「包羞」，位不當也。",
@@ -631,7 +531,7 @@ const guaList = [
       "《象》曰：「大人之吉」，位正當也。",
       "《象》曰：否終則傾，何可長也！"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -639,31 +539,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "坤",
-    "upperXiang": "天",
-    "lowerXiang": "地",
-    "guaXiang": "天地",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 0
+    "upper_gua": "乾",
+    "lower_gua": "坤",
+    "upper_xiang": "天",
+    "lower_xiang": "地",
+    "gua_xiang": "天地"
   },
   {
-    "guaIndex": 12,
-    "guaName": "同人",
-    "guaCi": "同人，同人于野，亨，利涉大川，利君子貞。",
+    "gua_index": 12,
+    "gua_name": "同人",
+    "gua_ci": "同人，同人于野，亨，利涉大川，利君子貞。",
     "duan": "《彖》曰：同人，柔得位得中而應乎乾曰同人。《同人》曰「同人于野，亨，利涉大川」，乾行也。文明以健，中正而應，君子正也。唯君子為能通天下之志。",
     "xiang": "《象》曰：天與火，同人。君子以類族辨物。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：同人于門，無咎。",
       "六二：同人于宗，吝。",
       "九三：伏戎于莽，升其高陵，三歲不興。",
@@ -671,7 +569,7 @@ const guaList = [
       "九五：同人，先號啕而后笑，大師克相遇。",
       "上九：同人于郊，無悔。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：出門同人，又誰咎也？",
       "《象》曰：「同人于宗」，吝道也。",
       "《象》曰：「伏戎于莽」，敵剛也。「三歲不興」，安行也。",
@@ -679,7 +577,7 @@ const guaList = [
       "《象》曰：同人之先，以中直也。大師相遇，言相克也。",
       "《象》曰：「同人于郊」，志未得也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -687,31 +585,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "乾",
-    "upperXiang": "火",
-    "lowerXiang": "天",
-    "guaXiang": "火天",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 7
+    "upper_gua": "离",
+    "lower_gua": "乾",
+    "upper_xiang": "火",
+    "lower_xiang": "天",
+    "gua_xiang": "火天"
   },
   {
-    "guaIndex": 13,
-    "guaName": "大有",
-    "guaCi": "大有，元亨。",
+    "gua_index": 13,
+    "gua_name": "大有",
+    "gua_ci": "大有，元亨。",
     "duan": "《彖》曰：大有，柔得尊位大中而上下應之曰大有。其德剛健而文明，應乎天而時行，是以元亨。",
     "xiang": "《象》曰：火在天上，大有。君子以竭惡揚善，順天休命。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：無交害，匪咎，艱則無咎。",
       "九二：大車以載，有攸往，無咎。",
       "九三：公用亨于天子，小人弗克。",
@@ -719,7 +615,7 @@ const guaList = [
       "六五：厥孚交如，威如，吉。",
       "上九：自天佑之，吉無不利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：《大有》初九，「無交害」也。",
       "《象》曰：「大車以載」，積中不敗也。",
       "《象》曰：「公用亨于天子」，小人害也。",
@@ -727,7 +623,7 @@ const guaList = [
       "《象》曰：「厥孚交如」，信以發志也。威如之吉，易而無備也。",
       "《象》曰：《大有》上吉，「自天佑」也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -735,31 +631,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "乾",
-    "lowerGua": "离",
-    "upperXiang": "天",
-    "lowerXiang": "火",
-    "guaXiang": "天火",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 5
+    "upper_gua": "乾",
+    "lower_gua": "离",
+    "upper_xiang": "天",
+    "lower_xiang": "火",
+    "gua_xiang": "天火"
   },
   {
-    "guaIndex": 14,
-    "guaName": "謙",
-    "guaCi": "謙，亨，君子有終。",
+    "gua_index": 14,
+    "gua_name": "謙",
+    "gua_ci": "謙，亨，君子有終。",
     "duan": "《彖》曰：謙，亨，天道下濟而光明，地道卑而上行。天道虧盈而益謙，地道變盈而流謙，鬼神害盈而福謙，人道惡盈而好謙。謙尊而光，卑而不可踰，君子之終也。",
     "xiang": "《象》曰：地中有山，謙。君子以裒多益寡，稱物平施。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：謙謙君子，用涉大川，吉。",
       "六二：鳴謙，貞吉。",
       "九三：勞謙君子，有終吉。",
@@ -767,7 +661,7 @@ const guaList = [
       "六五：不富，以其鄰，利用侵伐，無不利。",
       "上六：鳴謙，利用行師，征邑國。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「謙謙君子」，卑以自牧也。",
       "《象》曰：「鳴謙貞吉」，中心得也。",
       "《象》曰：「勞謙君子」，萬民服也。",
@@ -775,7 +669,7 @@ const guaList = [
       "《象》曰：「利用侵伐」，征不服也。",
       "《象》曰：「鳴謙」，志未得也。「可用行師，征邑國」也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -783,31 +677,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "坤",
-    "upperXiang": "山",
-    "lowerXiang": "地",
-    "guaXiang": "山地",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 0
+    "upper_gua": "艮",
+    "lower_gua": "坤",
+    "upper_xiang": "山",
+    "lower_xiang": "地",
+    "gua_xiang": "山地"
   },
   {
-    "guaIndex": 15,
-    "guaName": "豫",
-    "guaCi": "豫，利建侯行師。",
+    "gua_index": 15,
+    "gua_name": "豫",
+    "gua_ci": "豫，利建侯行師。",
     "duan": "《彖》曰：豫，剛應而志行，順以動，豫。豫，順以動，故天地如之，而況建侯行師乎？天地以順動，故日月不過而四時不忒。聖人以順動，則刑罰清而民服。豫之時義大矣哉！",
     "xiang": "《象》曰：雷出地奮，豫。先王以作樂崇德，殷荐之上帝，以配祖考。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：鳴豫，凶。",
       "六二：介于石，不終日，貞吉。",
       "六三：盱豫，悔。遲有悔。",
@@ -815,7 +707,7 @@ const guaList = [
       "六五：貞疾，恆不死。",
       "上六：冥豫，成有渝，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：初六「鳴豫」，志窮凶也。",
       "《象》曰：「不終日，貞吉」，以中正也。",
       "《象》曰：「盱豫」「有悔」，位不當也。",
@@ -823,7 +715,7 @@ const guaList = [
       "《象》曰：六五「貞疾」，乘剛也。「恆不死」，中未亡也。",
       "《象》曰：「冥豫」在上，何可長也！"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -831,31 +723,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "坤",
-    "upperXiang": "雷",
-    "lowerXiang": "地",
-    "guaXiang": "雷地",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "upper_gua": "震",
+    "lower_gua": "坤",
+    "upper_xiang": "雷",
+    "lower_xiang": "地",
+    "gua_xiang": "雷地"
   },
   {
-    "guaIndex": 16,
-    "guaName": "隨",
-    "guaCi": "隨，元亨，利貞，無咎。",
+    "gua_index": 16,
+    "gua_name": "隨",
+    "gua_ci": "隨，元亨，利貞，無咎。",
     "duan": "《彖》曰：隨，剛來而下柔，動而說，隨。大亨貞，無咎，而天下隨時，隨之時義大矣哉！",
     "xiang": "《象》曰：澤中有雷，隨。君子以向晦入宴息。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：官有渝，貞吉。出門交有功。",
       "六二：系小子，失丈夫。",
       "六三：系丈夫，失小子。隨有求得，利居貞。",
@@ -863,7 +753,7 @@ const guaList = [
       "九五：孚于嘉，吉。",
       "上六：拘系之，乃從維之。王用亨于西山。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「官有渝」，從正吉也。「出門交有功」，不失也。",
       "《象》曰：「系小子」，弗兼與也。",
       "《象》曰：「系丈夫」，志舍下也。",
@@ -871,7 +761,7 @@ const guaList = [
       "《象》曰：「孚于嘉，吉」，位正中也。",
       "《象》曰：「拘系之」，上窮也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -879,31 +769,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       1
     ],
-    "upperGua": "震",
-    "lowerGua": "兑",
-    "upperXiang": "雷",
-    "lowerXiang": "泽",
-    "guaXiang": "雷泽",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 3
+    "upper_gua": "震",
+    "lower_gua": "兑",
+    "upper_xiang": "雷",
+    "lower_xiang": "泽",
+    "gua_xiang": "雷泽"
   },
   {
-    "guaIndex": 17,
-    "guaName": "蠱",
-    "guaCi": "蠱，元亨，利涉大川。先甲三日，后甲三日。",
+    "gua_index": 17,
+    "gua_name": "蠱",
+    "gua_ci": "蠱，元亨，利涉大川。先甲三日，后甲三日。",
     "duan": "《彖》曰：蠱，剛上而柔下，巽而止，蠱。「蠱，元亨」，而天下治也。「利涉大川」，往有事也。「先甲三日，后甲三日」，終則有始，天行也。",
     "xiang": "《象》曰：山下有風，蠱。君子以振民育德。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：干父之蠱，有子，考無咎，厲，終吉。",
       "九二：干母之蠱，不可貞。",
       "九三：干父之蠱，小有晦，無大咎。",
@@ -911,7 +799,7 @@ const guaList = [
       "六五：干父之蠱，用譽。",
       "上九：不事王侯，高尚其事。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「干父之蠱」，意承考也。",
       "《象》曰：「干母之蠱」，得中道也。",
       "《象》曰：「干父之蠱」，終無咎也。",
@@ -919,7 +807,7 @@ const guaList = [
       "《象》曰：「干父之蠱」，承以德也。",
       "《象》曰：「不事王侯」，志可則也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -927,31 +815,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "艮",
-    "lowerGua": "离",
-    "upperXiang": "山",
-    "lowerXiang": "火",
-    "guaXiang": "山火",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 5
+    "upper_gua": "艮",
+    "lower_gua": "离",
+    "upper_xiang": "山",
+    "lower_xiang": "火",
+    "gua_xiang": "山火"
   },
   {
-    "guaIndex": 18,
-    "guaName": "臨",
-    "guaCi": "臨，元亨，利貞。至于八月有凶。",
+    "gua_index": 18,
+    "gua_name": "臨",
+    "gua_ci": "臨，元亨，利貞。至于八月有凶。",
     "duan": "《彖》曰：臨，剛浸而長。說而順，剛中而應，大亨以正，天之道也。「至于八月有凶」，消不久也。",
     "xiang": "《象》曰：澤上有地，臨。君子以教思無窮、容保民無疆。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：咸臨，貞吉。",
       "九二：咸臨，吉無不利。",
       "六三：甘臨，無攸利。既憂之，無咎。",
@@ -959,7 +845,7 @@ const guaList = [
       "六五：知臨，大君之宜，吉。",
       "上六：敦臨，吉，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「咸臨，貞吉」，志行正也。",
       "《象》曰：「咸臨，吉無不利」，未順命也。",
       "《象》曰：「甘臨」，位不當也。「既憂之」，咎不長也。",
@@ -967,7 +853,7 @@ const guaList = [
       "《象》曰：「大君之宜」，行中之謂也。",
       "《象》曰：敦臨之吉，志在內也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -975,31 +861,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "坤",
-    "upperXiang": "雷",
-    "lowerXiang": "地",
-    "guaXiang": "雷地",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "upper_gua": "震",
+    "lower_gua": "坤",
+    "upper_xiang": "雷",
+    "lower_xiang": "地",
+    "gua_xiang": "雷地"
   },
   {
-    "guaIndex": 19,
-    "guaName": "觀",
-    "guaCi": "觀，盥而不荐，有孚顒若。",
+    "gua_index": 19,
+    "gua_name": "觀",
+    "gua_ci": "觀，盥而不荐，有孚顒若。",
     "duan": "《彖》曰：大觀在上，順而巽，中正以觀天下。「觀，盥而不荐，有孚顒若」，下觀而化也。觀天之神道，而四時不忒，聖人以神道設教，而天下服矣。",
     "xiang": "《象》曰：風行地上，觀。先王以省方，觀民設教。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：童觀，小人無咎，君子吝。",
       "六二：窺觀，利女貞。",
       "六三：觀我生，進退。",
@@ -1007,7 +891,7 @@ const guaList = [
       "九五：觀我生，君子無咎。",
       "上九：觀其生，君子無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：初六「童觀」，小人道也。",
       "《象》曰：「窺觀」「女貞」，亦可丑也。",
       "《象》曰：「觀我生，進退」，未失道也。",
@@ -1015,7 +899,7 @@ const guaList = [
       "《象》曰：「觀我生」，觀民也。",
       "《象》曰：「觀其生」，志未平也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -1023,31 +907,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "离",
-    "upperXiang": "风",
-    "lowerXiang": "火",
-    "guaXiang": "风火",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 5
+    "upper_gua": "巽",
+    "lower_gua": "离",
+    "upper_xiang": "风",
+    "lower_xiang": "火",
+    "gua_xiang": "风火"
   },
   {
-    "guaIndex": 20,
-    "guaName": "噬嗑",
-    "guaCi": "噬嗑，亨。利用獄。",
+    "gua_index": 20,
+    "gua_name": "噬嗑",
+    "gua_ci": "噬嗑，亨。利用獄。",
     "duan": "《彖》曰：頤中有物，曰噬嗑。噬嗑而亨，剛柔分，動而明，雷電合而章。柔得中而上行，雖不當位，利用獄也。",
     "xiang": "《象》曰：雷電噬嗑。先王以明罰敕法。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：履校滅趾，無咎。",
       "六二：噬膚滅鼻，無咎。",
       "六三：噬臘肉，遇毒。小吝，無咎。",
@@ -1055,7 +937,7 @@ const guaList = [
       "六五：噬乾肉，得黃金，貞厲，無咎。",
       "上九：何校滅耳，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「履校滅趾」，不行也。",
       "《象》曰：「噬膚滅鼻」，乘剛也。",
       "《象》曰：「遇毒」，位不當也。",
@@ -1063,7 +945,7 @@ const guaList = [
       "《象》曰：「貞厲，無咎」，得當也。",
       "《象》曰：「何校滅耳」，聰不明也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -1071,31 +953,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "震",
-    "upperXiang": "火",
-    "lowerXiang": "雷",
-    "guaXiang": "火雷",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 1
+    "upper_gua": "离",
+    "lower_gua": "震",
+    "upper_xiang": "火",
+    "lower_xiang": "雷",
+    "gua_xiang": "火雷"
   },
   {
-    "guaIndex": 21,
-    "guaName": "賁",
-    "guaCi": "賁，亨。小利有所往。",
+    "gua_index": 21,
+    "gua_name": "賁",
+    "gua_ci": "賁，亨。小利有所往。",
     "duan": "《彖》曰：賁，亨。柔來而文剛，故亨。分剛上而文柔，故小利有攸往。天文也。文明以止，人文也。觀乎天文，以察時變。觀乎人文，以化成天下。",
     "xiang": "《象》曰：山下有火，賁。君子以明庶政，無敢折獄。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：賁其趾，舍車而徒。",
       "六二：賁其須。",
       "九三：賁如濡如，永貞吉。",
@@ -1103,7 +983,7 @@ const guaList = [
       "六五：賁于丘園，束帛戔戔，吝，終吉。",
       "上九：白賁，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「舍車而徒」，義弗乘也。",
       "《象》曰：「賁其須」，與上興也。",
       "《象》曰：永貞之吉，終莫之陵也。",
@@ -1111,7 +991,7 @@ const guaList = [
       "《象》曰：六五之吉，有喜也。",
       "《象》曰：「白賁，無咎」，上得志也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -1119,31 +999,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "坎",
-    "lowerGua": "离",
-    "upperXiang": "水",
-    "lowerXiang": "火",
-    "guaXiang": "水火",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 5
+    "upper_gua": "坎",
+    "lower_gua": "离",
+    "upper_xiang": "水",
+    "lower_xiang": "火",
+    "gua_xiang": "水火"
   },
   {
-    "guaIndex": 22,
-    "guaName": "剝",
-    "guaCi": "剝，不利有攸往。",
+    "gua_index": 22,
+    "gua_name": "剝",
+    "gua_ci": "剝，不利有攸往。",
     "duan": "《彖》曰：剝，剝也，柔變剛也。「不利有攸往」，小人長也。順而止之，觀象也。君子尚消息盈虛，天行也。",
     "xiang": "《象》曰：山附地上，剝。上以厚下安宅。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：剝床以足，蔑貞凶。",
       "六二：剝床以辨，蔑貞凶。",
       "六三：剝之，無咎。",
@@ -1151,7 +1029,7 @@ const guaList = [
       "六五：貫魚，以宮人寵，無不利。",
       "上九：碩果不食，君子得輿，小人剝廬。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「剝床以足」，以滅下也。",
       "《象》曰：「剝床以辨」，未有與也。",
       "《象》曰：「剝之，無咎」，失上下也。",
@@ -1159,7 +1037,7 @@ const guaList = [
       "《象》曰：「以宮人寵」，終無尤也。",
       "《象》曰：「君子得輿」，民所載也。「小人剝廬」，終不可用也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       0,
@@ -1167,31 +1045,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "坤",
-    "lowerGua": "艮",
-    "upperXiang": "地",
-    "lowerXiang": "山",
-    "guaXiang": "地山",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 4
+    "upper_gua": "坤",
+    "lower_gua": "艮",
+    "upper_xiang": "地",
+    "lower_xiang": "山",
+    "gua_xiang": "地山"
   },
   {
-    "guaIndex": 23,
-    "guaName": "復",
-    "guaCi": "復，亨。出入無疾，朋來無咎。反復其道，七日來復，利有攸往。",
+    "gua_index": 23,
+    "gua_name": "復",
+    "gua_ci": "復，亨。出入無疾，朋來無咎。反復其道，七日來復，利有攸往。",
     "duan": "《彖》曰：復，亨。剛反動而以順行，是以「出入無疾，朋來無咎」。「反復其道，七日來復」，天行也。「利有攸往」，剛長也。復其見天地之心乎？",
     "xiang": "《象》曰：雷在地中，復。先王以至日閉關，商旅不行，后不省方。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：不復遠，無只悔，元吉。",
       "六二：休復，吉。",
       "六三：頻復，厲，無咎。",
@@ -1199,7 +1075,7 @@ const guaList = [
       "六五：敦復，無悔。",
       "上六：迷復，凶，有災眚。用行師，終有大敗，以其國君凶。至于十年不克征。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：不遠之復，以修身也。",
       "《象》曰：休復之吉，以下仁也。",
       "《象》曰：頻復之厲，義無咎也。",
@@ -1207,7 +1083,7 @@ const guaList = [
       "《象》曰：「敦復，無悔」，中以自考也。",
       "《象》曰：迷復之凶，反君道也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -1215,31 +1091,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "坤",
-    "upperXiang": "雷",
-    "lowerXiang": "地",
-    "guaXiang": "雷地",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "upper_gua": "震",
+    "lower_gua": "坤",
+    "upper_xiang": "雷",
+    "lower_xiang": "地",
+    "gua_xiang": "雷地"
   },
   {
-    "guaIndex": 24,
-    "guaName": "無妄",
-    "guaCi": "無妄，元亨，利貞。其匪正有眚，不利有攸往。",
+    "gua_index": 24,
+    "gua_name": "無妄",
+    "gua_ci": "無妄，元亨，利貞。其匪正有眚，不利有攸往。",
     "duan": "《彖》曰：無妄，剛自外來而為主於內。動而健，剛中而應，大亨以正，天之命也。「其匪正有眚，不利有攸往」，無妄之往，何之矣？天命不佑行矣哉？",
     "xiang": "《象》曰：天下雷行，物與無妄。先王以茂對時，育萬物。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：無妄往，吉。",
       "六二：不耕獲，不菑畬，則利有攸往。",
       "六三：無妄之災，或系之牛，行人之得，邑人之災。",
@@ -1247,7 +1121,7 @@ const guaList = [
       "九五：無妄之疾，勿藥有喜。",
       "上九：無妄行，有眚，無攸利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：無妄之往，得志也。",
       "《象》曰：「不耕獲」，未富也。",
       "《象》曰：行人得牛，邑人災也。",
@@ -1255,7 +1129,7 @@ const guaList = [
       "《象》曰：無妄之藥，不可試也。",
       "《象》曰：無妄之行，窮之災也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -1263,31 +1137,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "艮",
-    "lowerGua": "乾",
-    "upperXiang": "山",
-    "lowerXiang": "天",
-    "guaXiang": "山天",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 7
+    "upper_gua": "艮",
+    "lower_gua": "乾",
+    "upper_xiang": "山",
+    "lower_xiang": "天",
+    "gua_xiang": "山天"
   },
   {
-    "guaIndex": 25,
-    "guaName": "大畜",
-    "guaCi": "大畜，利貞。不家食吉，利涉大川。",
+    "gua_index": 25,
+    "gua_name": "大畜",
+    "gua_ci": "大畜，利貞。不家食吉，利涉大川。",
     "duan": "《彖》曰：大畜，剛健篤實輝光，日新其德。剛上而尚賢，能止健，大正也。「不家食吉」，養賢也。「利涉大川」，應乎天也。",
     "xiang": "《象》曰：天在山中，大畜。君子以多識前言往行，以畜其德。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：有厲，利已。",
       "九二：輿說輻。",
       "九三：良馬逐，利艱貞。曰閑輿衛，利有攸往。",
@@ -1295,7 +1167,7 @@ const guaList = [
       "六五：豶豕之牙，吉。",
       "上九：何天之衢，亨。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「有厲，利已」，不犯災也。",
       "《象》曰：「輿說輻」，中無尤也。",
       "《象》曰：「利有攸往」，上合志也。",
@@ -1303,7 +1175,7 @@ const guaList = [
       "《象》曰：六五之吉，有慶也。",
       "《象》曰：「何天之衢」，道大行也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -1311,31 +1183,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "艮",
-    "upperXiang": "天",
-    "lowerXiang": "山",
-    "guaXiang": "天山",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 4
+    "upper_gua": "乾",
+    "lower_gua": "艮",
+    "upper_xiang": "天",
+    "lower_xiang": "山",
+    "gua_xiang": "天山"
   },
   {
-    "guaIndex": 26,
-    "guaName": "頤",
-    "guaCi": "頤，貞吉。觀頤，自求口實。",
+    "gua_index": 26,
+    "gua_name": "頤",
+    "gua_ci": "頤，貞吉。觀頤，自求口實。",
     "duan": "《彖》曰：「頤，貞吉」，養正則吉也。「觀頤」，觀其所養也。「自求口實」，觀其自養也。天地養萬物，聖人養賢以及萬民。頤之時義大矣哉！",
     "xiang": "《象》曰：山下有雷，頤。君子以慎言語，節飲食。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：舍爾靈龜，觀我朵頤，凶。",
       "六二：顛頤，拂經，于丘頤，征凶。",
       "六三：拂頤，貞凶，十年勿用，無攸利。",
@@ -1343,7 +1213,7 @@ const guaList = [
       "六五：拂經，居貞吉，不可涉大川。",
       "上九：由頤，厲，吉，利涉大川。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「觀我朵頤」，亦不足貴也。",
       "《象》曰：六二「征凶」，行失類也。",
       "《象》曰：「十年勿用」，道大悖也。",
@@ -1351,7 +1221,7 @@ const guaList = [
       "《象》曰：居貞之吉，順以從上也。",
       "《象》曰：「由頤，厲，吉」，大有慶也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -1359,31 +1229,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "艮",
-    "lowerGua": "震",
-    "upperXiang": "山",
-    "lowerXiang": "雷",
-    "guaXiang": "山雷",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 1
+    "upper_gua": "艮",
+    "lower_gua": "震",
+    "upper_xiang": "山",
+    "lower_xiang": "雷",
+    "gua_xiang": "山雷"
   },
   {
-    "guaIndex": 27,
-    "guaName": "大過",
-    "guaCi": "大過，棟橈，利有攸往，亨。",
+    "gua_index": 27,
+    "gua_name": "大過",
+    "gua_ci": "大過，棟橈，利有攸往，亨。",
     "duan": "《彖》曰：大過，大者過也。「棟橈」，本末弱也。剛過而中，巽而說行，「利有攸往」，乃亨。大過之時義大矣哉！",
     "xiang": "《象》曰：澤滅木，大過。君子以獨立不懼，遯世無悶。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：藉用白茅，無咎。",
       "九二：枯楊生稊，老夫得其女妻，無不利。",
       "九三：棟橈，凶。",
@@ -1391,7 +1259,7 @@ const guaList = [
       "九五：枯楊生華，老婦得其士夫，無咎無譽。",
       "上六：過涉滅頂，凶，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「藉用白茅」，柔在下也。",
       "《象》曰：老夫女妻，過以相與也。",
       "《象》曰：棟橈之凶，不可以有輔也。",
@@ -1399,7 +1267,7 @@ const guaList = [
       "《象》曰：「枯楊生華」，何可久也。老婦士夫，亦可丑也。",
       "《象》曰：過涉之凶，不可咎也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -1407,31 +1275,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "兑",
-    "upperXiang": "风",
-    "lowerXiang": "泽",
-    "guaXiang": "风泽",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 3
+    "upper_gua": "巽",
+    "lower_gua": "兑",
+    "upper_xiang": "风",
+    "lower_xiang": "泽",
+    "gua_xiang": "风泽"
   },
   {
-    "guaIndex": 28,
-    "guaName": "坎",
-    "guaCi": "坎，習坎，有孚，維心亨，行有尚。",
+    "gua_index": 28,
+    "gua_name": "坎",
+    "gua_ci": "坎，習坎，有孚，維心亨，行有尚。",
     "duan": "《彖》曰：「習坎」，重險也。水流而不盈，行險而不失其信。「維心亨」，乃以剛中也。「行有尚」，往有功也。天險不可升也，地險山川丘陵也。王公設險以守其國。坎之時用大矣哉！",
     "xiang": "《象》曰：水洊至，習坎。君子以常德行，習教事。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：習坎，入于坎窞，凶。",
       "九二：坎有險，求小得。",
       "六三：來之坎坎，險且枕，入于坎窞，勿用。",
@@ -1439,7 +1305,7 @@ const guaList = [
       "九五：坎不盈，祇既平，無咎。",
       "上六：係用徽纆，置于叢棘，三歲不得，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：習坎入坎，失道凶也。",
       "《象》曰：「求小得」，未出中也。",
       "《象》曰：「來之坎坎」，終無功也。",
@@ -1447,7 +1313,7 @@ const guaList = [
       "《象》曰：「坎不盈」，中未大也。",
       "《象》曰：上六失道，凶三歲也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -1455,31 +1321,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "坎",
-    "lowerGua": "坎",
-    "upperXiang": "水",
-    "lowerXiang": "水",
-    "guaXiang": "水水",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 2
+    "upper_gua": "坎",
+    "lower_gua": "坎",
+    "upper_xiang": "水",
+    "lower_xiang": "水",
+    "gua_xiang": "水水"
   },
   {
-    "guaIndex": 29,
-    "guaName": "離",
-    "guaCi": "離，利貞，亨。畜牝牛吉。",
+    "gua_index": 29,
+    "gua_name": "離",
+    "gua_ci": "離，利貞，亨。畜牝牛吉。",
     "duan": "《彖》曰：離，麗也。日月麗乎天，百谷草木麗乎土，重明以麗乎正，乃化成天下。柔麗乎中正，故亨。是以「畜牝牛吉」也。",
     "xiang": "《象》曰：明兩作，離。大人以繼明照于四方。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：履錯然，敬之無咎。",
       "六二：黃離，元吉。",
       "九三：日昃之離，不鼓缶而歌，則大耋之嗟，凶。",
@@ -1487,7 +1351,7 @@ const guaList = [
       "六五：出涕沱若，戚嗟若，吉。",
       "上九：王用出征，有嘉折首，獲其匪丑，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：履錯之敬，以辟咎也。",
       "《象》曰：「黃離，元吉」，得中道也。",
       "《象》曰：「日昃之離」，何可久也。",
@@ -1495,7 +1359,7 @@ const guaList = [
       "《象》曰：六五之吉，離王公也。",
       "《象》曰：「王用出征」，以正邦也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -1503,31 +1367,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "离",
-    "upperXiang": "火",
-    "lowerXiang": "火",
-    "guaXiang": "火火",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 5
+    "upper_gua": "离",
+    "lower_gua": "离",
+    "upper_xiang": "火",
+    "lower_xiang": "火",
+    "gua_xiang": "火火"
   },
   {
-    "guaIndex": 30,
-    "guaName": "咸",
-    "guaCi": "咸，亨，利貞。取女吉。",
+    "gua_index": 30,
+    "gua_name": "咸",
+    "gua_ci": "咸，亨，利貞。取女吉。",
     "duan": "《彖》曰：咸，感也。柔上而剛下，二氣感應以相與，止而說，男下女，是以「亨，利貞，取女吉」也。天地感而萬物化生，聖人感人心而天下和平。觀其所感，而天地萬物之情可見矣！",
     "xiang": "《象》曰：山上有澤，咸。君子以虛受人。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：咸其拇。",
       "六二：咸其腓，凶，居吉。",
       "九三：咸其股，執其隨，往吝。",
@@ -1535,7 +1397,7 @@ const guaList = [
       "九五：咸其脢，無悔。",
       "上六：咸其輔、頰、舌。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「咸其拇」，志在外也。",
       "《象》曰：雖凶，居吉，順不害也。",
       "《象》曰：「咸其股」，亦不處也。志在隨人，所執下也。",
@@ -1543,7 +1405,7 @@ const guaList = [
       "《象》曰：「咸其脢」，志末也。",
       "《象》曰：「咸其輔、頰、舌」，滕口說也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -1551,31 +1413,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "艮",
-    "upperXiang": "泽",
-    "lowerXiang": "山",
-    "guaXiang": "泽山",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 4
+    "upper_gua": "兑",
+    "lower_gua": "艮",
+    "upper_xiang": "泽",
+    "lower_xiang": "山",
+    "gua_xiang": "泽山"
   },
   {
-    "guaIndex": 31,
-    "guaName": "恆",
-    "guaCi": "恆，亨，無咎，利貞，利有攸往。",
+    "gua_index": 31,
+    "gua_name": "恆",
+    "gua_ci": "恆，亨，無咎，利貞，利有攸往。",
     "duan": "《彖》曰：恆，久也。剛上而柔下，雷風相與，巽而動，剛柔皆應，恆。「恆，亨，無咎，利貞」，久於其道也，天地之道，恆久而不已也。「利有攸往」，終則有始也。日月得天而能久照，四時變化而能久成，聖人久於其道而天下化成。觀其所恆，而天地萬物之情可見矣！",
     "xiang": "《象》曰：雷風，恆。君子以立不易方。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：浚恆，貞凶，無攸利。",
       "九二：悔亡。",
       "九三：不恆其德，或承之羞，貞吝。",
@@ -1583,7 +1443,7 @@ const guaList = [
       "六五：恆其德，貞婦人吉，夫子凶。",
       "上六：振恆，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：浚恆之凶，始求深也。",
       "《象》曰：九二「悔亡」，能久中也。",
       "《象》曰：「不恆其德」，無所容也。",
@@ -1591,7 +1451,7 @@ const guaList = [
       "《象》曰：婦人貞吉，從一而終也。夫子制義，從婦凶也。",
       "《象》曰：「振恆」在上，大無功也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -1599,31 +1459,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "震",
-    "upperXiang": "风",
-    "lowerXiang": "雷",
-    "guaXiang": "风雷",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 1
+    "upper_gua": "巽",
+    "lower_gua": "震",
+    "upper_xiang": "风",
+    "lower_xiang": "雷",
+    "gua_xiang": "风雷"
   },
   {
-    "guaIndex": 32,
-    "guaName": "遯",
-    "guaCi": "遯，亨，小利貞。",
+    "gua_index": 32,
+    "gua_name": "遯",
+    "gua_ci": "遯，亨，小利貞。",
     "duan": "《彖》曰：「遯，亨」，遯而亨也。剛當位而應，與時行也。「小利貞」，浸而長也。",
     "xiang": "遯之時義大矣哉！",
-    "yaoCi": [
+    "yao_ci": [
       "初六：遯尾，厲，勿用有攸往。",
       "六二：執之用黃牛之革，莫之勝說。",
       "九三：系遯，有疾厲，畜臣妾吉。",
@@ -1631,7 +1489,7 @@ const guaList = [
       "九五：嘉遯，貞吉。",
       "上九：肥遯，無不利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：天下有山，遯。君子以遠小人，不惡而嚴。",
       "《象》曰：遯尾之厲，不往何災也？",
       "《象》曰：執用黃牛，固志也。",
@@ -1640,7 +1498,7 @@ const guaList = [
       "《象》曰：「嘉遯，貞吉」，以正志也。",
       "《象》曰：「肥遯，無不利」，無所疑也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -1648,31 +1506,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "艮",
-    "upperXiang": "天",
-    "lowerXiang": "山",
-    "guaXiang": "天山",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 4
+    "upper_gua": "乾",
+    "lower_gua": "艮",
+    "upper_xiang": "天",
+    "lower_xiang": "山",
+    "gua_xiang": "天山"
   },
   {
-    "guaIndex": 33,
-    "guaName": "大壯",
-    "guaCi": "大壯，利貞。",
+    "gua_index": 33,
+    "gua_name": "大壯",
+    "gua_ci": "大壯，利貞。",
     "duan": "《彖》曰：大壯，大者壯也。剛以動，故壯。「大壯，利貞」，大者正也。正大而天地之情可見矣！",
     "xiang": "《象》曰：雷在天上，大壯。君子以非禮勿履。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：壯于趾，征凶，有孚。",
       "九二：貞吉。",
       "九三：小人用壯，君子用罔，貞厲。羝羊觸藩，羸其角。",
@@ -1680,7 +1536,7 @@ const guaList = [
       "六五：喪羊于易，無悔。",
       "上六：羝羊觸藩，不能退，不能遂，無攸利，艱則吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「壯于趾」，其孚窮也。",
       "《象》曰：九二「貞吉」，以中也。",
       "《象》曰：「小人用壯」，君子罔也。",
@@ -1688,7 +1544,7 @@ const guaList = [
       "《象》曰：「喪羊于易」，位不當也。",
       "《象》曰：「不能退，不能遂」，不祥也。「艱則吉」，咎不長也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -1696,31 +1552,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "震",
-    "lowerGua": "乾",
-    "upperXiang": "雷",
-    "lowerXiang": "天",
-    "guaXiang": "雷天",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 7
+    "upper_gua": "震",
+    "lower_gua": "乾",
+    "upper_xiang": "雷",
+    "lower_xiang": "天",
+    "gua_xiang": "雷天"
   },
   {
-    "guaIndex": 34,
-    "guaName": "晉",
-    "guaCi": "晉，康侯用錫馬蕃庶，晝日三接。",
+    "gua_index": 34,
+    "gua_name": "晉",
+    "gua_ci": "晉，康侯用錫馬蕃庶，晝日三接。",
     "duan": "《彖》曰：晉，進也。明出地上，順而麗乎大明，柔進而上行，是以「康侯用錫馬蕃庶，晝日三接」也。",
     "xiang": "《象》曰：明出地上，晉。君子以自昭明德。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：晉如，摧如，貞吉。罔孚，裕，無咎。",
       "六二：晉如，愁如，貞吉。受茲介福于其王母。",
       "六三：眾允，悔亡。",
@@ -1728,7 +1582,7 @@ const guaList = [
       "六五：悔亡，失得勿恤，往吉，無不利。",
       "上九：晉其角，維用伐邑，厲，吉，無咎，貞吝。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「晉如，摧如」，獨行正也。「裕，無咎」，未受命也。",
       "《象》曰：「受茲介福」，以中正也。",
       "《象》曰：眾允之，志上行也。",
@@ -1736,7 +1590,7 @@ const guaList = [
       "《象》曰：「失得勿恤」，往有慶也。",
       "《象》曰：「維用伐邑」，道未光也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -1744,31 +1598,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "坤",
-    "upperXiang": "火",
-    "lowerXiang": "地",
-    "guaXiang": "火地",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 0
+    "upper_gua": "离",
+    "lower_gua": "坤",
+    "upper_xiang": "火",
+    "lower_xiang": "地",
+    "gua_xiang": "火地"
   },
   {
-    "guaIndex": 35,
-    "guaName": "明夷",
-    "guaCi": "明夷，利艱貞。",
+    "gua_index": 35,
+    "gua_name": "明夷",
+    "gua_ci": "明夷，利艱貞。",
     "duan": "《彖》曰：明入地中，明夷。內文明而外柔順，以蒙大難，文王以之。「利艱貞」，晦其明也。內難而能正其志，箕子以之。",
     "xiang": "《象》曰：明入地中，明夷。君子以蒞眾，用晦而明。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：明夷于飛，垂其翼。君子于行，三日不食。有攸往，主人有言。",
       "六二：明夷，夷于左股，用拯馬壯，吉。",
       "九三：明夷于南狩，得其大首，不可疾貞。",
@@ -1776,7 +1628,7 @@ const guaList = [
       "六五：箕子之明夷，利貞。",
       "上六：不明晦，初登于天，后入于地。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「君子于行」，義不食也。",
       "《象》曰：六二之吉，順以則也。",
       "《象》曰：南狩之，志乃大得也。",
@@ -1784,7 +1636,7 @@ const guaList = [
       "《象》曰：箕子之貞，明不可息也。",
       "《象》曰：「初登于天」，照四國也。「后入于地」，失則也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -1792,31 +1644,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "艮",
-    "upperXiang": "火",
-    "lowerXiang": "山",
-    "guaXiang": "火山",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 4
+    "upper_gua": "离",
+    "lower_gua": "艮",
+    "upper_xiang": "火",
+    "lower_xiang": "山",
+    "gua_xiang": "火山"
   },
   {
-    "guaIndex": 36,
-    "guaName": "家人",
-    "guaCi": "家人，利女貞。",
+    "gua_index": 36,
+    "gua_name": "家人",
+    "gua_ci": "家人，利女貞。",
     "duan": "《彖》曰：家人，女正位乎內，男正位乎外，男女正，天地之大義也。家人有嚴君焉，父母之謂也。父父，子子，兄兄，弟弟，夫夫，婦婦，而家道正。正家而天下定矣。",
     "xiang": "《象》曰：風自火出，家人。君子以言有物，而行有恆。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：閑有家，悔亡。",
       "六二：無攸遂，在中饋，貞吉。",
       "九三：家人嗃嗃，悔厲吉。婦子嘻嘻，終吝。",
@@ -1824,7 +1674,7 @@ const guaList = [
       "九五：王假有家，勿恤吉。",
       "上九：有孚威如，終吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「閑有家」，志未變也。",
       "《象》曰：六二之吉，順以巽也。",
       "《象》曰：「家人嗃嗃」，未失也。「婦子嘻嘻」，失家節也。",
@@ -1832,7 +1682,7 @@ const guaList = [
       "《象》曰：「王假有家」，交相愛也。",
       "《象》曰：威如之吉，反身之謂也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -1840,31 +1690,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "离",
-    "upperXiang": "火",
-    "lowerXiang": "火",
-    "guaXiang": "火火",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 5
+    "upper_gua": "离",
+    "lower_gua": "离",
+    "upper_xiang": "火",
+    "lower_xiang": "火",
+    "gua_xiang": "火火"
   },
   {
-    "guaIndex": 37,
-    "guaName": "睽",
-    "guaCi": "睽，小事吉。",
+    "gua_index": 37,
+    "gua_name": "睽",
+    "gua_ci": "睽，小事吉。",
     "duan": "《彖》曰：睽，火動而上，澤動而下。二女同居，其志不同行。說而麗乎明，柔進而上行，得中而應乎剛，是以「小事吉」。天地睽而其事同也，男女睽而其志通也，萬物睽而其事類也。睽之時用大矣哉！",
     "xiang": "《象》曰：上火下澤，睽。君子以同而異。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：悔亡，喪馬勿逐，自復。見惡人無咎。",
       "九二：遇主于巷，無咎。",
       "六三：見輿曳，其牛掣，其人天且劓，無初有終。",
@@ -1872,7 +1720,7 @@ const guaList = [
       "六五：悔亡，厥宗噬膚，往何咎。",
       "上九：睽孤，見豕負涂，載鬼一車，先張之弧，后說之弧，匪寇婚媾，往遇雨則吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「見惡人」，以辟咎也。",
       "《象》曰：「遇主于巷」，未失道也。",
       "《象》曰：「見輿曳」，位不當也。「無初有終」，遇剛也。",
@@ -1880,7 +1728,7 @@ const guaList = [
       "《象》曰：「厥宗噬膚」，往有慶也。",
       "《象》曰：遇雨之吉，群疑亡也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -1888,31 +1736,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "兑",
-    "lowerGua": "离",
-    "upperXiang": "泽",
-    "lowerXiang": "火",
-    "guaXiang": "泽火",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 5
+    "upper_gua": "兑",
+    "lower_gua": "离",
+    "upper_xiang": "泽",
+    "lower_xiang": "火",
+    "gua_xiang": "泽火"
   },
   {
-    "guaIndex": 38,
-    "guaName": "蹇",
-    "guaCi": "蹇，利西南，不利東北。利見大人。貞吉。",
+    "gua_index": 38,
+    "gua_name": "蹇",
+    "gua_ci": "蹇，利西南，不利東北。利見大人。貞吉。",
     "duan": "《彖》曰：蹇，難也，險在前也。見險而能止，知矣哉！「蹇，利西南」，往得中也。「不利東北」，其道窮也。「利見大人」，往有功也。當位「貞吉」，以正邦也。蹇之時用大矣哉！",
     "xiang": "《象》曰：山上有水，蹇。君子以反身修德。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：往蹇，來譽。",
       "六二：王臣蹇蹇，匪躬之故。",
       "九三：往蹇來反。",
@@ -1920,7 +1766,7 @@ const guaList = [
       "九五：大蹇朋來。",
       "上六：往蹇來碩，吉。利見大人。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「往蹇，來譽」，宜待也。",
       "《象》曰：「王臣蹇蹇」，終無尤也。",
       "《象》曰：「往蹇來反」，內喜之也。",
@@ -1928,7 +1774,7 @@ const guaList = [
       "《象》曰：「大蹇朋來」，以中節也。",
       "《象》曰：「往蹇來碩」，志在內也。「利見大人」，以從貴也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -1936,31 +1782,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "坎",
-    "upperXiang": "山",
-    "lowerXiang": "水",
-    "guaXiang": "山水",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 2
+    "upper_gua": "艮",
+    "lower_gua": "坎",
+    "upper_xiang": "山",
+    "lower_xiang": "水",
+    "gua_xiang": "山水"
   },
   {
-    "guaIndex": 39,
-    "guaName": "解",
-    "guaCi": "解，利西南。無所往，其來復吉。有攸往，夙吉。",
+    "gua_index": 39,
+    "gua_name": "解",
+    "gua_ci": "解，利西南。無所往，其來復吉。有攸往，夙吉。",
     "duan": "《彖》曰：解，險以動，動而免乎險，解。「解，利西南」，往得眾也。「其來復吉」，乃得中也。「有攸往，夙吉」，往有功也。天地解而雷雨作，雷雨作而百果草木皆甲坼，解之時義大矣哉！",
     "xiang": "《象》曰：雷雨作，解。君子以赦過宥罪。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：無咎。",
       "九二：田獲三狐，得黃矢，貞吉。",
       "六三：負且乘，致寇至，貞吝。",
@@ -1968,7 +1812,7 @@ const guaList = [
       "六五：君子維有解，吉。有孚于小人。",
       "上六：公用射隼于高墉之上，獲之，無不利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：剛柔之際，義無咎也。",
       "《象》曰：九二「貞吉」，得中道也。",
       "《象》曰：「負且乘」，亦可丑也。自我致戎，又誰咎也。",
@@ -1976,7 +1820,7 @@ const guaList = [
       "《象》曰：君子有解，小人退也。",
       "《象》曰：「公用射隼」，以解悖也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -1984,31 +1828,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "坎",
-    "upperXiang": "雷",
-    "lowerXiang": "水",
-    "guaXiang": "雷水",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 2
+    "upper_gua": "震",
+    "lower_gua": "坎",
+    "upper_xiang": "雷",
+    "lower_xiang": "水",
+    "gua_xiang": "雷水"
   },
   {
-    "guaIndex": 40,
-    "guaName": "損",
-    "guaCi": "損，有孚，元吉，無咎，可貞，利有攸往。曷之用二簋，可用享。",
+    "gua_index": 40,
+    "gua_name": "損",
+    "gua_ci": "損，有孚，元吉，無咎，可貞，利有攸往。曷之用二簋，可用享。",
     "duan": "《彖》曰：損，損下益上，其道上行。損而「有孚，元吉，無咎，可貞，利有攸往。曷之用？二簋，可用享」。二簋應有時。損剛益柔有時，損益盈虛，與時偕行。",
     "xiang": "《象》曰：山下有澤，損。君子以懲忿窒欲。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：已事遄往，無咎，酌損之。",
       "九二：利貞，征凶，弗損益之。",
       "六三：三人行，則損一人。一人行，則得其友。",
@@ -2016,7 +1858,7 @@ const guaList = [
       "六五：或益之，十朋之龜弗克違，元吉。",
       "上九：弗損，益之，無咎，貞吉，利有攸往。得臣無家。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「已事遄往」，尚合志也。",
       "《象》曰：九二「利貞」，中以為志也。",
       "《象》曰：「一人行」，三則疑也。",
@@ -2024,7 +1866,7 @@ const guaList = [
       "《象》曰：六五「元吉」，自上佑也。",
       "《象》曰：「弗損，益之」，大得志也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2032,31 +1874,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "艮",
-    "upperXiang": "泽",
-    "lowerXiang": "山",
-    "guaXiang": "泽山",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 4
+    "upper_gua": "兑",
+    "lower_gua": "艮",
+    "upper_xiang": "泽",
+    "lower_xiang": "山",
+    "gua_xiang": "泽山"
   },
   {
-    "guaIndex": 41,
-    "guaName": "益",
-    "guaCi": "益，利有攸往，利涉大川。",
+    "gua_index": 41,
+    "gua_name": "益",
+    "gua_ci": "益，利有攸往，利涉大川。",
     "duan": "《彖》曰：益，損上益下，民說無疆，自上下下，其道大光。「利有攸往」，中正有慶。「利涉大川」，木道乃行。益動而巽，日進無疆。天施地生，其益無方。凡益之道，與時偕行。",
     "xiang": "《象》曰：風雷，益。君子以見善則遷，有過則改。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：利用為大作，元吉，無咎。",
       "六二：或益之，十朋之龜弗克違，永貞吉。王用享于帝，吉。",
       "六三：益之用凶事，無咎。有孚中行，告公用圭。",
@@ -2064,7 +1904,7 @@ const guaList = [
       "九五：有孚惠心，勿問元吉。有孚惠我德。",
       "上九：莫益之，或擊之，立心勿恆，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「元吉，無咎」，下不厚事也。",
       "《象》曰：「或益之」，自外來也。",
       "《象》曰：益用凶事，固有之也。",
@@ -2072,7 +1912,7 @@ const guaList = [
       "《象》曰：「有孚惠心」，勿問之矣。「惠我德」，大得志也。",
       "《象》曰：「莫益之」，偏辭也。「或擊之」，自外來也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -2080,31 +1920,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "巽",
-    "upperXiang": "雷",
-    "lowerXiang": "风",
-    "guaXiang": "雷风",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 6
+    "upper_gua": "震",
+    "lower_gua": "巽",
+    "upper_xiang": "雷",
+    "lower_xiang": "风",
+    "gua_xiang": "雷风"
   },
   {
-    "guaIndex": 42,
-    "guaName": "夬",
-    "guaCi": "夬，揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。",
+    "gua_index": 42,
+    "gua_name": "夬",
+    "gua_ci": "夬，揚于王庭，孚號，有厲，告自邑，不利即戎，利有攸往。",
     "duan": "《彖》曰：夬，決也，剛決柔也。健而說，決而和，揚于王庭，柔乘五剛也。「孚號有厲」，其危乃光也。「告自邑，不利即戎」，所尚乃窮也。「利有攸往」，剛長乃終也。",
     "xiang": "《象》曰：澤上于天，夬。君子以施祿及下，居德則忌。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：壯于前趾，往不勝為吝。",
       "九二：惕號，莫夜有戎，勿恤。",
       "九三：壯于頄，有凶。君子夬夬獨行，遇雨若濡，有慍，無咎。",
@@ -2112,7 +1950,7 @@ const guaList = [
       "九五：莧陸夬夬中行，無咎。",
       "上六：無號，終有凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：不勝而往，咎也。",
       "《象》曰：「莫夜有戎」，得中道也。",
       "《象》曰：「君子夬夬」，終無咎也。",
@@ -2120,7 +1958,7 @@ const guaList = [
       "《象》曰：「中行，無咎」，中未光也。",
       "《象》曰：無號之凶，終不可長也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2128,31 +1966,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       1
     ],
-    "upperGua": "兑",
-    "lowerGua": "乾",
-    "upperXiang": "泽",
-    "lowerXiang": "天",
-    "guaXiang": "泽天",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 7
+    "upper_gua": "兑",
+    "lower_gua": "乾",
+    "upper_xiang": "泽",
+    "lower_xiang": "天",
+    "gua_xiang": "泽天"
   },
   {
-    "guaIndex": 43,
-    "guaName": "姤",
-    "guaCi": "姤，女壯，勿用取女。",
+    "gua_index": 43,
+    "gua_name": "姤",
+    "gua_ci": "姤，女壯，勿用取女。",
     "duan": "《彖》曰：姤，遇也，柔遇剛也。「勿用取女」，不可與長也。天地相遇，品物咸章也。剛遇中正，天下大行也。姤之時義大矣哉！",
     "xiang": "《象》曰：天下有風，姤。后以施命誥四方。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：系于金柅，貞吉，有攸往，見凶，羸豕踟躅。",
       "九二：包有魚，無咎，不利賓。",
       "九三：臀無膚，其行次且，厲，無大咎。",
@@ -2160,7 +1996,7 @@ const guaList = [
       "九五：以杞包瓜，含章，有隕自天。",
       "上九：姤其角，吝，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「系于金柅」，柔道牽也。",
       "《象》曰：「包有魚」，義不及賓也。",
       "《象》曰：「其行次且」，行未牽也。",
@@ -2168,7 +2004,7 @@ const guaList = [
       "《象》曰：九五「含章」，中正也。「有隕自天」，志不舍命也。",
       "《象》曰：「姤其角」，上窮吝也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       1,
@@ -2176,31 +2012,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "巽",
-    "upperXiang": "天",
-    "lowerXiang": "风",
-    "guaXiang": "天风",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 6
+    "upper_gua": "乾",
+    "lower_gua": "巽",
+    "upper_xiang": "天",
+    "lower_xiang": "风",
+    "gua_xiang": "天风"
   },
   {
-    "guaIndex": 44,
-    "guaName": "萃",
-    "guaCi": "萃，亨。王假有廟，利見大人，亨，利貞。用大牲吉，利有攸往。",
+    "gua_index": 44,
+    "gua_name": "萃",
+    "gua_ci": "萃，亨。王假有廟，利見大人，亨，利貞。用大牲吉，利有攸往。",
     "duan": "《彖》曰：萃，聚也。順以說，剛中而應，故聚也。「王假有廟」，致孝享也。「利見大人，亨」，聚以正也。「用大牲吉，利有攸往」，順天命也。觀其所聚，而天地萬物之情可見矣。",
     "xiang": "《象》曰：澤上於地，萃。君子以除戎器，戒不虞。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：有孚不終，乃亂乃萃，若號，一握為笑，勿恤，往無咎。",
       "六二：引吉，無咎，孚乃利用禴。",
       "六三：萃如，嗟如，無攸利，往無咎，小吝。",
@@ -2208,7 +2042,7 @@ const guaList = [
       "九五：萃有位，無咎。匪孚，元永貞，悔亡。",
       "上六：齎咨涕洟，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「乃亂乃萃」，其志亂也。",
       "《象》曰：「引吉，無咎」，中未變也。",
       "《象》曰：「往無咎」，上巽也。",
@@ -2216,7 +2050,7 @@ const guaList = [
       "《象》曰：「萃有位」，志未光也。",
       "《象》曰：「齎咨涕洟」，未安上也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2224,31 +2058,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "坤",
-    "upperXiang": "泽",
-    "lowerXiang": "地",
-    "guaXiang": "泽地",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 0
+    "upper_gua": "兑",
+    "lower_gua": "坤",
+    "upper_xiang": "泽",
+    "lower_xiang": "地",
+    "gua_xiang": "泽地"
   },
   {
-    "guaIndex": 45,
-    "guaName": "升",
-    "guaCi": "升，元亨，用見大人，勿恤。南征吉。",
+    "gua_index": 45,
+    "gua_name": "升",
+    "gua_ci": "升，元亨，用見大人，勿恤。南征吉。",
     "duan": "《彖》曰：柔以時升，巽而順，剛中而應，是以大亨。「用見大人，勿恤」，有慶也。「南征吉」，志行也。",
     "xiang": "《象》曰：地中生木，升。君子以順德，積小以高大。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：允升，大吉。",
       "九二：孚乃利用禴，無咎。",
       "九三：升虛邑。",
@@ -2256,7 +2088,7 @@ const guaList = [
       "六五：貞吉，升階。",
       "上六：冥升，利于不息之貞。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「允升，大吉」，上合志也。",
       "《象》曰：九二之孚，有喜也。",
       "《象》曰：「升虛邑」，無所疑也。",
@@ -2264,7 +2096,7 @@ const guaList = [
       "《象》曰：「貞吉，升階」，大得志也。",
       "《象》曰：「冥升」在上，消不富也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       0,
@@ -2272,31 +2104,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "坤",
-    "lowerGua": "巽",
-    "upperXiang": "地",
-    "lowerXiang": "风",
-    "guaXiang": "地风",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 6
+    "upper_gua": "坤",
+    "lower_gua": "巽",
+    "upper_xiang": "地",
+    "lower_xiang": "风",
+    "gua_xiang": "地风"
   },
   {
-    "guaIndex": 46,
-    "guaName": "困",
-    "guaCi": "困，亨，貞大人吉，無咎。有言不信。",
+    "gua_index": 46,
+    "gua_name": "困",
+    "gua_ci": "困，亨，貞大人吉，無咎。有言不信。",
     "duan": "《彖》曰：困，剛掩也。險以說，困而不失其所，亨，其唯君子乎？「貞大人吉」，以剛中也。「有言不信」，尚口乃窮也。",
     "xiang": "《象》曰：澤無水，困。君子以致命遂志。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：臀困于株木，入于幽谷，三歲不見。",
       "九二：困于酒食，朱紱方來，利用亨祀，征凶，無咎。",
       "六三：困于石，據于蒺藜，入于其宮，不見其妻，凶。",
@@ -2304,7 +2134,7 @@ const guaList = [
       "九五：劓刖，困于赤紱，乃徐有說，利用祭祀。",
       "上六：困于葛藟，于臲卼，曰動悔，有悔，征吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「入于幽谷」，幽不明也。",
       "《象》曰：「困于酒食」，中有慶也。",
       "《象》曰：「據于蒺藜」，乘剛也。「入于其宮，不見其妻」，不祥也。",
@@ -2312,7 +2142,7 @@ const guaList = [
       "《象》曰：「劓刖」，志未得也。「乃徐有說」，以中直也。「利用祭祀」，受福也。",
       "《象》曰：「困于葛藟」，未當也。「動悔，有悔」，吉行也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2320,31 +2150,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "坎",
-    "upperXiang": "泽",
-    "lowerXiang": "水",
-    "guaXiang": "泽水",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 2
+    "upper_gua": "兑",
+    "lower_gua": "坎",
+    "upper_xiang": "泽",
+    "lower_xiang": "水",
+    "gua_xiang": "泽水"
   },
   {
-    "guaIndex": 47,
-    "guaName": "井",
-    "guaCi": "井，改邑不改井，無喪無得。往來井井，汔至亦未繘井，羸其瓶，凶。",
+    "gua_index": 47,
+    "gua_name": "井",
+    "gua_ci": "井，改邑不改井，無喪無得。往來井井，汔至亦未繘井，羸其瓶，凶。",
     "duan": "《彖》曰：巽乎水而上水，井。井養而不窮也。「改邑不改井」，乃以剛中也。「汔至亦未繘井」，未有功也。「羸其瓶」，是以凶也。",
     "xiang": "《象》曰：木上有水，井。君子以勞民勸相。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：井泥不食，舊井無禽。",
       "九二：井谷射鮒，瓮敝漏。",
       "九三：井渫不食，為我民惻，可用汲，王明，并受其福。",
@@ -2352,7 +2180,7 @@ const guaList = [
       "九五：井冽，寒泉食。",
       "上六：井收勿幕，有孚元吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「井泥不食」，下也。「舊井無禽」，時舍也。",
       "《象》曰：「井谷射鮒」，無與也。",
       "《象》曰：「井渫不食」，行惻也。求王明，受福也。",
@@ -2360,7 +2188,7 @@ const guaList = [
       "《象》曰：寒泉之食，中正也。",
       "《象》曰：「元吉」在上，大成也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -2368,31 +2196,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "坎",
-    "lowerGua": "巽",
-    "upperXiang": "水",
-    "lowerXiang": "风",
-    "guaXiang": "水风",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 6
+    "upper_gua": "坎",
+    "lower_gua": "巽",
+    "upper_xiang": "水",
+    "lower_xiang": "风",
+    "gua_xiang": "水风"
   },
   {
-    "guaIndex": 48,
-    "guaName": "革",
-    "guaCi": "革，己日乃孚，元亨利貞，悔亡。",
+    "gua_index": 48,
+    "gua_name": "革",
+    "gua_ci": "革，己日乃孚，元亨利貞，悔亡。",
     "duan": "《彖》曰：革，水火相息，二女同居，其志不相得，曰革。「己日乃孚」，革而信也。文明以說，大亨以正，革而當，其悔乃亡。天地革而四時成，湯武革命，順乎天而應乎人，革之時義大矣哉！",
     "xiang": "《象》曰：澤中有火，革。君子以治歷明時。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：鞏用黃牛之革。",
       "六二：己日乃革之，征吉，無咎。",
       "九三：征凶，貞厲，革言三就，有孚。",
@@ -2400,7 +2226,7 @@ const guaList = [
       "九五：大人虎變，未占有孚。",
       "上六：君子豹變，小人革面，征凶，居貞吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「鞏用黃牛」，不可以有為也。",
       "《象》曰：「己日革之」，行有嘉也。",
       "《象》曰：「革言三就」，又何之矣。",
@@ -2408,7 +2234,7 @@ const guaList = [
       "《象》曰：「大人虎變」，其文炳也。",
       "《象》曰：「君子豹變」，其文蔚也。「小人革面」，順以從君也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -2416,31 +2242,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "兑",
-    "upperXiang": "火",
-    "lowerXiang": "泽",
-    "guaXiang": "火泽",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 3
+    "upper_gua": "离",
+    "lower_gua": "兑",
+    "upper_xiang": "火",
+    "lower_xiang": "泽",
+    "gua_xiang": "火泽"
   },
   {
-    "guaIndex": 49,
-    "guaName": "鼎",
-    "guaCi": "鼎，元吉，亨。",
+    "gua_index": 49,
+    "gua_name": "鼎",
+    "gua_ci": "鼎，元吉，亨。",
     "duan": "《彖》曰：鼎，象也。以木巽火，亨飪也。聖人亨以享上帝，而大亨以養聖賢。巽而耳目聰明，柔進而上行，得中而應乎剛，是以元亨。",
     "xiang": "《象》曰：木上有火，鼎。君子以正位凝命。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：鼎顛趾，利出否，得妾以其子，無咎。",
       "九二：鼎有實，我仇有疾，不我能即，吉。",
       "九三：鼎耳革，其行塞，雉膏不食，方雨虧悔，終吉。",
@@ -2448,7 +2272,7 @@ const guaList = [
       "六五：鼎黃耳金鉉，利貞。",
       "上九：鼎玉鉉，大吉，無不利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「鼎顛趾」，未悖也。「利出否」，以從貴也。",
       "《象》曰：「鼎有實」，慎所之也。「我仇有疾」，終無尤也。",
       "《象》曰：「鼎耳革」，失其義也。",
@@ -2456,7 +2280,7 @@ const guaList = [
       "《象》曰：「鼎黃耳」，中以為實也。",
       "《象》曰：玉鉉在上，剛柔節也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -2464,31 +2288,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "兑",
-    "upperXiang": "火",
-    "lowerXiang": "泽",
-    "guaXiang": "火泽",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 3
+    "upper_gua": "离",
+    "lower_gua": "兑",
+    "upper_xiang": "火",
+    "lower_xiang": "泽",
+    "gua_xiang": "火泽"
   },
   {
-    "guaIndex": 50,
-    "guaName": "震",
-    "guaCi": "震，亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。",
+    "gua_index": 50,
+    "gua_name": "震",
+    "gua_ci": "震，亨。震來虩虩，笑言啞啞。震驚百里，不喪匕鬯。",
     "duan": "《彖》曰：「震，亨。震來虩虩」，恐致福也。「笑言啞啞」，后有則也。「震驚百里」，驚遠而懼邇也，出可以守宗廟社稷，以為祭主也。",
     "xiang": "《象》曰：洊雷，震。君子以恐懼修身。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：震來虩虩，后笑言啞啞，吉。",
       "六二：震來厲，億喪貝，躋于九陵，勿逐，七日得。",
       "六三：震蘇蘇，震行無眚。",
@@ -2496,7 +2318,7 @@ const guaList = [
       "六五：震往來厲，億無喪，有事。",
       "上六：震索索，視矍矍，征凶。震不于其躬，于其鄰，無咎。婚媾有言。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「震來虩虩」，恐致福也。笑言啞啞，后有則也。",
       "《象》曰：「震來厲」，乘剛也。",
       "《象》曰：「震蘇蘇」，位不當也。",
@@ -2504,7 +2326,7 @@ const guaList = [
       "《象》曰：「震往來厲」，危行也。其事在中，大無喪也。",
       "《象》曰：「震索索」，未得中也。雖凶無咎，畏鄰戒也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -2512,31 +2334,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "震",
-    "lowerGua": "震",
-    "upperXiang": "雷",
-    "lowerXiang": "雷",
-    "guaXiang": "雷雷",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 1
+    "upper_gua": "震",
+    "lower_gua": "震",
+    "upper_xiang": "雷",
+    "lower_xiang": "雷",
+    "gua_xiang": "雷雷"
   },
   {
-    "guaIndex": 51,
-    "guaName": "艮",
-    "guaCi": "艮，艮其背，不獲其身，行其庭，不見其人，無咎。",
+    "gua_index": 51,
+    "gua_name": "艮",
+    "gua_ci": "艮，艮其背，不獲其身，行其庭，不見其人，無咎。",
     "duan": "《彖》曰：艮，止也。時止則止，時行則行，動靜不失其時，其道光明。艮其止，止其所也。上下敵應，不相與也。是以「不獲其身，行其庭不見其人，無咎」也。",
     "xiang": "《象》曰：兼山，艮。君子以思不出其位。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：艮其趾，無咎，利永貞。",
       "六二：艮其腓，不拯其隨，其心不快。",
       "九三：艮其限，列其夤，厲薰心。",
@@ -2544,7 +2364,7 @@ const guaList = [
       "六五：艮其輔，言有序，悔亡。",
       "上九：敦艮，吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：艮其趾，未失正也。",
       "《象》曰：「不拯其隨」，未退聽也。",
       "《象》曰：「艮其限」，危薰心也。",
@@ -2552,7 +2372,7 @@ const guaList = [
       "《象》曰：「艮其輔」，以中正也。",
       "《象》曰：敦艮之吉，以厚終也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       0,
@@ -2560,31 +2380,29 @@ const guaList = [
       0,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "艮",
-    "upperXiang": "山",
-    "lowerXiang": "山",
-    "guaXiang": "山山",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 4
+    "upper_gua": "艮",
+    "lower_gua": "艮",
+    "upper_xiang": "山",
+    "lower_xiang": "山",
+    "gua_xiang": "山山"
   },
   {
-    "guaIndex": 52,
-    "guaName": "漸",
-    "guaCi": "漸，女歸吉，利貞。",
+    "gua_index": 52,
+    "gua_name": "漸",
+    "gua_ci": "漸，女歸吉，利貞。",
     "duan": "《彖》曰：漸之進也，女歸吉也。進得位，往有功也。進以正，可以正邦也。其位剛，得中也。止而巽，動不窮也。",
     "xiang": "《象》曰：山上有木，漸。君子以居賢德善俗。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：鴻漸于干，小子厲。有言，無咎。",
       "六二：鴻漸于磐，飲食衎衎，吉。",
       "九三：鴻漸于陸，夫征不復，婦孕不育，凶。利御寇。",
@@ -2592,7 +2410,7 @@ const guaList = [
       "九五：鴻漸于陵，婦三歲不孕，終莫之勝，吉。",
       "上九：鴻漸于逵，其羽可用為儀，吉。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：小子之厲，義無咎也。",
       "《象》曰：「飲食衎衎」，不素飽也。",
       "《象》曰：「夫征不復」，離群丑也。「婦孕不育」，失其道也。「利用御寇」，順相保也。",
@@ -2600,7 +2418,7 @@ const guaList = [
       "《象》曰：「終莫之勝，吉」，得所愿也。",
       "《象》曰：「其羽可用為儀，吉」，不可亂也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -2608,31 +2426,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "离",
-    "upperXiang": "风",
-    "lowerXiang": "火",
-    "guaXiang": "风火",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 5
+    "upper_gua": "巽",
+    "lower_gua": "离",
+    "upper_xiang": "风",
+    "lower_xiang": "火",
+    "gua_xiang": "风火"
   },
   {
-    "guaIndex": 53,
-    "guaName": "歸妹",
-    "guaCi": "歸妹，征凶，無攸利。",
+    "gua_index": 53,
+    "gua_name": "歸妹",
+    "gua_ci": "歸妹，征凶，無攸利。",
     "duan": "《彖》曰：歸妹，天地之大義也。天地不交而萬物不興。歸妹，人之終始也。說以動，所歸妹也。「征凶」，位不當也。「無攸利」，柔乘剛也。",
     "xiang": "《象》曰：澤上有雷，歸妹。君子以永終知敝。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：歸妹以娣，跛能履，征吉。",
       "九二：眇能視，利幽人之貞。",
       "六三：歸妹以須，反歸以娣。",
@@ -2640,7 +2456,7 @@ const guaList = [
       "六五：帝乙歸妹，其君之袂，不如其娣之袂良，月几望，吉。",
       "上六：女承筐無實，士刲羊無血，無攸利。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「歸妹以娣」，以恆也。「跛能履」，吉相承也。",
       "《象》曰：「利幽人之貞」，未變常也。",
       "《象》曰：「歸妹以須」，未當也。",
@@ -2648,7 +2464,7 @@ const guaList = [
       "《象》曰：「帝乙歸妹」，「不如其娣之袂良」也。其位在中，以貴行也。",
       "《象》曰：上六無實，承虛筐也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2656,31 +2472,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "坎",
-    "upperXiang": "泽",
-    "lowerXiang": "水",
-    "guaXiang": "泽水",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 2
+    "upper_gua": "兑",
+    "lower_gua": "坎",
+    "upper_xiang": "泽",
+    "lower_xiang": "水",
+    "gua_xiang": "泽水"
   },
   {
-    "guaIndex": 54,
-    "guaName": "丰",
-    "guaCi": "丰，亨，王假之，勿憂，宜日中。",
+    "gua_index": 54,
+    "gua_name": "丰",
+    "gua_ci": "丰，亨，王假之，勿憂，宜日中。",
     "duan": "《彖》曰：丰，大也。明以動，故丰。「王假之」，尚大也。「勿憂，宜日中」，宜照天下也。日中則昃，月盈則食，天地盈虛，與時消息，而況人於人乎？況於鬼神乎？",
     "xiang": "《象》曰：雷電皆至，丰。君子以折獄致刑。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：遇其配主，雖旬無咎，往有尚。",
       "六二：丰其蔀，日中見斗，往得疑疾，有孚發若，吉。",
       "九三：丰其沛，日中見昧，折其右肱，無咎。",
@@ -2688,7 +2502,7 @@ const guaList = [
       "六五：來章，有慶譽，吉。",
       "上六：丰其屋，蔀其家，窺其戶，闃其無人，三歲不見，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「雖旬無咎」，過旬災也。",
       "《象》曰：「有孚發若」，信以發志也。",
       "《象》曰：「丰其沛」，不可大事也。「折其右肱」，終不可用也。",
@@ -2696,7 +2510,7 @@ const guaList = [
       "《象》曰：六五之吉，有慶也。",
       "《象》曰：「丰其屋」，天際翔也。「窺其戶，闃其無人」，自藏也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -2704,31 +2518,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "震",
-    "upperXiang": "火",
-    "lowerXiang": "雷",
-    "guaXiang": "火雷",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 1
+    "upper_gua": "离",
+    "lower_gua": "震",
+    "upper_xiang": "火",
+    "lower_xiang": "雷",
+    "gua_xiang": "火雷"
   },
   {
-    "guaIndex": 55,
-    "guaName": "旅",
-    "guaCi": "旅，小亨，旅貞吉。",
+    "gua_index": 55,
+    "gua_name": "旅",
+    "gua_ci": "旅，小亨，旅貞吉。",
     "duan": "《彖》曰：「旅，小亨」，柔得中乎外，而順乎剛，止而麗乎明，是以「小亨，旅貞吉」也。旅之時義大矣哉！",
     "xiang": "《象》曰：山上有火，旅。君子以明慎用刑而不留獄。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：旅瑣瑣，斯其所取災。",
       "六二：旅即次，懷其資，得童仆貞。",
       "九三：旅焚其次，喪其童仆，貞厲。",
@@ -2736,7 +2548,7 @@ const guaList = [
       "六五：射雉一矢亡，終以譽命。",
       "上九：鳥焚其巢，旅人先笑后號啕。喪牛于易，凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「旅瑣瑣」，志窮災也。",
       "《象》曰：「得童仆貞」，終無尤也。",
       "《象》曰：「旅焚其次」，亦以傷矣。以旅與下，其義喪也。",
@@ -2744,7 +2556,7 @@ const guaList = [
       "《象》曰：「終以譽命」，上逮也。",
       "《象》曰：以旅在上，其義焚也。「喪牛于易」，終莫之聞也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -2752,31 +2564,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "巽",
-    "upperXiang": "火",
-    "lowerXiang": "风",
-    "guaXiang": "火风",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 6
+    "upper_gua": "离",
+    "lower_gua": "巽",
+    "upper_xiang": "火",
+    "lower_xiang": "风",
+    "gua_xiang": "火风"
   },
   {
-    "guaIndex": 56,
-    "guaName": "巽",
-    "guaCi": "巽，小亨，利有攸往，利見大人。",
+    "gua_index": 56,
+    "gua_name": "巽",
+    "gua_ci": "巽，小亨，利有攸往，利見大人。",
     "duan": "《彖》曰：重巽以申命，剛巽乎中正而志行，柔皆順乎剛，是以「小亨，利有攸往，利見大人」。",
     "xiang": "《象》曰：隨風，巽。君子以申命行事。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：進退，利武人之貞。",
       "九二：巽在床下，用史巫紛若，吉無咎。",
       "九三：頻巽，吝。",
@@ -2784,7 +2594,7 @@ const guaList = [
       "九五：貞吉悔亡，無不利。無初有終，先庚三日，后庚三日，吉。",
       "上九：巽在床下，喪其資斧，貞凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「進退」，志疑也。「利武人之貞」，志治也。",
       "《象》曰：紛若之吉，得中也。",
       "《象》曰：頻巽之吝，志窮也。",
@@ -2792,7 +2602,7 @@ const guaList = [
       "《象》曰：九五之吉，位正中也。",
       "《象》曰：「巽在床下」，上窮也。「喪其資斧」，正乎凶也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -2800,31 +2610,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "巽",
-    "lowerGua": "巽",
-    "upperXiang": "风",
-    "lowerXiang": "风",
-    "guaXiang": "风风",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 6
+    "upper_gua": "巽",
+    "lower_gua": "巽",
+    "upper_xiang": "风",
+    "lower_xiang": "风",
+    "gua_xiang": "风风"
   },
   {
-    "guaIndex": 57,
-    "guaName": "兌",
-    "guaCi": "兌，亨，利貞。",
+    "gua_index": 57,
+    "gua_name": "兌",
+    "gua_ci": "兌，亨，利貞。",
     "duan": "《彖》曰：兌，說也。剛中而柔外，說以利貞，是以順乎天而應乎人。說以先民，民忘其勞。說以犯難，民忘其死。說之大，民勸矣哉！",
     "xiang": "《象》曰：麗澤，兌。君子以朋友講習。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：和兌，吉。",
       "九二：孚兌，吉，悔亡。",
       "六三：來兌，凶。",
@@ -2832,7 +2640,7 @@ const guaList = [
       "九五：孚于剝，有厲。",
       "上六：引兌。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：和兌之吉，行未疑也。",
       "《象》曰：孚兌之吉，信志也。",
       "《象》曰：來兌之凶，位不當也。",
@@ -2840,7 +2648,7 @@ const guaList = [
       "《象》曰：「孚于剝」，位正當也。",
       "《象》曰：上六「引兌」，未光也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       1,
@@ -2848,31 +2656,29 @@ const guaList = [
       1,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       1
     ],
-    "upperGua": "兑",
-    "lowerGua": "兑",
-    "upperXiang": "泽",
-    "lowerXiang": "泽",
-    "guaXiang": "泽泽",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 3
+    "upper_gua": "兑",
+    "lower_gua": "兑",
+    "upper_xiang": "泽",
+    "lower_xiang": "泽",
+    "gua_xiang": "泽泽"
   },
   {
-    "guaIndex": 58,
-    "guaName": "渙",
-    "guaCi": "渙，亨。王假有廟，利涉大川，利貞。",
+    "gua_index": 58,
+    "gua_name": "渙",
+    "gua_ci": "渙，亨。王假有廟，利涉大川，利貞。",
     "duan": "《彖》曰：「渙，亨」，剛來而不窮，柔得位乎外而上同。「王假有廟」，王乃在中也。「利涉大川」，乘木有功也。",
     "xiang": "《象》曰：風行水上，渙。先王以享于帝立廟。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：用拯馬壯，吉。",
       "九二：渙奔其機，悔亡。",
       "六三：渙其躬，無悔。",
@@ -2880,7 +2686,7 @@ const guaList = [
       "九五：渙汗其大號，渙王居，無咎。",
       "上九：渙其血，去逖出，無咎。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：初六之吉，順也。",
       "《象》曰：「渙奔其機」，得愿也。",
       "《象》曰：「渙其躬」，志在外也。",
@@ -2888,7 +2694,7 @@ const guaList = [
       "《象》曰：「王居，無咎」，正位也。",
       "《象》曰：「渙其血」，遠害也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       0,
       1,
@@ -2896,31 +2702,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "巽",
-    "upperXiang": "雷",
-    "lowerXiang": "风",
-    "guaXiang": "雷风",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 6
+    "upper_gua": "震",
+    "lower_gua": "巽",
+    "upper_xiang": "雷",
+    "lower_xiang": "风",
+    "gua_xiang": "雷风"
   },
   {
-    "guaIndex": 59,
-    "guaName": "節",
-    "guaCi": "節，亨。苦節，不可貞。",
+    "gua_index": 59,
+    "gua_name": "節",
+    "gua_ci": "節，亨。苦節，不可貞。",
     "duan": "《彖》曰：「節，亨」，剛柔分而剛得中。「苦節，不可貞」，其道窮也。說以行險，當位以節，中正以通。天地節而四時成，節以制度，不傷財，不害民。",
     "xiang": "《象》曰：澤上有水，節。君子以制數度、議德行。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：不出戶庭，無咎。",
       "九二：不出門庭，凶。",
       "六三：不節若，則嗟若，無咎。",
@@ -2928,7 +2732,7 @@ const guaList = [
       "九五：甘節，吉。往有尚。",
       "上六：苦節，貞凶，悔亡。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「不出戶庭」，知通塞也。",
       "《象》曰：「不出門庭」，失時極也。",
       "《象》曰：不節之嗟，又誰咎也？",
@@ -2936,7 +2740,7 @@ const guaList = [
       "《象》曰：甘節之吉，居位中也。",
       "《象》曰：「苦節，貞凶」，其道窮也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -2944,31 +2748,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "巽",
-    "lowerGua": "坎",
-    "upperXiang": "风",
-    "lowerXiang": "水",
-    "guaXiang": "风水",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 2
+    "upper_gua": "巽",
+    "lower_gua": "坎",
+    "upper_xiang": "风",
+    "lower_xiang": "水",
+    "gua_xiang": "风水"
   },
   {
-    "guaIndex": 60,
-    "guaName": "中孚",
-    "guaCi": "中孚，豚魚吉，利涉大川，利貞。",
+    "gua_index": 60,
+    "gua_name": "中孚",
+    "gua_ci": "中孚，豚魚吉，利涉大川，利貞。",
     "duan": "《彖》曰：中孚，柔在內而剛得中。說而巽，孚乃化邦也。「豚魚吉」，信及豚魚也。「利涉大川」，乘木舟虛也。中孚以利貞，乃應乎天也。",
     "xiang": "《象》曰：澤上有風，中孚。君子以議獄緩死。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：虞吉，有他不燕。",
       "九二：鳴鶴在陰，其子和之，我有好爵，吾與爾靡之。",
       "六三：得敵，或鼓或罷，或泣或歌。",
@@ -2976,7 +2778,7 @@ const guaList = [
       "九五：有孚攣如，無咎。",
       "上九：翰音登于天，貞凶。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：初九「虞吉」，志未變也。",
       "《象》曰：「其子和之」，中心愿也。",
       "《象》曰：「或鼓或罷」，位不當也。",
@@ -2984,7 +2786,7 @@ const guaList = [
       "《象》曰：「有孚攣如」，位正當也。",
       "《象》曰：「翰音登于天」，何可長也！"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -2992,31 +2794,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       1,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "巽",
-    "upperXiang": "火",
-    "lowerXiang": "风",
-    "guaXiang": "火风",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 6
+    "upper_gua": "离",
+    "lower_gua": "巽",
+    "upper_xiang": "火",
+    "lower_xiang": "风",
+    "gua_xiang": "火风"
   },
   {
-    "guaIndex": 61,
-    "guaName": "小過",
-    "guaCi": "小過，亨，利貞，可小事，不可大事。飛鳥遺之音，不宜上宜下，大吉。",
+    "gua_index": 61,
+    "gua_name": "小過",
+    "gua_ci": "小過，亨，利貞，可小事，不可大事。飛鳥遺之音，不宜上宜下，大吉。",
     "duan": "《彖》曰：小過，小者過而亨也。過以利貞，與時行也。柔得中，是以小事吉也。剛失位而不中，是以不可大事也。有飛鳥之象焉。「飛鳥遺之音，不宜上宜下，大吉」，上逆而下順也。",
     "xiang": "《象》曰：山上有雷，小過。君子以行過乎恭，喪過乎哀，用過乎儉。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：飛鳥以凶。",
       "六二：過其祖，遇其妣，不及其君，遇其臣，無咎。",
       "九三：弗過防之，從或戕之，凶。",
@@ -3024,7 +2824,7 @@ const guaList = [
       "六五：密云不雨，自我西郊，公弋，取彼在穴。",
       "上六：弗遇過之，飛鳥離之，凶，是謂災眚。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「飛鳥以凶」，不可如何也。",
       "《象》曰：「不及其君」，臣不可過也。",
       "《象》曰：「從或戕之」，凶如何也。",
@@ -3032,7 +2832,7 @@ const guaList = [
       "《象》曰：「密云不雨」，已上也。",
       "《象》曰：「弗遇過之」，已亢也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       1,
       0,
@@ -3040,31 +2840,29 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "巽",
-    "lowerGua": "坎",
-    "upperXiang": "风",
-    "lowerXiang": "水",
-    "guaXiang": "风水",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 2
+    "upper_gua": "巽",
+    "lower_gua": "坎",
+    "upper_xiang": "风",
+    "lower_xiang": "水",
+    "gua_xiang": "风水"
   },
   {
-    "guaIndex": 62,
-    "guaName": "既濟",
-    "guaCi": "既濟，亨，小利貞，初吉終亂。",
+    "gua_index": 62,
+    "gua_name": "既濟",
+    "gua_ci": "既濟，亨，小利貞，初吉終亂。",
     "duan": "《彖》曰：「既濟，亨」，小者亨也。「利貞」，剛柔正而位當也。「初吉」，柔得中也。終止則亂，其道窮也。",
     "xiang": "《象》曰：水在火上，既濟。君子以思患而預防之。",
-    "yaoCi": [
+    "yao_ci": [
       "初九：曳其輪，濡其尾，無咎。",
       "六二：婦喪其茀，勿逐，七日得。",
       "九三：高宗伐鬼方，三年克之，小人勿用。",
@@ -3072,7 +2870,7 @@ const guaList = [
       "九五：東鄰殺牛，不如西鄰之禴祭，實受其福。",
       "上六：濡其首，厲。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「曳其輪」，義無咎也。",
       "《象》曰：「七日得」，以中道也。",
       "《象》曰：「三年克之」，憊也。",
@@ -3080,7 +2878,7 @@ const guaList = [
       "《象》曰：「東鄰殺牛」，不如西鄰之時也。「實受其福」，吉大來也。",
       "《象》曰：「濡其首，厲」，何可久也！"
     ],
-    "binaryVec": [
+    "binary_vec": [
       0,
       1,
       0,
@@ -3088,31 +2886,29 @@ const guaList = [
       0,
       1
     ],
-    "upperBinary": [
+    "upper_binary": [
       0,
       1,
       0
     ],
-    "lowerBinary": [
+    "lower_binary": [
       1,
       0,
       1
     ],
-    "upperGua": "坎",
-    "lowerGua": "离",
-    "upperXiang": "水",
-    "lowerXiang": "火",
-    "guaXiang": "水火",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 5
+    "upper_gua": "坎",
+    "lower_gua": "离",
+    "upper_xiang": "水",
+    "lower_xiang": "火",
+    "gua_xiang": "水火"
   },
   {
-    "guaIndex": 63,
-    "guaName": "未濟",
-    "guaCi": "未濟，亨，小狐汔濟，濡其尾，無攸利。",
+    "gua_index": 63,
+    "gua_name": "未濟",
+    "gua_ci": "未濟，亨，小狐汔濟，濡其尾，無攸利。",
     "duan": "《彖》曰：「未濟，亨」，柔得中也。「小狐汔濟」，未出中也。「濡其尾，無攸利」，不續終也。雖不當位，剛柔應也。",
     "xiang": "《象》曰：火在水上，未濟。君子以慎辨物居方。",
-    "yaoCi": [
+    "yao_ci": [
       "初六：濡其尾，吝。",
       "九二：曳其輪，貞吉。",
       "六三：未濟，征凶，利涉大川。",
@@ -3120,7 +2916,7 @@ const guaList = [
       "六五：貞吉，無悔，君子之光，有孚，吉。",
       "上九：有孚于飲酒，無咎，濡其首，有孚失是。"
     ],
-    "yaoXiang": [
+    "yao_xiang": [
       "《象》曰：「濡其尾」，亦不知極也。",
       "《象》曰：九二「貞吉」，中以行正也。",
       "《象》曰：「未濟，征凶」，位不當也。",
@@ -3128,7 +2924,7 @@ const guaList = [
       "《象》曰：「君子之光」，其暉吉也。",
       "《象》曰：飲酒濡首，亦不知節也。"
     ],
-    "binaryVec": [
+    "binary_vec": [
       1,
       0,
       1,
@@ -3136,64 +2932,20 @@ const guaList = [
       1,
       0
     ],
-    "upperBinary": [
+    "upper_binary": [
       1,
       0,
       1
     ],
-    "lowerBinary": [
+    "lower_binary": [
       0,
       1,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "坎",
-    "upperXiang": "火",
-    "lowerXiang": "水",
-    "guaXiang": "火水",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 2
+    "upper_gua": "离",
+    "lower_gua": "坎",
+    "upper_xiang": "火",
+    "lower_xiang": "水",
+    "gua_xiang": "火水"
   }
-];
-
-// 通过卦名获取卦象数据
-function getGuaByName(name) {
-  return guaList.find(g => g.guaName === name);
-}
-
-// 通过索引获取卦象数据
-function getGuaByIndex(index) {
-  return guaList[index];
-}
-
-// 通过六爻结果计算卦象索引
-function getGuaIndexByYaoResults(yaoResults) {
-  // yaoResults: [初爻, 二爻, 三爻, 四爻, 五爻, 上爻] - 1为阳，0为阴
-  // 二进制转换：从上到下：上爻(5)、五爻(4)、四爻(3)、三爻(2)、二爻(1)、初爻(0)
-  // 上卦：四爻、五爻、上爻
-  // 下卦：初爻、二爻、三爻
-
-  const upper = [yaoResults[3], yaoResults[4], yaoResults[5]];
-  const lower = [yaoResults[0], yaoResults[1], yaoResults[2]];
-
-  const upperBinary = upper.join('');
-  const lowerBinary = lower.join('');
-
-  const upperIndex = parseInt(upperBinary, 2);
-  const lowerIndex = parseInt(lowerBinary, 2);
-
-  // 查找匹配的卦
-  const gua = guaList.find(g =>
-    g.upperGuaIndex === upperIndex && g.lowerGuaIndex === lowerIndex
-  );
-
-  return gua ? gua.guaIndex : -1;
-}
-
-module.exports = {
-  baGua,
-  guaList,
-  getGuaByName,
-  getGuaByIndex,
-  getGuaIndexByYaoResults
-};
+]
