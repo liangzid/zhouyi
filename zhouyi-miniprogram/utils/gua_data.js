@@ -536,30 +536,30 @@ const guaList = [
       "《象》曰：元吉在上，大有慶也。"
     ],
     "binaryVec": [
+      1,
+      1,
+      1,
       0,
-      1,
-      1,
-      1,
       1,
       1
     ],
     "upperBinary": [
-      0,
+      1,
       1,
       1
     ],
     "lowerBinary": [
-      1,
+      0,
       1,
       1
     ],
-    "upperGua": "兑",
-    "lowerGua": "乾",
-    "upperXiang": "泽",
-    "lowerXiang": "天",
-    "guaXiang": "泽天",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 0
+    "upperGua": "乾",
+    "lowerGua": "兑",
+    "upperXiang": "天",
+    "lowerXiang": "泽",
+    "guaXiang": "天泽",
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 10,

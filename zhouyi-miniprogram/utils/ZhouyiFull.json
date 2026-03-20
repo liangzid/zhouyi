@@ -440,28 +440,28 @@
       "《象》曰：元吉在上，大有慶也。"
     ],
     "binary_vec": [
+      1,
+      1,
+      1,
       0,
-      1,
-      1,
-      1,
       1,
       1
     ],
     "upper_binary": [
-      0,
+      1,
       1,
       1
     ],
     "lower_binary": [
-      1,
+      0,
       1,
       1
     ],
-    "upper_gua": "兑",
-    "lower_gua": "乾",
-    "upper_xiang": "泽",
-    "lower_xiang": "天",
-    "gua_xiang": "泽天"
+    "upper_gua": "乾",
+    "lower_gua": "兑",
+    "upper_xiang": "天",
+    "lower_xiang": "泽",
+    "gua_xiang": "天泽"
   },
   {
     "gua_index": 10,
