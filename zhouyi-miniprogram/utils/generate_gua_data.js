@@ -3,7 +3,7 @@ const path = require('path');
 
 const jsonData = require('./ZhouyiFull.json');
 
-// 八卦数据
+// 八卦数据 (JS order: 0=坤, 1=震, 2=坎, 3=兑, 4=艮, 5=离, 6=巽, 7=乾)
 const baGua = [
   { name: '坤', xiang: '地', binary: [0, 0, 0] },
   { name: '震', xiang: '雷', binary: [0, 0, 1] },
@@ -15,13 +15,30 @@ const baGua = [
   { name: '乾', xiang: '天', binary: [1, 1, 1] }
 ];
 
-// 转换为小程序需要的格式
+// JS baGua index to Rust SubGua index mapping
+// JS order: 0=坤, 1=震, 2=坎, 3=兑, 4=艮, 5=离, 6=巽, 7=乾
+// Rust order: 0=乾, 1=坤, 2=震, 3=艮, 4=离, 5=坎, 6=兑, 7=巽
+// Binary representation stays the same, but the index mapping differs
+// JS index:  0   1   2   3   4   5   6   7
+// Rust index:1   2   5   6   3   4   7   0
+const jsToRustIndex = [1, 2, 5, 6, 3, 4, 7, 0];
+
+// 转换 JS baGua index 为 Rust SubGua index
+function toRustIndex(jsIndex) {
+  return jsToRustIndex[jsIndex];
+}
+
+// 转换小程序需要的格式
 const guaList = jsonData.map(g => {
-  // 根据 binary 计算上下卦索引
+  // 根据 binary 计算上下卦索引 (JS index)
   const upperBinary = g.upper_binary.join('');
   const lowerBinary = g.lower_binary.join('');
-  const upperGuaIndex = parseInt(upperBinary, 2);
-  const lowerGuaIndex = parseInt(lowerBinary, 2);
+  const upperJsIndex = parseInt(upperBinary, 2);
+  const lowerJsIndex = parseInt(lowerBinary, 2);
+
+  // 转换为 Rust SubGua index
+  const upperGuaIndex = toRustIndex(upperJsIndex);
+  const lowerGuaIndex = toRustIndex(lowerJsIndex);
 
   return {
     guaIndex: g.gua_index,
@@ -44,6 +61,9 @@ const guaList = jsonData.map(g => {
   };
 });
 
+// JS baGua index to Rust SubGua index mapping (used for lookup)
+const jsToRustIndexForLookup = [1, 2, 5, 6, 3, 4, 7, 0];
+
 // 生成 gua_data.js 内容
 const jsContent = `// 自动生成的文件 - 由 generate_gua_data.js 生成
 // 此文件包含完整的64卦数据
@@ -51,6 +71,15 @@ const jsContent = `// 自动生成的文件 - 由 generate_gua_data.js 生成
 const baGua = ${JSON.stringify(baGua, null, 2)};
 
 const guaList = ${JSON.stringify(guaList, null, 2)};
+
+// JS baGua index to Rust SubGua index mapping
+// JS order: 0=坤, 1=震, 2=坎, 3=兑, 4=艮, 5=离, 6=巽, 7=乾
+// Rust order: 0=乾, 1=坤, 2=震, 3=艮, 4=离, 5=坎, 6=兑, 7=巽
+const jsToRustIndex = [1, 2, 5, 6, 3, 4, 7, 0];
+
+function toRustIndex(jsIndex) {
+  return jsToRustIndex[jsIndex];
+}
 
 // 通过卦名获取卦象数据
 function getGuaByName(name) {
@@ -75,12 +104,17 @@ function getGuaIndexByYaoResults(yaoResults) {
   const upperBinary = upper.join('');
   const lowerBinary = lower.join('');
 
-  const upperIndex = parseInt(upperBinary, 2);
-  const lowerIndex = parseInt(lowerBinary, 2);
+  // JS binary index
+  const upperJsIndex = parseInt(upperBinary, 2);
+  const lowerJsIndex = parseInt(lowerBinary, 2);
+
+  // Convert to Rust index for comparison with stored data
+  const upperRustIndex = toRustIndex(upperJsIndex);
+  const lowerRustIndex = toRustIndex(lowerJsIndex);
 
   // 查找匹配的卦
   const gua = guaList.find(g =>
-    g.upperGuaIndex === upperIndex && g.lowerGuaIndex === lowerIndex
+    g.upperGuaIndex === upperRustIndex && g.lowerGuaIndex === lowerRustIndex
   );
 
   return gua ? gua.guaIndex : -1;

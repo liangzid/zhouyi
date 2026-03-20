@@ -124,8 +124,8 @@ const guaList = [
     "upperXiang": "天",
     "lowerXiang": "天",
     "guaXiang": "天天",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 1,
@@ -174,8 +174,8 @@ const guaList = [
     "upperXiang": "地",
     "lowerXiang": "地",
     "guaXiang": "地地",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 1,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 2,
@@ -222,8 +222,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "雷",
     "guaXiang": "水雷",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 1
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 3,
@@ -270,8 +270,8 @@ const guaList = [
     "upperXiang": "山",
     "lowerXiang": "水",
     "guaXiang": "山水",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 4,
@@ -318,8 +318,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "天",
     "guaXiang": "水天",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 5,
@@ -366,8 +366,8 @@ const guaList = [
     "upperXiang": "天",
     "lowerXiang": "水",
     "guaXiang": "天水",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 6,
@@ -414,8 +414,8 @@ const guaList = [
     "upperXiang": "地",
     "lowerXiang": "水",
     "guaXiang": "地水",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 1,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 7,
@@ -462,8 +462,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "地",
     "guaXiang": "水地",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 8,
@@ -510,8 +510,8 @@ const guaList = [
     "upperXiang": "风",
     "lowerXiang": "天",
     "guaXiang": "风天",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 9,
@@ -558,8 +558,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "天",
     "guaXiang": "泽天",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 10,
@@ -606,8 +606,8 @@ const guaList = [
     "upperXiang": "地",
     "lowerXiang": "天",
     "guaXiang": "地天",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 1,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 11,
@@ -654,8 +654,8 @@ const guaList = [
     "upperXiang": "天",
     "lowerXiang": "地",
     "guaXiang": "天地",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 12,
@@ -689,21 +689,21 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      0,
+      1,
       1
     ],
     "lowerBinary": [
       1,
-      1,
+      0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "乾",
-    "upperXiang": "火",
-    "lowerXiang": "天",
-    "guaXiang": "火天",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 7
+    "upperGua": "乾",
+    "lowerGua": "离",
+    "upperXiang": "天",
+    "lowerXiang": "火",
+    "guaXiang": "天火",
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 13,
@@ -737,21 +737,21 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      1,
+      0,
       1
     ],
     "lowerBinary": [
       1,
-      0,
+      1,
       1
     ],
-    "upperGua": "乾",
-    "lowerGua": "离",
-    "upperXiang": "天",
-    "lowerXiang": "火",
-    "guaXiang": "天火",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 5
+    "upperGua": "离",
+    "lowerGua": "乾",
+    "upperXiang": "火",
+    "lowerXiang": "天",
+    "guaXiang": "火天",
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 14,
@@ -784,22 +784,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      1,
+      0,
       0,
       0
     ],
     "lowerBinary": [
-      0,
+      1,
       0,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "坤",
-    "upperXiang": "山",
-    "lowerXiang": "地",
-    "guaXiang": "山地",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 0
+    "upperGua": "坤",
+    "lowerGua": "艮",
+    "upperXiang": "地",
+    "lowerXiang": "山",
+    "guaXiang": "地山",
+    "upperGuaIndex": 1,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 15,
@@ -846,8 +846,8 @@ const guaList = [
     "upperXiang": "雷",
     "lowerXiang": "地",
     "guaXiang": "雷地",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 16,
@@ -881,21 +881,21 @@ const guaList = [
     ],
     "upperBinary": [
       0,
-      0,
+      1,
       1
     ],
     "lowerBinary": [
       0,
-      1,
+      0,
       1
     ],
-    "upperGua": "震",
-    "lowerGua": "兑",
-    "upperXiang": "雷",
-    "lowerXiang": "泽",
-    "guaXiang": "雷泽",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 3
+    "upperGua": "兑",
+    "lowerGua": "震",
+    "upperXiang": "泽",
+    "lowerXiang": "雷",
+    "guaXiang": "泽雷",
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 17,
@@ -934,16 +934,16 @@ const guaList = [
     ],
     "lowerBinary": [
       1,
-      0,
-      1
+      1,
+      0
     ],
     "upperGua": "艮",
-    "lowerGua": "离",
+    "lowerGua": "巽",
     "upperXiang": "山",
-    "lowerXiang": "火",
-    "guaXiang": "山火",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 5
+    "lowerXiang": "风",
+    "guaXiang": "山风",
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 18,
@@ -978,20 +978,20 @@ const guaList = [
     "upperBinary": [
       0,
       0,
-      1
+      0
     ],
     "lowerBinary": [
       0,
-      0,
-      0
+      1,
+      1
     ],
-    "upperGua": "震",
-    "lowerGua": "坤",
-    "upperXiang": "雷",
-    "lowerXiang": "地",
-    "guaXiang": "雷地",
+    "upperGua": "坤",
+    "lowerGua": "兑",
+    "upperXiang": "地",
+    "lowerXiang": "泽",
+    "guaXiang": "地泽",
     "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 19,
@@ -1029,17 +1029,17 @@ const guaList = [
       0
     ],
     "lowerBinary": [
-      1,
       0,
-      1
+      0,
+      0
     ],
     "upperGua": "巽",
-    "lowerGua": "离",
+    "lowerGua": "坤",
     "upperXiang": "风",
-    "lowerXiang": "火",
-    "guaXiang": "风火",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 5
+    "lowerXiang": "地",
+    "guaXiang": "风地",
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 20,
@@ -1086,8 +1086,8 @@ const guaList = [
     "upperXiang": "火",
     "lowerXiang": "雷",
     "guaXiang": "火雷",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 1
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 21,
@@ -1134,8 +1134,8 @@ const guaList = [
     "upperXiang": "山",
     "lowerXiang": "火",
     "guaXiang": "山火",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 5
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 22,
@@ -1168,22 +1168,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      0,
-      0,
-      0
-    ],
-    "lowerBinary": [
       1,
       0,
       0
     ],
-    "upperGua": "坤",
-    "lowerGua": "艮",
-    "upperXiang": "地",
-    "lowerXiang": "山",
-    "guaXiang": "地山",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 4
+    "lowerBinary": [
+      0,
+      0,
+      0
+    ],
+    "upperGua": "艮",
+    "lowerGua": "坤",
+    "upperXiang": "山",
+    "lowerXiang": "地",
+    "guaXiang": "山地",
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 23,
@@ -1218,20 +1218,20 @@ const guaList = [
     "upperBinary": [
       0,
       0,
-      1
+      0
     ],
     "lowerBinary": [
       0,
       0,
-      0
+      1
     ],
-    "upperGua": "震",
-    "lowerGua": "坤",
-    "upperXiang": "雷",
-    "lowerXiang": "地",
-    "guaXiang": "雷地",
+    "upperGua": "坤",
+    "lowerGua": "震",
+    "upperXiang": "地",
+    "lowerXiang": "雷",
+    "guaXiang": "地雷",
     "upperGuaIndex": 1,
-    "lowerGuaIndex": 0
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 24,
@@ -1265,21 +1265,21 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      0,
-      0
-    ],
-    "lowerBinary": [
-      1,
       1,
       1
     ],
-    "upperGua": "艮",
-    "lowerGua": "乾",
-    "upperXiang": "山",
-    "lowerXiang": "天",
-    "guaXiang": "山天",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 7
+    "lowerBinary": [
+      0,
+      0,
+      1
+    ],
+    "upperGua": "乾",
+    "lowerGua": "震",
+    "upperXiang": "天",
+    "lowerXiang": "雷",
+    "guaXiang": "天雷",
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 25,
@@ -1313,21 +1313,21 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      1,
-      1
-    ],
-    "lowerBinary": [
-      1,
       0,
       0
     ],
-    "upperGua": "乾",
-    "lowerGua": "艮",
-    "upperXiang": "天",
-    "lowerXiang": "山",
-    "guaXiang": "天山",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 4
+    "lowerBinary": [
+      1,
+      1,
+      1
+    ],
+    "upperGua": "艮",
+    "lowerGua": "乾",
+    "upperXiang": "山",
+    "lowerXiang": "天",
+    "guaXiang": "山天",
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 26,
@@ -1374,8 +1374,8 @@ const guaList = [
     "upperXiang": "山",
     "lowerXiang": "雷",
     "guaXiang": "山雷",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 1
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 27,
@@ -1408,22 +1408,22 @@ const guaList = [
       1
     ],
     "upperBinary": [
-      1,
-      1,
-      0
-    ],
-    "lowerBinary": [
       0,
       1,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "兑",
+    "lowerBinary": [
+      1,
+      1,
+      0
+    ],
+    "upperGua": "兑",
+    "lowerGua": "巽",
     "upperXiang": "风",
     "lowerXiang": "泽",
     "guaXiang": "风泽",
     "upperGuaIndex": 6,
-    "lowerGuaIndex": 3
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 28,
@@ -1470,8 +1470,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "水",
     "guaXiang": "水水",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 29,
@@ -1518,8 +1518,8 @@ const guaList = [
     "upperXiang": "火",
     "lowerXiang": "火",
     "guaXiang": "火火",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 5
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 30,
@@ -1566,8 +1566,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "山",
     "guaXiang": "泽山",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 4
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 31,
@@ -1600,22 +1600,22 @@ const guaList = [
       1
     ],
     "upperBinary": [
-      1,
-      1,
-      0
-    ],
-    "lowerBinary": [
       0,
       0,
       1
     ],
-    "upperGua": "巽",
-    "lowerGua": "震",
-    "upperXiang": "风",
-    "lowerXiang": "雷",
-    "guaXiang": "风雷",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 1
+    "lowerBinary": [
+      1,
+      1,
+      0
+    ],
+    "upperGua": "震",
+    "lowerGua": "巽",
+    "upperXiang": "雷",
+    "lowerXiang": "风",
+    "guaXiang": "雷风",
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 32,
@@ -1663,8 +1663,8 @@ const guaList = [
     "upperXiang": "天",
     "lowerXiang": "山",
     "guaXiang": "天山",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 4
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 33,
@@ -1711,8 +1711,8 @@ const guaList = [
     "upperXiang": "雷",
     "lowerXiang": "天",
     "guaXiang": "雷天",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 34,
@@ -1759,8 +1759,8 @@ const guaList = [
     "upperXiang": "火",
     "lowerXiang": "地",
     "guaXiang": "火地",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 35,
@@ -1793,21 +1793,21 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      1,
       0,
-      1
+      0,
+      0
     ],
     "lowerBinary": [
       1,
       0,
-      0
+      1
     ],
-    "upperGua": "离",
-    "lowerGua": "艮",
-    "upperXiang": "火",
-    "lowerXiang": "山",
-    "guaXiang": "火山",
-    "upperGuaIndex": 5,
+    "upperGua": "坤",
+    "lowerGua": "离",
+    "upperXiang": "地",
+    "lowerXiang": "火",
+    "guaXiang": "地火",
+    "upperGuaIndex": 1,
     "lowerGuaIndex": 4
   },
   {
@@ -1842,21 +1842,21 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      0,
-      1
+      1,
+      0
     ],
     "lowerBinary": [
       1,
       0,
       1
     ],
-    "upperGua": "离",
+    "upperGua": "巽",
     "lowerGua": "离",
-    "upperXiang": "火",
+    "upperXiang": "风",
     "lowerXiang": "火",
-    "guaXiang": "火火",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 5
+    "guaXiang": "风火",
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 37,
@@ -1891,20 +1891,20 @@ const guaList = [
     "upperBinary": [
       0,
       1,
-      1
+      0
     ],
     "lowerBinary": [
       1,
       0,
-      1
+      0
     ],
-    "upperGua": "兑",
-    "lowerGua": "离",
-    "upperXiang": "泽",
-    "lowerXiang": "火",
-    "guaXiang": "泽火",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 5
+    "upperGua": "坎",
+    "lowerGua": "艮",
+    "upperXiang": "水",
+    "lowerXiang": "山",
+    "guaXiang": "水山",
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 38,
@@ -1937,22 +1937,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      1,
       0,
+      1,
       0
     ],
     "lowerBinary": [
-      0,
       1,
+      0,
       0
     ],
-    "upperGua": "艮",
-    "lowerGua": "坎",
-    "upperXiang": "山",
-    "lowerXiang": "水",
-    "guaXiang": "山水",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 2
+    "upperGua": "坎",
+    "lowerGua": "艮",
+    "upperXiang": "水",
+    "lowerXiang": "山",
+    "guaXiang": "水山",
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 39,
@@ -1999,8 +1999,8 @@ const guaList = [
     "upperXiang": "雷",
     "lowerXiang": "水",
     "guaXiang": "雷水",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 40,
@@ -2033,22 +2033,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      0,
-      1,
-      1
-    ],
-    "lowerBinary": [
       1,
       0,
       0
     ],
-    "upperGua": "兑",
-    "lowerGua": "艮",
-    "upperXiang": "泽",
-    "lowerXiang": "山",
-    "guaXiang": "泽山",
+    "lowerBinary": [
+      0,
+      1,
+      1
+    ],
+    "upperGua": "艮",
+    "lowerGua": "兑",
+    "upperXiang": "山",
+    "lowerXiang": "泽",
+    "guaXiang": "山泽",
     "upperGuaIndex": 3,
-    "lowerGuaIndex": 4
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 41,
@@ -2081,22 +2081,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      0,
-      0,
-      1
-    ],
-    "lowerBinary": [
       1,
       1,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "巽",
-    "upperXiang": "雷",
-    "lowerXiang": "风",
-    "guaXiang": "雷风",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 6
+    "lowerBinary": [
+      0,
+      0,
+      1
+    ],
+    "upperGua": "巽",
+    "lowerGua": "震",
+    "upperXiang": "风",
+    "lowerXiang": "雷",
+    "guaXiang": "风雷",
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 42,
@@ -2143,8 +2143,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "天",
     "guaXiang": "泽天",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 7
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 0
   },
   {
     "guaIndex": 43,
@@ -2191,8 +2191,8 @@ const guaList = [
     "upperXiang": "天",
     "lowerXiang": "风",
     "guaXiang": "天风",
-    "upperGuaIndex": 7,
-    "lowerGuaIndex": 6
+    "upperGuaIndex": 0,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 44,
@@ -2239,8 +2239,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "地",
     "guaXiang": "泽地",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 0
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 1
   },
   {
     "guaIndex": 45,
@@ -2287,8 +2287,8 @@ const guaList = [
     "upperXiang": "地",
     "lowerXiang": "风",
     "guaXiang": "地风",
-    "upperGuaIndex": 0,
-    "lowerGuaIndex": 6
+    "upperGuaIndex": 1,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 46,
@@ -2335,8 +2335,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "水",
     "guaXiang": "泽水",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 47,
@@ -2383,8 +2383,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "风",
     "guaXiang": "水风",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 6
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 48,
@@ -2417,22 +2417,22 @@ const guaList = [
       1
     ],
     "upperBinary": [
-      1,
       0,
+      1,
       1
     ],
     "lowerBinary": [
-      0,
       1,
+      0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "兑",
-    "upperXiang": "火",
-    "lowerXiang": "泽",
-    "guaXiang": "火泽",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 3
+    "upperGua": "兑",
+    "lowerGua": "离",
+    "upperXiang": "泽",
+    "lowerXiang": "火",
+    "guaXiang": "泽火",
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 49,
@@ -2470,17 +2470,17 @@ const guaList = [
       1
     ],
     "lowerBinary": [
-      0,
       1,
-      1
+      1,
+      0
     ],
     "upperGua": "离",
-    "lowerGua": "兑",
+    "lowerGua": "巽",
     "upperXiang": "火",
-    "lowerXiang": "泽",
-    "guaXiang": "火泽",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 3
+    "lowerXiang": "风",
+    "guaXiang": "火风",
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 50,
@@ -2527,8 +2527,8 @@ const guaList = [
     "upperXiang": "雷",
     "lowerXiang": "雷",
     "guaXiang": "雷雷",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 1
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 2
   },
   {
     "guaIndex": 51,
@@ -2575,8 +2575,8 @@ const guaList = [
     "upperXiang": "山",
     "lowerXiang": "山",
     "guaXiang": "山山",
-    "upperGuaIndex": 4,
-    "lowerGuaIndex": 4
+    "upperGuaIndex": 3,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 52,
@@ -2616,15 +2616,15 @@ const guaList = [
     "lowerBinary": [
       1,
       0,
-      1
+      0
     ],
     "upperGua": "巽",
-    "lowerGua": "离",
+    "lowerGua": "艮",
     "upperXiang": "风",
-    "lowerXiang": "火",
-    "guaXiang": "风火",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 5
+    "lowerXiang": "山",
+    "guaXiang": "风山",
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 53,
@@ -2658,21 +2658,21 @@ const guaList = [
     ],
     "upperBinary": [
       0,
-      1,
+      0,
       1
     ],
     "lowerBinary": [
       0,
       1,
-      0
+      1
     ],
-    "upperGua": "兑",
-    "lowerGua": "坎",
-    "upperXiang": "泽",
-    "lowerXiang": "水",
-    "guaXiang": "泽水",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 2
+    "upperGua": "震",
+    "lowerGua": "兑",
+    "upperXiang": "雷",
+    "lowerXiang": "泽",
+    "guaXiang": "雷泽",
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 54,
@@ -2705,22 +2705,22 @@ const guaList = [
       1
     ],
     "upperBinary": [
-      1,
+      0,
       0,
       1
     ],
     "lowerBinary": [
-      0,
+      1,
       0,
       1
     ],
-    "upperGua": "离",
-    "lowerGua": "震",
-    "upperXiang": "火",
-    "lowerXiang": "雷",
-    "guaXiang": "火雷",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 1
+    "upperGua": "震",
+    "lowerGua": "离",
+    "upperXiang": "雷",
+    "lowerXiang": "火",
+    "guaXiang": "雷火",
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 55,
@@ -2759,16 +2759,16 @@ const guaList = [
     ],
     "lowerBinary": [
       1,
-      1,
+      0,
       0
     ],
     "upperGua": "离",
-    "lowerGua": "巽",
+    "lowerGua": "艮",
     "upperXiang": "火",
-    "lowerXiang": "风",
-    "guaXiang": "火风",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 6
+    "lowerXiang": "山",
+    "guaXiang": "火山",
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 56,
@@ -2815,8 +2815,8 @@ const guaList = [
     "upperXiang": "风",
     "lowerXiang": "风",
     "guaXiang": "风风",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 6
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 7
   },
   {
     "guaIndex": 57,
@@ -2863,8 +2863,8 @@ const guaList = [
     "upperXiang": "泽",
     "lowerXiang": "泽",
     "guaXiang": "泽泽",
-    "upperGuaIndex": 3,
-    "lowerGuaIndex": 3
+    "upperGuaIndex": 6,
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 58,
@@ -2897,22 +2897,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      0,
-      0,
-      1
-    ],
-    "lowerBinary": [
       1,
       1,
       0
     ],
-    "upperGua": "震",
-    "lowerGua": "巽",
-    "upperXiang": "雷",
-    "lowerXiang": "风",
-    "guaXiang": "雷风",
-    "upperGuaIndex": 1,
-    "lowerGuaIndex": 6
+    "lowerBinary": [
+      0,
+      1,
+      0
+    ],
+    "upperGua": "巽",
+    "lowerGua": "坎",
+    "upperXiang": "风",
+    "lowerXiang": "水",
+    "guaXiang": "风水",
+    "upperGuaIndex": 7,
+    "lowerGuaIndex": 5
   },
   {
     "guaIndex": 59,
@@ -2945,22 +2945,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      1,
+      0,
       1,
       0
     ],
     "lowerBinary": [
       0,
       1,
-      0
+      1
     ],
-    "upperGua": "巽",
-    "lowerGua": "坎",
-    "upperXiang": "风",
-    "lowerXiang": "水",
-    "guaXiang": "风水",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 2
+    "upperGua": "坎",
+    "lowerGua": "兑",
+    "upperXiang": "水",
+    "lowerXiang": "泽",
+    "guaXiang": "水泽",
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 60,
@@ -2994,20 +2994,20 @@ const guaList = [
     ],
     "upperBinary": [
       1,
-      0,
-      1
-    ],
-    "lowerBinary": [
-      1,
       1,
       0
     ],
-    "upperGua": "离",
-    "lowerGua": "巽",
-    "upperXiang": "火",
-    "lowerXiang": "风",
-    "guaXiang": "火风",
-    "upperGuaIndex": 5,
+    "lowerBinary": [
+      0,
+      1,
+      1
+    ],
+    "upperGua": "巽",
+    "lowerGua": "兑",
+    "upperXiang": "风",
+    "lowerXiang": "泽",
+    "guaXiang": "风泽",
+    "upperGuaIndex": 7,
     "lowerGuaIndex": 6
   },
   {
@@ -3041,22 +3041,22 @@ const guaList = [
       0
     ],
     "upperBinary": [
-      1,
-      1,
-      0
+      0,
+      0,
+      1
     ],
     "lowerBinary": [
-      0,
       1,
+      0,
       0
     ],
-    "upperGua": "巽",
-    "lowerGua": "坎",
-    "upperXiang": "风",
-    "lowerXiang": "水",
-    "guaXiang": "风水",
-    "upperGuaIndex": 6,
-    "lowerGuaIndex": 2
+    "upperGua": "震",
+    "lowerGua": "艮",
+    "upperXiang": "雷",
+    "lowerXiang": "山",
+    "guaXiang": "雷山",
+    "upperGuaIndex": 2,
+    "lowerGuaIndex": 3
   },
   {
     "guaIndex": 62,
@@ -3103,8 +3103,8 @@ const guaList = [
     "upperXiang": "水",
     "lowerXiang": "火",
     "guaXiang": "水火",
-    "upperGuaIndex": 2,
-    "lowerGuaIndex": 5
+    "upperGuaIndex": 5,
+    "lowerGuaIndex": 4
   },
   {
     "guaIndex": 63,
@@ -3151,10 +3151,19 @@ const guaList = [
     "upperXiang": "火",
     "lowerXiang": "水",
     "guaXiang": "火水",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 2
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 5
   }
 ];
+
+// JS baGua index to Rust SubGua index mapping
+// JS order: 0=坤, 1=震, 2=坎, 3=兑, 4=艮, 5=离, 6=巽, 7=乾
+// Rust order: 0=乾, 1=坤, 2=震, 3=艮, 4=离, 5=坎, 6=兑, 7=巽
+const jsToRustIndex = [1, 2, 5, 6, 3, 4, 7, 0];
+
+function toRustIndex(jsIndex) {
+  return jsToRustIndex[jsIndex];
+}
 
 // 通过卦名获取卦象数据
 function getGuaByName(name) {
@@ -3179,12 +3188,17 @@ function getGuaIndexByYaoResults(yaoResults) {
   const upperBinary = upper.join('');
   const lowerBinary = lower.join('');
 
-  const upperIndex = parseInt(upperBinary, 2);
-  const lowerIndex = parseInt(lowerBinary, 2);
+  // JS binary index
+  const upperJsIndex = parseInt(upperBinary, 2);
+  const lowerJsIndex = parseInt(lowerBinary, 2);
+
+  // Convert to Rust index for comparison with stored data
+  const upperRustIndex = toRustIndex(upperJsIndex);
+  const lowerRustIndex = toRustIndex(lowerJsIndex);
 
   // 查找匹配的卦
   const gua = guaList.find(g =>
-    g.upperGuaIndex === upperIndex && g.lowerGuaIndex === lowerIndex
+    g.upperGuaIndex === upperRustIndex && g.lowerGuaIndex === lowerRustIndex
   );
 
   return gua ? gua.guaIndex : -1;
