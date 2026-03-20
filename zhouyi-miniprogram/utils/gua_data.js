@@ -1419,9 +1419,9 @@ const guaList = [
     ],
     "upperGua": "兑",
     "lowerGua": "巽",
-    "upperXiang": "风",
-    "lowerXiang": "泽",
-    "guaXiang": "风泽",
+    "upperXiang": "泽",
+    "lowerXiang": "风",
+    "guaXiang": "泽风",
     "upperGuaIndex": 6,
     "lowerGuaIndex": 7
   },
@@ -1889,22 +1889,22 @@ const guaList = [
       1
     ],
     "upperBinary": [
-      0,
       1,
-      0
+      0,
+      1
     ],
     "lowerBinary": [
-      1,
       0,
-      0
+      1,
+      1
     ],
-    "upperGua": "坎",
-    "lowerGua": "艮",
-    "upperXiang": "水",
-    "lowerXiang": "山",
-    "guaXiang": "水山",
-    "upperGuaIndex": 5,
-    "lowerGuaIndex": 3
+    "upperGua": "离",
+    "lowerGua": "兑",
+    "upperXiang": "火",
+    "lowerXiang": "泽",
+    "guaXiang": "火泽",
+    "upperGuaIndex": 4,
+    "lowerGuaIndex": 6
   },
   {
     "guaIndex": 38,

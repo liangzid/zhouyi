@@ -1287,9 +1287,9 @@
     ],
     "upper_gua": "兑",
     "lower_gua": "巽",
-    "upper_xiang": "风",
-    "lower_xiang": "泽",
-    "gua_xiang": "风泽"
+    "upper_xiang": "泽",
+    "lower_xiang": "风",
+    "gua_xiang": "泽风"
   },
   {
     "gua_index": 28,
@@ -1737,20 +1737,20 @@
       1
     ],
     "upper_binary": [
-      0,
       1,
-      0
+      0,
+      1
     ],
     "lower_binary": [
-      1,
       0,
-      0
+      1,
+      1
     ],
-    "upper_gua": "坎",
-    "lower_gua": "艮",
-    "upper_xiang": "水",
-    "lower_xiang": "山",
-    "gua_xiang": "水山"
+    "upper_gua": "离",
+    "lower_gua": "兑",
+    "upper_xiang": "火",
+    "lower_xiang": "泽",
+    "gua_xiang": "火泽"
   },
   {
     "gua_index": 38,
