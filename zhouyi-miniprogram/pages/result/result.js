@@ -214,11 +214,11 @@ Page({
     };
 
     // 坐标设置（基于 canvas 实际像素 750px，保守边距防止截断）
-    const LEFT = 30;
-    const RIGHT = 720;
+    const LEFT = 50;
+    const RIGHT = 700;
     const CENTER_X = 375;
-    const W = RIGHT - LEFT - 20; // 内容宽度 670
-    let y = 30;
+    const W = RIGHT - LEFT - 10; // 内容宽度 640
+    let y = 25;
 
     // 估算中文字符宽度
     const getTextWidth = (text, fontSize) => {
@@ -277,27 +277,27 @@ Page({
     };
 
     // 绘制标题
-    ctx.setFontSize(32);
+    ctx.setFontSize(28);
     ctx.setFillStyle(colors.gold);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('周易算卦', CENTER_X, y + 20);
-    y += 55;
+    ctx.fillText('周易算卦', CENTER_X, y + 18);
+    y += 50;
 
     // 副标题
-    ctx.setFontSize(18);
+    ctx.setFontSize(16);
     ctx.setFillStyle(colors.gray);
     ctx.fillText(`占卜方法：${methodName}`, CENTER_X, y);
-    y += 35;
+    y += 32;
     drawLine(y);
-    y += 25;
+    y += 22;
 
     // 问事信息
-    ctx.setFontSize(22);
+    ctx.setFontSize(20);
     ctx.setFillStyle(colors.goldDark);
     ctx.textAlign = 'left';
     ctx.fillText('本次问事', LEFT, y);
-    y += 35;
+    y += 32;
 
     const qInfoItems = [
       { label: '所问何事', value: questionInfo?.event || '未填写' },
@@ -307,57 +307,57 @@ Page({
     ];
 
     for (const item of qInfoItems) {
-      ctx.setFontSize(16);
+      ctx.setFontSize(14);
       ctx.setFillStyle(colors.gray);
       ctx.fillText(item.label + '：' + item.value, LEFT, y, W);
-      y += 28;
+      y += 26;
     }
 
-    y += 15;
+    y += 14;
     drawLine(y);
-    y += 25;
+    y += 22;
 
     // 卦象名称
     const guaName = hasBian && bianGuaDetail
       ? `${guaDetail.guaName}卦 → ${bianGuaDetail.guaName}卦`
       : `${guaDetail.guaName}卦`;
 
-    ctx.setFontSize(28);
+    ctx.setFontSize(24);
     ctx.setFillStyle(colors.gold);
     ctx.textAlign = 'center';
     ctx.fillText(guaName, CENTER_X, y);
-    y += 45;
+    y += 42;
 
     // 变爻位置
     if (hasBian && bianYaoIndices.length > 0) {
       const bianYaoNames = bianYaoIndices.map(i => ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]).join('、');
-      ctx.setFontSize(14);
+      ctx.setFontSize(12);
       ctx.setFillStyle('#ff6b6b');
       ctx.fillText(`变爻：${bianYaoNames}`, CENTER_X, y);
-      y += 24;
+      y += 22;
     }
 
-    y += 12;
+    y += 10;
 
     // 绘制卦象区块
     const drawGuaSection = (detail, title, startY, showTitle) => {
       let curY = startY;
 
       if (showTitle) {
-        ctx.setFontSize(20);
+        ctx.setFontSize(18);
         ctx.setFillStyle(colors.accent);
         ctx.textAlign = 'center';
         ctx.fillText(title, CENTER_X, curY);
-        curY += 32;
+        curY += 28;
       }
 
-      curY = drawText('卦辞：' + detail.guaCi, LEFT, curY, W, 16, colors.textLight, 26);
-      curY = drawText('彖传：' + detail.duan, LEFT, curY, W, 14, colors.text, 24);
-      curY = drawText('大象传：' + detail.xiang, LEFT, curY, W, 14, colors.text, 24);
+      curY = drawText('卦辞：' + detail.guaCi, LEFT, curY, W, 14, colors.textLight, 22);
+      curY = drawText('彖传：' + detail.duan, LEFT, curY, W, 12, colors.text, 20);
+      curY = drawText('大象传：' + detail.xiang, LEFT, curY, W, 12, colors.text, 20);
 
       const yaoNames = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'];
       for (let i = 0; i < detail.yaoCi.length; i++) {
-        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, LEFT, curY, W, 12, colors.gray, 20);
+        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, LEFT, curY, W, 11, colors.gray, 18);
       }
 
       return curY;
@@ -371,15 +371,6 @@ Page({
       y += 20;
       y = drawGuaSection(bianGuaDetail, `【变卦 ${bianGuaDetail.guaName}】`, y, true);
     }
-
-    // 底部
-    y += 20;
-    drawLine(y);
-    y += 16;
-    ctx.setFontSize(12);
-    ctx.setFillStyle(colors.gray);
-    ctx.textAlign = 'center';
-    ctx.fillText('由周易算卦小程序生成', CENTER_X, y);
 
     ctx.draw(false, () => {
       wx.canvasToTempFilePath({
