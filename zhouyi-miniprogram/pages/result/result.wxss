@@ -530,3 +530,10 @@
   padding-top: 20rpx;
   border-top: 1rpx solid rgba(201, 168, 108, 0.1);
 }
+
+/* 生成分享图用的 Canvas */
+.share-canvas {
+  position: fixed;
+  left: -9999px;
+  top: -9999px;
+}

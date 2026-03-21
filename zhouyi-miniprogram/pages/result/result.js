@@ -188,6 +188,238 @@ Page({
     });
   },
 
+  // 生成分享图并保存到相册
+  saveShareImage() {
+    wx.showLoading({ title: '正在生成图片...' });
+
+    const { guaDetail, bianGuaDetail, hasBian, questionInfo, divinationType, bianYaoIndices } = this.data;
+    if (!guaDetail) {
+      wx.hideLoading();
+      return;
+    }
+
+    const methodName = divinationType === 'dayanshi' ? '大衍筮法' : '铜钱卦';
+    const ctx = wx.createCanvasContext('shareCanvas');
+    const W = 750; // canvas width in rpx
+    const rpx = W / 750; // 转换比例
+
+    // 颜色定义
+    const colors = {
+      bg: '#1a1a2e',
+      bg2: '#16213e',
+      gold: '#e8d5b7',
+      goldDark: '#c9a86c',
+      text: '#b0b0b0',
+      textLight: '#e8d5b7',
+      accent: '#c9a86c',
+      gray: '#888888'
+    };
+
+    let y = 40; // 当前位置
+
+    // 绘制背景
+    ctx.setFillStyle(colors.bg);
+    ctx.fillRect(0, 0, W, 1600);
+    ctx.setFillStyle(colors.bg2);
+    ctx.fillRect(0, 0, W, 1600);
+
+    // 绘制渐变分隔线
+    const drawGradientLine = (y) => {
+      const gradient = ctx.createLinearGradient(80, 0, W - 80, 0);
+      gradient.addColorStop(0, 'transparent');
+      gradient.addColorStop(0.5, 'rgba(201, 168, 108, 0.5)');
+      gradient.addColorStop(1, 'transparent');
+      ctx.setStrokeStyle(gradient);
+      ctx.setLineWidth(1);
+      ctx.beginPath();
+      ctx.moveTo(80, y);
+      ctx.lineTo(W - 80, y);
+      ctx.stroke();
+    };
+
+    // 文字换行绘制函数
+    const drawText = (text, x, yPos, maxWidth, fontSize, color, lineHeight) => {
+      ctx.setFontSize(fontSize);
+      ctx.setFillStyle(color);
+      ctx.textBaseline = 'top';
+
+      const chars = text.split('');
+      let line = '';
+      let currentY = yPos;
+
+      for (let i = 0; i < chars.length; i++) {
+        const testLine = line + chars[i];
+        const metrics = ctx.measureText(testLine);
+
+        if (metrics.width > maxWidth && line.length > 0) {
+          ctx.fillText(line, x, currentY);
+          line = chars[i];
+          currentY += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      if (line.length > 0) {
+        ctx.fillText(line, x, currentY);
+      }
+
+      return currentY + lineHeight; // 返回下一行 Y 位置
+    };
+
+    // 绘制标题
+    ctx.setFontSize(44);
+    ctx.setFillStyle(colors.gold);
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('周易算卦', W / 2, y + 30);
+    y += 80;
+
+    // 绘制副标题（占卜方法）
+    ctx.setFontSize(24);
+    ctx.setFillStyle(colors.gray);
+    ctx.fillText(`占卜方法：${methodName}`, W / 2, y);
+    y += 50;
+
+    drawGradientLine(y);
+    y += 30;
+
+    // 绘制问事信息区块
+    ctx.setFontSize(28);
+    ctx.setFillStyle(colors.goldDark);
+    ctx.textAlign = 'left';
+    ctx.fillText('本次问事', 50, y);
+    y += 45;
+
+    const qInfoItems = [
+      { label: '所问何事', value: questionInfo?.event || '未填写' },
+      { label: '所在地点', value: questionInfo?.locationText || '未填写' },
+      { label: '占卜时间', value: questionInfo?.currentTime || '未填写' },
+      { label: '事件发生', value: questionInfo?.targetTime || '未填写' }
+    ];
+
+    for (const item of qInfoItems) {
+      ctx.setFontSize(22);
+      ctx.setFillStyle(colors.gray);
+      ctx.fillText(item.label + '：', 50, y);
+      const labelWidth = ctx.measureText(item.label + '：').width;
+      ctx.setFillStyle(colors.text);
+      ctx.fillText(item.value, 50 + labelWidth, y);
+      y += 38;
+    }
+
+    y += 20;
+    drawGradientLine(y);
+    y += 40;
+
+    // 绘制卦象区块
+    const guaName = hasBian && bianGuaDetail
+      ? `${guaDetail.guaName}卦 → ${bianGuaDetail.guaName}卦`
+      : `${guaDetail.guaName}卦`;
+
+    ctx.setFontSize(40);
+    ctx.setFillStyle(colors.gold);
+    ctx.textAlign = 'center';
+    ctx.fillText(guaName, W / 2, y);
+    y += 60;
+
+    // 绘制变爻位置
+    if (hasBian && bianYaoIndices.length > 0) {
+      const bianYaoNames = bianYaoIndices.map(i => ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]).join('、');
+      ctx.setFontSize(20);
+      ctx.setFillStyle('#ff6b6b');
+      ctx.fillText(`变爻：${bianYaoNames}`, W / 2, y);
+      y += 35;
+    }
+
+    y += 20;
+
+    // 绘制本卦信息
+    const drawGuaSection = (detail, title, startY) => {
+      let curY = startY;
+
+      if (hasBian && bianGuaDetail) {
+        ctx.setFontSize(26);
+        ctx.setFillStyle(colors.accent);
+        ctx.textAlign = 'center';
+        ctx.fillText(title, W / 2, curY);
+        curY += 40;
+      }
+
+      // 卦辞
+      curY = drawText('卦辞：' + detail.guaCi, 50, curY, W - 100, 22, colors.textLight, 34);
+
+      // 彖传
+      curY = drawText('彖传：' + detail.duan, 50, curY, W - 100, 20, colors.text, 30);
+
+      // 大象传
+      curY = drawText('大象传：' + detail.xiang, 50, curY, W - 100, 20, colors.text, 30);
+
+      // 爻辞
+      const yaoNames = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'];
+      for (let i = 0; i < detail.yaoCi.length; i++) {
+        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, 50, curY, W - 100, 18, colors.gray, 28);
+      }
+
+      return curY;
+    };
+
+    y = drawGuaSection(guaDetail, `【本卦 ${guaDetail.guaName}】`, y);
+
+    // 绘制变卦信息
+    if (hasBian && bianGuaDetail) {
+      y += 30;
+      drawGradientLine(y);
+      y += 30;
+      y = drawGuaSection(bianGuaDetail, `【变卦 ${bianGuaDetail.guaName}】`, y);
+    }
+
+    // 绘制底部信息
+    y += 30;
+    drawGradientLine(y);
+    y += 25;
+    ctx.setFontSize(18);
+    ctx.setFillStyle(colors.gray);
+    ctx.textAlign = 'center';
+    ctx.fillText('由周易算卦小程序生成', W / 2, y);
+
+    // 执行绘制
+    ctx.draw(false, () => {
+      // 导出为图片
+      wx.canvasToTempFilePath({
+        canvasId: 'shareCanvas',
+        success: (res) => {
+          // 保存到相册
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: () => {
+              wx.hideLoading();
+              wx.showToast({
+                title: '已保存到相册',
+                icon: 'success'
+              });
+            },
+            fail: (err) => {
+              wx.hideLoading();
+              console.error('保存失败', err);
+              wx.showToast({
+                title: '保存失败',
+                icon: 'none'
+              });
+            }
+          });
+        },
+        fail: (err) => {
+          wx.hideLoading();
+          console.error('生成图片失败', err);
+          wx.showToast({
+            title: '生成失败',
+            icon: 'none'
+          });
+        }
+      });
+    });
+  },
+
   // 复制完整卦象信息
   copyGuaCi() {
     const { guaDetail, bianGuaDetail, hasBian, questionInfo, divinationType, bianYaoIndices } = this.data;
