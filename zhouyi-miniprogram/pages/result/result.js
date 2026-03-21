@@ -213,12 +213,12 @@ Page({
       gray: '#888888'
     };
 
-    // 坐标设置（基于 750rpx 宽度的安全边距）
-    const LEFT = 40;
-    const RIGHT = 710;
+    // 坐标设置（基于 canvas 实际像素 750px，保守边距防止截断）
+    const LEFT = 30;
+    const RIGHT = 720;
     const CENTER_X = 375;
-    const W = RIGHT - LEFT; // 内容宽度 670
-    let y = 25;
+    const W = RIGHT - LEFT - 20; // 内容宽度 670
+    let y = 30;
 
     // 估算中文字符宽度
     const getTextWidth = (text, fontSize) => {
