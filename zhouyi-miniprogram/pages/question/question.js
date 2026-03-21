@@ -229,10 +229,10 @@ Page({
       bianGuaDetail = guaData.getGuaByIndex(bianInfo.bianGuaIndex);
     }
 
-    // 跳转到结果页，传递问事信息
+    // 跳转到结果页，传递问事信息和算卦方式
     const encodedQuestionInfo = encodeURIComponent(JSON.stringify(questionInfo));
     wx.navigateTo({
-      url: `/pages/result/result?results=${encodeURIComponent(JSON.stringify(results))}&guaIndex=${guaInfo.guaIndex}&bianGuaIndex=${bianInfo.hasBian ? bianInfo.bianGuaIndex : -1}&questionInfo=${encodedQuestionInfo}`
+      url: `/pages/result/result?results=${encodeURIComponent(JSON.stringify(results))}&guaIndex=${guaInfo.guaIndex}&bianGuaIndex=${bianInfo.hasBian ? bianInfo.bianGuaIndex : -1}&questionInfo=${encodedQuestionInfo}&divinationType=${this.data.divinationType}`
     });
 
     this.setData({ isDivinating: false, animationFrame: 0 });

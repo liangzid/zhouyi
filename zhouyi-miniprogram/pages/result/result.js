@@ -27,11 +27,14 @@ Page({
 
     // 问事信息
     questionInfo: null,
-    showQuestionInfo: false
+    showQuestionInfo: false,
+
+    // 算卦方式
+    divinationType: 'dayanshi'
   },
 
   onLoad(options) {
-    const { results, guaIndex, bianGuaIndex, questionInfo } = options;
+    const { results, guaIndex, bianGuaIndex, questionInfo, divinationType } = options;
 
     try {
       const resultsArr = JSON.parse(decodeURIComponent(results));
@@ -116,7 +119,8 @@ Page({
         bianGuaDetail,
         hasBian,
         questionInfo: qInfo,
-        showQuestionInfo: showQuestionInfo
+        showQuestionInfo: showQuestionInfo,
+        divinationType: divinationType || 'dayanshi'
       });
 
       // 设置导航栏标题
@@ -181,12 +185,45 @@ Page({
     });
   },
 
-  // 复制卦辞
+  // 复制完整卦象信息
   copyGuaCi() {
-    const detail = this.data.currentTab === 0 ? this.data.guaDetail : this.data.bianGuaDetail;
-    if (!detail) return;
+    const { guaDetail, bianGuaDetail, hasBian, questionInfo, divinationType, currentTab } = this.data;
+    if (!guaDetail) return;
 
-    const text = `【${detail.guaName}卦】\n\n卦辞：${detail.guaCi}\n\n彖传：${detail.duan}\n\n大象：${detail.xiang}`;
+    // 格式化占卜方法
+    const methodName = divinationType === 'dayanshi' ? '大衍筮法' : '铜钱卦';
+
+    // 获取当前显示的卦象（根据 tab）
+    const detail = currentTab === 0 ? guaDetail : (bianGuaDetail || guaDetail);
+
+    // 拼接卦象描述
+    let guaDesc = '';
+    if (hasBian && bianGuaDetail) {
+      if (currentTab === 0) {
+        guaDesc = `${guaDetail.guaName}卦（本卦）`;
+      } else {
+        guaDesc = `${bianGuaDetail.guaName}卦（变卦）`;
+      }
+    } else {
+      guaDesc = `${detail.guaName}卦`;
+    }
+
+    // 拼接爻辞
+    const yaoCiText = detail.yaoCi.map((ci, i) => `${['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]}：${ci}`).join('；');
+
+    // 构建完整信息
+    const text = [
+      `用户使用${methodName}进行占卜，`,
+      `所问：${questionInfo?.event || '未填写'}，`,
+      `占卜地点：${questionInfo?.locationText || '未填写'}，`,
+      `占卜时间：${questionInfo?.currentTime || '未填写'}，`,
+      `事件发生时间：${questionInfo?.targetTime || '未填写'}，`,
+      `所得卦象为${guaDesc}。`,
+      `卦辞：${detail.guaCi}`,
+      `彖传：${detail.duan}`,
+      `大象传：${detail.xiang}`,
+      `爻辞：${yaoCiText}`
+    ].join('\n');
 
     wx.setClipboardData({
       data: text,

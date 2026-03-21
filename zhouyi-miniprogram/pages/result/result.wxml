@@ -120,7 +120,7 @@
 
   <!-- 操作按钮 -->
   <view class="action-btns">
-    <button class="copy-btn" bindtap="copyGuaCi">复制卦辞</button>
+    <button class="copy-btn" bindtap="copyGuaCi">复制完整信息</button>
     <button class="share-btn" open-type="share">分享结果</button>
   </view>
 
