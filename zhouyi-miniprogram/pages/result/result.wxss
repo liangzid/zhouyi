@@ -531,6 +531,78 @@
   border-top: 1rpx solid rgba(201, 168, 108, 0.1);
 }
 
+/* 分享提示弹窗 */
+.share-tip-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.share-tip-content {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+  border: 1rpx solid rgba(201, 168, 108, 0.3);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  width: 80%;
+  max-width: 600rpx;
+}
+
+.share-tip-title {
+  font-size: 34rpx;
+  color: #e8d5b7;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.share-tip-desc {
+  font-size: 24rpx;
+  color: #888;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.share-tip-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.share-tip-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  border-radius: 40rpx;
+  text-align: center;
+}
+
+.share-card-btn {
+  background: linear-gradient(135deg, #e8d5b7 0%, #c9a86c 100%);
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+.share-img-btn {
+  background: rgba(232, 213, 183, 0.15);
+  color: #e8d5b7;
+  border: 1rpx solid rgba(232, 213, 183, 0.3);
+}
+
+.share-tip-cancel {
+  text-align: center;
+  font-size: 26rpx;
+  color: #666;
+  padding-top: 10rpx;
+}
+
 /* 生成分享图用的 Canvas */
 .share-canvas {
   position: fixed;

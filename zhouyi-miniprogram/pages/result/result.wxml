@@ -122,11 +122,24 @@
   <view class="action-btns">
     <button class="copy-btn" bindtap="copyGuaCi">复制结果</button>
     <button class="share-btn" bindtap="saveShareImage">截图保存</button>
-    <button class="share-btn" open-type="share">分享结果</button>
+    <button class="share-btn" bindtap="showShareTip">分享结果</button>
   </view>
 
-  <!-- 隐藏的 Canvas 用于生图，2倍分辨率确保清晰度 -->
-  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:2400rpx;" canvas-width="750" canvas-height="2400"></canvas>
+  <!-- 分享提示弹窗 -->
+  <view class="share-tip-popup" wx:if="{{showShareTip}}" bindtap="closeShareTip">
+    <view class="share-tip-content" catchtap="true">
+      <view class="share-tip-title">分享方式</view>
+      <view class="share-tip-desc">您可以选择以下方式分享本次占卜结果：</view>
+      <view class="share-tip-btns">
+        <button class="share-tip-btn share-card-btn" bindtap="doShareCard">分享小程序卡片</button>
+        <button class="share-tip-btn share-img-btn" bindtap="doShareImage">保存截图分享</button>
+      </view>
+      <view class="share-tip-cancel" bindtap="closeShareTip">取消</view>
+    </view>
+  </view>
+
+  <!-- 隐藏的 Canvas 用于生图，4倍分辨率确保清晰度 -->
+  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:3200rpx;" canvas-width="3000" canvas-height="12800"></canvas>
 
   <!-- 爻辞弹窗 -->
   <view class="yao-popup" wx:if="{{showYaoPopup}}" bindtap="closeYaoPopup">

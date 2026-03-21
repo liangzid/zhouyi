@@ -1,6 +1,7 @@
 // pages/result/result.js
 const guaData = require('../../utils/gua_data.js');
 const divination = require('../../utils/divination.js');
+const { generateShareImage } = require('../../utils/shareImage.js');
 
 Page({
   data: {
@@ -33,7 +34,10 @@ Page({
     divinationType: 'dayanshi',
 
     // 复制成功弹窗
-    showCopySuccess: false
+    showCopySuccess: false,
+
+    // 分享提示弹窗
+    showShareTip: false
   },
 
   onLoad(options) {
@@ -198,207 +202,35 @@ Page({
       return;
     }
 
-    const methodName = divinationType === 'dayanshi' ? '大衍筮法' : '铜钱卦';
-    const ctx = wx.createCanvasContext('shareCanvas');
-
-    // 颜色定义
-    const colors = {
-      bg: '#1a1a2e',
-      bg2: '#16213e',
-      gold: '#e8d5b7',
-      goldDark: '#c9a86c',
-      text: '#b0b0b0',
-      textLight: '#e8d5b7',
-      accent: '#c9a86c',
-      gray: '#888888'
-    };
-
-    // 坐标设置（基于 canvas 实际像素 750px，保守边距防止截断）
-    const LEFT = 50;
-    const RIGHT = 700;
-    const CENTER_X = 375;
-    const W = RIGHT - LEFT - 10; // 内容宽度 640
-    let y = 25;
-
-    // 估算中文字符宽度
-    const getTextWidth = (text, fontSize) => {
-      let width = 0;
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        if ('初三四五六爻卦辞彖传象大易算卜所地点时间生事件未填写·——'.includes(char)) {
-          width += fontSize * 0.9;
-        } else if ('。，、；：'.includes(char)) {
-          width += fontSize * 0.4;
-        } else if (char === ' ' || char === '→') {
-          width += fontSize * 0.5;
-        } else {
-          width += fontSize;
-        }
-      }
-      return width;
-    };
-
-    // 文字换行绘制
-    const drawText = (text, x, yPos, maxWidth, fontSize, color, lineHeight) => {
-      ctx.setFontSize(fontSize);
-      ctx.setFillStyle(color);
-      ctx.textBaseline = 'top';
-
-      let currentY = yPos;
-      let line = '';
-
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        const testLine = line + char;
-        const testWidth = getTextWidth(testLine, fontSize);
-
-        if (testWidth > maxWidth && line.length > 0) {
-          ctx.fillText(line, x, currentY);
-          line = char;
-          currentY += lineHeight;
-        } else {
-          line = testLine;
-        }
-      }
-      if (line.length > 0) {
-        ctx.fillText(line, x, currentY);
-      }
-      return currentY + lineHeight;
-    };
-
-    // 绘制分隔线
-    const drawLine = (yPos) => {
-      ctx.setStrokeStyle('rgba(201, 168, 108, 0.4)');
-      ctx.setLineWidth(1);
-      ctx.beginPath();
-      ctx.moveTo(LEFT, yPos);
-      ctx.lineTo(RIGHT, yPos);
-      ctx.stroke();
-    };
-
-    // 绘制标题
-    ctx.setFontSize(28);
-    ctx.setFillStyle(colors.gold);
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('周易算卦', CENTER_X, y + 18);
-    y += 50;
-
-    // 副标题
-    ctx.setFontSize(16);
-    ctx.setFillStyle(colors.gray);
-    ctx.fillText(`占卜方法：${methodName}`, CENTER_X, y);
-    y += 32;
-    drawLine(y);
-    y += 22;
-
-    // 问事信息
-    ctx.setFontSize(20);
-    ctx.setFillStyle(colors.goldDark);
-    ctx.textAlign = 'left';
-    ctx.fillText('本次问事', LEFT, y);
-    y += 32;
-
-    const qInfoItems = [
-      { label: '所问何事', value: questionInfo?.event || '未填写' },
-      { label: '所在地点', value: questionInfo?.locationText || '未填写' },
-      { label: '占卜时间', value: questionInfo?.currentTime || '未填写' },
-      { label: '事件发生', value: questionInfo?.targetTime || '未填写' }
-    ];
-
-    for (const item of qInfoItems) {
-      ctx.setFontSize(14);
-      ctx.setFillStyle(colors.gray);
-      ctx.fillText(item.label + '：' + item.value, LEFT, y, W);
-      y += 26;
-    }
-
-    y += 14;
-    drawLine(y);
-    y += 22;
-
-    // 卦象名称
-    const guaName = hasBian && bianGuaDetail
-      ? `${guaDetail.guaName}卦 → ${bianGuaDetail.guaName}卦`
-      : `${guaDetail.guaName}卦`;
-
-    ctx.setFontSize(24);
-    ctx.setFillStyle(colors.gold);
-    ctx.textAlign = 'center';
-    ctx.fillText(guaName, CENTER_X, y);
-    y += 42;
-
-    // 变爻位置
-    if (hasBian && bianYaoIndices.length > 0) {
-      const bianYaoNames = bianYaoIndices.map(i => ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]).join('、');
-      ctx.setFontSize(12);
-      ctx.setFillStyle('#ff6b6b');
-      ctx.fillText(`变爻：${bianYaoNames}`, CENTER_X, y);
-      y += 22;
-    }
-
-    y += 10;
-
-    // 绘制卦象区块
-    const drawGuaSection = (detail, title, startY, showTitle) => {
-      let curY = startY;
-
-      if (showTitle) {
-        ctx.setFontSize(18);
-        ctx.setFillStyle(colors.accent);
-        ctx.textAlign = 'center';
-        ctx.fillText(title, CENTER_X, curY);
-        curY += 28;
-      }
-
-      curY = drawText('卦辞：' + detail.guaCi, LEFT, curY, W, 14, colors.textLight, 22);
-      curY = drawText('彖传：' + detail.duan, LEFT, curY, W, 12, colors.text, 20);
-      curY = drawText('大象传：' + detail.xiang, LEFT, curY, W, 12, colors.text, 20);
-
-      const yaoNames = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'];
-      for (let i = 0; i < detail.yaoCi.length; i++) {
-        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, LEFT, curY, W, 11, colors.gray, 18);
-      }
-
-      return curY;
-    };
-
-    y = drawGuaSection(guaDetail, `【本卦 ${guaDetail.guaName}】`, y, hasBian && bianGuaDetail);
-
-    if (hasBian && bianGuaDetail) {
-      y += 20;
-      drawLine(y);
-      y += 20;
-      y = drawGuaSection(bianGuaDetail, `【变卦 ${bianGuaDetail.guaName}】`, y, true);
-    }
-
-    ctx.draw(false, () => {
-      wx.canvasToTempFilePath({
-        canvasId: 'shareCanvas',
-        success: (res) => {
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success: () => {
-              wx.hideLoading();
-              wx.showToast({ title: '已保存到相册', icon: 'success' });
-            },
-            fail: (err) => {
-              wx.hideLoading();
-              console.error('保存失败', err);
-              if (err.errMsg && err.errMsg.includes('auth deny')) {
-                wx.showToast({ title: '请授权保存到相册', icon: 'none' });
-              } else {
-                wx.showToast({ title: '保存失败', icon: 'none' });
-              }
-            }
-          });
+    // 调用抽取的分享图生成函数
+    generateShareImage({
+      guaDetail,
+      bianGuaDetail,
+      hasBian,
+      questionInfo,
+      divinationType,
+      bianYaoIndices
+    }).then((tempFilePath) => {
+      wx.saveImageToPhotosAlbum({
+        filePath: tempFilePath,
+        success: () => {
+          wx.hideLoading();
+          wx.showToast({ title: '已保存到相册', icon: 'success' });
         },
         fail: (err) => {
           wx.hideLoading();
-          console.error('生成图片失败', err);
-          wx.showToast({ title: '生成失败', icon: 'none' });
+          console.error('保存失败', err);
+          if (err.errMsg && err.errMsg.includes('auth deny')) {
+            wx.showToast({ title: '请授权保存到相册', icon: 'none' });
+          } else {
+            wx.showToast({ title: '保存失败', icon: 'none' });
+          }
         }
       });
+    }).catch((err) => {
+      wx.hideLoading();
+      console.error('生成图片失败', err);
+      wx.showToast({ title: '生成失败', icon: 'none' });
     });
   },
 
@@ -462,6 +294,37 @@ Page({
   // 关闭复制成功弹窗
   closeCopySuccess() {
     this.setData({ showCopySuccess: false });
+  },
+
+  // 显示分享提示弹窗
+  showShareTip() {
+    this.setData({ showShareTip: true });
+  },
+
+  // 关闭分享提示弹窗
+  closeShareTip() {
+    this.setData({ showShareTip: false });
+  },
+
+  // 分享小程序卡片
+  doShareCard() {
+    this.setData({ showShareTip: false });
+    // 启用分享功能，提示用户点击右上角分享
+    wx.showShareMenu({
+      withShareTicket: true
+    });
+    wx.showToast({
+      title: '请点击右上角分享给好友',
+      icon: 'none',
+      duration: 2000
+    });
+  },
+
+  // 保存截图分享
+  doShareImage() {
+    this.setData({ showShareTip: false });
+    // 先保存截图，然后提示用户可以分享
+    this.saveShareImage();
   },
 
   // 分享
