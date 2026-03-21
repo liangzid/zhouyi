@@ -91,18 +91,22 @@ Page({
     this.setData({ locationLoading: true });
 
     wx.getLocation({
-      type: 'wgs84',
+      type: 'gcj02',
       success: (res) => {
         const location = {
           latitude: res.latitude,
           longitude: res.longitude
         };
         // 简单显示经纬度
-        const locationText = `经度: ${res.latitude.toFixed(4)}, 纬度: ${res.longitude.toFixed(4)}`;
+        const locationText = `纬度: ${res.latitude.toFixed(4)}, 经度: ${res.longitude.toFixed(4)}`;
         this.setData({
           location: location,
           locationText: locationText,
           locationLoading: false
+        });
+        wx.showToast({
+          title: '获取成功',
+          icon: 'success'
         });
       },
       fail: (err) => {
@@ -114,6 +118,18 @@ Page({
         });
       }
     });
+  },
+
+  // 确认地址，进入下一步（仅在已获取位置时才可点击）
+  confirmLocation() {
+    if (!this.data.locationText) {
+      wx.showToast({
+        title: '请先获取位置或点击上一步跳过',
+        icon: 'none'
+      });
+      return;
+    }
+    this.nextStep();
   },
 
   // 跳过地址，进入下一步

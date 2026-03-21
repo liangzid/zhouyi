@@ -83,8 +83,8 @@
       <view class="prev-btn" bindtap="prevStep">
         <text>上一步</text>
       </view>
-      <view class="next-btn" bindtap="skipLocation">
-        <text>下一步</text>
+      <view class="next-btn" bindtap="{{locationText ? 'confirmLocation' : 'skipLocation'}}">
+        <text>{{locationText ? '下一步' : '跳过'}}</text>
       </view>
     </view>
   </view>
