@@ -125,8 +125,8 @@
     <button class="share-btn" open-type="share">分享结果</button>
   </view>
 
-  <!-- 隐藏的 Canvas 用于生图 -->
-  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:2400rpx;"></canvas>
+  <!-- 隐藏的 Canvas 用于生图，canvas-width/height 为实际像素值确保清晰度 -->
+  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:2400rpx;" canvas-width="750" canvas-height="2400"></canvas>
 
   <!-- 爻辞弹窗 -->
   <view class="yao-popup" wx:if="{{showYaoPopup}}" bindtap="closeYaoPopup">
