@@ -30,7 +30,10 @@ Page({
     showQuestionInfo: false,
 
     // 算卦方式
-    divinationType: 'dayanshi'
+    divinationType: 'dayanshi',
+
+    // 复制成功弹窗
+    showCopySuccess: false
   },
 
   onLoad(options) {
@@ -237,12 +240,14 @@ Page({
     wx.setClipboardData({
       data: parts.join('\n'),
       success: () => {
-        wx.showToast({
-          title: '已复制',
-          icon: 'success'
-        });
+        this.setData({ showCopySuccess: true });
       }
     });
+  },
+
+  // 关闭复制成功弹窗
+  closeCopySuccess() {
+    this.setData({ showCopySuccess: false });
   },
 
   // 分享

@@ -138,4 +138,21 @@
       <view class="yao-popup-close">点击关闭</view>
     </view>
   </view>
+
+  <!-- 复制成功弹窗 -->
+  <view class="copy-success-popup" wx:if="{{showCopySuccess}}" bindtap="closeCopySuccess">
+    <view class="copy-success-content" catchtap="true">
+      <view class="copy-success-icon">✓</view>
+      <view class="copy-success-title">复制成功</view>
+      <view class="copy-success-desc">可打开以下工具进行解卦：</view>
+      <view class="copy-success-list">
+        <text class="copy-success-item">豆包</text>
+        <text class="copy-success-item">DeepSeek</text>
+        <text class="copy-success-item">Qwen（通义千问）</text>
+        <text class="copy-success-item">寻访专业人士</text>
+      </view>
+      <view class="copy-success-tip">或收藏此页面，待日后复盘</view>
+      <view class="copy-success-close">点击任意处关闭</view>
+    </view>
+  </view>
 </view>
