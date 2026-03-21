@@ -126,7 +126,7 @@
   </view>
 
   <!-- 隐藏的 Canvas 用于生图 -->
-  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:1400rpx;"></canvas>
+  <canvas canvas-id="shareCanvas" class="share-canvas" style="width:750rpx;height:2400rpx;"></canvas>
 
   <!-- 爻辞弹窗 -->
   <view class="yao-popup" wx:if="{{showYaoPopup}}" bindtap="closeYaoPopup">

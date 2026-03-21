@@ -200,8 +200,6 @@ Page({
 
     const methodName = divinationType === 'dayanshi' ? '大衍筮法' : '铜钱卦';
     const ctx = wx.createCanvasContext('shareCanvas');
-    const W = 750; // canvas width in rpx
-    const rpx = W / 750; // 转换比例
 
     // 颜色定义
     const colors = {
@@ -215,45 +213,48 @@ Page({
       gray: '#888888'
     };
 
-    let y = 40; // 当前位置
+    const W = 650; // 内容区域宽度
+    const LEFT = 50;
+    const RIGHT = 700;
+    const CENTER_X = 375;
+    let y = 30;
 
-    // 绘制背景
-    ctx.setFillStyle(colors.bg);
-    ctx.fillRect(0, 0, W, 1600);
-    ctx.setFillStyle(colors.bg2);
-    ctx.fillRect(0, 0, W, 1600);
-
-    // 绘制渐变分隔线
-    const drawGradientLine = (y) => {
-      const gradient = ctx.createLinearGradient(80, 0, W - 80, 0);
-      gradient.addColorStop(0, 'transparent');
-      gradient.addColorStop(0.5, 'rgba(201, 168, 108, 0.5)');
-      gradient.addColorStop(1, 'transparent');
-      ctx.setStrokeStyle(gradient);
-      ctx.setLineWidth(1);
-      ctx.beginPath();
-      ctx.moveTo(80, y);
-      ctx.lineTo(W - 80, y);
-      ctx.stroke();
+    // 估算中文字符宽度（按字体大小比例）
+    const getTextWidth = (text, fontSize) => {
+      let width = 0;
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        // 常用字符宽度估算
+        if ('初三四五六爻卦辞彖传象大易算卜所地点时间生事件未填写'.includes(char)) {
+          width += fontSize * 0.9;
+        } else if ('。，、；：'.includes(char)) {
+          width += fontSize * 0.4;
+        } else if (char === ' ' || char === '→') {
+          width += fontSize * 0.5;
+        } else {
+          width += fontSize;
+        }
+      }
+      return width;
     };
 
-    // 文字换行绘制函数
+    // 文字换行绘制
     const drawText = (text, x, yPos, maxWidth, fontSize, color, lineHeight) => {
       ctx.setFontSize(fontSize);
       ctx.setFillStyle(color);
       ctx.textBaseline = 'top';
 
-      const chars = text.split('');
-      let line = '';
       let currentY = yPos;
+      let line = '';
 
-      for (let i = 0; i < chars.length; i++) {
-        const testLine = line + chars[i];
-        const metrics = ctx.measureText(testLine);
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const testLine = line + char;
+        const testWidth = getTextWidth(testLine, fontSize);
 
-        if (metrics.width > maxWidth && line.length > 0) {
+        if (testWidth > maxWidth && line.length > 0) {
           ctx.fillText(line, x, currentY);
-          line = chars[i];
+          line = char;
           currentY += lineHeight;
         } else {
           line = testLine;
@@ -262,33 +263,41 @@ Page({
       if (line.length > 0) {
         ctx.fillText(line, x, currentY);
       }
+      return currentY + lineHeight;
+    };
 
-      return currentY + lineHeight; // 返回下一行 Y 位置
+    // 绘制分隔线
+    const drawLine = (yPos) => {
+      ctx.setStrokeStyle('rgba(201, 168, 108, 0.4)');
+      ctx.setLineWidth(1);
+      ctx.beginPath();
+      ctx.moveTo(LEFT, yPos);
+      ctx.lineTo(RIGHT, yPos);
+      ctx.stroke();
     };
 
     // 绘制标题
-    ctx.setFontSize(44);
+    ctx.setFontSize(36);
     ctx.setFillStyle(colors.gold);
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('周易算卦', W / 2, y + 30);
-    y += 80;
+    ctx.fillText('周易算卦', CENTER_X, y + 25);
+    y += 65;
 
-    // 绘制副标题（占卜方法）
-    ctx.setFontSize(24);
+    // 副标题
+    ctx.setFontSize(20);
     ctx.setFillStyle(colors.gray);
-    ctx.fillText(`占卜方法：${methodName}`, W / 2, y);
-    y += 50;
-
-    drawGradientLine(y);
+    ctx.fillText(`占卜方法：${methodName}`, CENTER_X, y);
+    y += 40;
+    drawLine(y);
     y += 30;
 
-    // 绘制问事信息区块
-    ctx.setFontSize(28);
+    // 问事信息
+    ctx.setFontSize(24);
     ctx.setFillStyle(colors.goldDark);
     ctx.textAlign = 'left';
-    ctx.fillText('本次问事', 50, y);
-    y += 45;
+    ctx.fillText('本次问事', LEFT, y);
+    y += 38;
 
     const qInfoItems = [
       { label: '所问何事', value: questionInfo?.event || '未填写' },
@@ -298,123 +307,105 @@ Page({
     ];
 
     for (const item of qInfoItems) {
-      ctx.setFontSize(22);
+      ctx.setFontSize(18);
       ctx.setFillStyle(colors.gray);
-      ctx.fillText(item.label + '：', 50, y);
-      const labelWidth = ctx.measureText(item.label + '：').width;
-      ctx.setFillStyle(colors.text);
-      ctx.fillText(item.value, 50 + labelWidth, y);
-      y += 38;
+      ctx.fillText(item.label + '：' + item.value, LEFT, y, W);
+      y += 30;
     }
 
     y += 20;
-    drawGradientLine(y);
-    y += 40;
+    drawLine(y);
+    y += 30;
 
-    // 绘制卦象区块
+    // 卦象名称
     const guaName = hasBian && bianGuaDetail
       ? `${guaDetail.guaName}卦 → ${bianGuaDetail.guaName}卦`
       : `${guaDetail.guaName}卦`;
 
-    ctx.setFontSize(40);
+    ctx.setFontSize(32);
     ctx.setFillStyle(colors.gold);
     ctx.textAlign = 'center';
-    ctx.fillText(guaName, W / 2, y);
-    y += 60;
+    ctx.fillText(guaName, CENTER_X, y);
+    y += 50;
 
-    // 绘制变爻位置
+    // 变爻位置
     if (hasBian && bianYaoIndices.length > 0) {
       const bianYaoNames = bianYaoIndices.map(i => ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]).join('、');
-      ctx.setFontSize(20);
+      ctx.setFontSize(16);
       ctx.setFillStyle('#ff6b6b');
-      ctx.fillText(`变爻：${bianYaoNames}`, W / 2, y);
-      y += 35;
+      ctx.fillText(`变爻：${bianYaoNames}`, CENTER_X, y);
+      y += 28;
     }
 
-    y += 20;
+    y += 15;
 
-    // 绘制本卦信息
-    const drawGuaSection = (detail, title, startY) => {
+    // 绘制卦象区块
+    const drawGuaSection = (detail, title, startY, showTitle) => {
       let curY = startY;
 
-      if (hasBian && bianGuaDetail) {
-        ctx.setFontSize(26);
+      if (showTitle) {
+        ctx.setFontSize(22);
         ctx.setFillStyle(colors.accent);
         ctx.textAlign = 'center';
-        ctx.fillText(title, W / 2, curY);
-        curY += 40;
+        ctx.fillText(title, CENTER_X, curY);
+        curY += 35;
       }
 
-      // 卦辞
-      curY = drawText('卦辞：' + detail.guaCi, 50, curY, W - 100, 22, colors.textLight, 34);
+      curY = drawText('卦辞：' + detail.guaCi, LEFT, curY, W, 18, colors.textLight, 28);
+      curY = drawText('彖传：' + detail.duan, LEFT, curY, W, 16, colors.text, 26);
+      curY = drawText('大象传：' + detail.xiang, LEFT, curY, W, 16, colors.text, 26);
 
-      // 彖传
-      curY = drawText('彖传：' + detail.duan, 50, curY, W - 100, 20, colors.text, 30);
-
-      // 大象传
-      curY = drawText('大象传：' + detail.xiang, 50, curY, W - 100, 20, colors.text, 30);
-
-      // 爻辞
       const yaoNames = ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'];
       for (let i = 0; i < detail.yaoCi.length; i++) {
-        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, 50, curY, W - 100, 18, colors.gray, 28);
+        curY = drawText(`${yaoNames[i]}：${detail.yaoCi[i]}`, LEFT, curY, W, 14, colors.gray, 22);
       }
 
       return curY;
     };
 
-    y = drawGuaSection(guaDetail, `【本卦 ${guaDetail.guaName}】`, y);
+    y = drawGuaSection(guaDetail, `【本卦 ${guaDetail.guaName}】`, y, hasBian && bianGuaDetail);
 
-    // 绘制变卦信息
     if (hasBian && bianGuaDetail) {
-      y += 30;
-      drawGradientLine(y);
-      y += 30;
-      y = drawGuaSection(bianGuaDetail, `【变卦 ${bianGuaDetail.guaName}】`, y);
+      y += 25;
+      drawLine(y);
+      y += 25;
+      y = drawGuaSection(bianGuaDetail, `【变卦 ${bianGuaDetail.guaName}】`, y, true);
     }
 
-    // 绘制底部信息
-    y += 30;
-    drawGradientLine(y);
+    // 底部
     y += 25;
-    ctx.setFontSize(18);
+    drawLine(y);
+    y += 20;
+    ctx.setFontSize(14);
     ctx.setFillStyle(colors.gray);
     ctx.textAlign = 'center';
-    ctx.fillText('由周易算卦小程序生成', W / 2, y);
+    ctx.fillText('由周易算卦小程序生成', CENTER_X, y);
 
-    // 执行绘制
     ctx.draw(false, () => {
-      // 导出为图片
       wx.canvasToTempFilePath({
         canvasId: 'shareCanvas',
         success: (res) => {
-          // 保存到相册
           wx.saveImageToPhotosAlbum({
             filePath: res.tempFilePath,
             success: () => {
               wx.hideLoading();
-              wx.showToast({
-                title: '已保存到相册',
-                icon: 'success'
-              });
+              wx.showToast({ title: '已保存到相册', icon: 'success' });
             },
             fail: (err) => {
               wx.hideLoading();
               console.error('保存失败', err);
-              wx.showToast({
-                title: '保存失败',
-                icon: 'none'
-              });
+              if (err.errMsg && err.errMsg.includes('auth deny')) {
+                wx.showToast({ title: '请授权保存到相册', icon: 'none' });
+              } else {
+                wx.showToast({ title: '保存失败', icon: 'none' });
+              }
             }
           });
         },
         fail: (err) => {
           wx.hideLoading();
           console.error('生成图片失败', err);
-          wx.showToast({
-            title: '生成失败',
-            icon: 'none'
-          });
+          wx.showToast({ title: '生成失败', icon: 'none' });
         }
       });
     });
