@@ -7,17 +7,17 @@
       <text class="question-label">所问何事：</text>
       <text class="question-value">{{questionInfo.event}}</text>
     </view>
-    <view class="question-item" wx:if="{{questionInfo.locationText}}">
+    <view class="question-item">
       <text class="question-label">所在地点：</text>
-      <text class="question-value">{{questionInfo.locationText}}</text>
+      <text class="question-value">{{questionInfo.locationText || '未填写'}}</text>
     </view>
-    <view class="question-item" wx:if="{{questionInfo.currentTime}}">
+    <view class="question-item">
       <text class="question-label">当前时间：</text>
-      <text class="question-value">{{questionInfo.currentTime}}</text>
+      <text class="question-value">{{questionInfo.currentTime || '未填写'}}</text>
     </view>
-    <view class="question-item" wx:if="{{questionInfo.targetTime}}">
+    <view class="question-item">
       <text class="question-label">目标时间：</text>
-      <text class="question-value">{{questionInfo.targetTime}}</text>
+      <text class="question-value">{{questionInfo.targetTime || '未填写'}}</text>
     </view>
   </view>
 

@@ -173,10 +173,10 @@ Page({
     // 准备问事信息（在算卦之前准备好，用于设置种子）
     const questionInfo = {
       event: this.data.event,
-      location: this.data.location,
-      locationText: this.data.locationText,
-      currentTime: this.data.useCurrentTime ? this.data.currentTime : null,
-      targetTime: this.data.targetTime || null
+      location: this.data.location || '',
+      locationText: this.data.locationText || '',
+      currentTime: this.data.useCurrentTime ? this.data.currentTime : '',
+      targetTime: this.data.targetTime || ''
     };
 
     console.log('=== DEBUG: 问事信息 ===');

@@ -47,7 +47,7 @@ Page({
       if (questionInfo) {
         try {
           qInfo = JSON.parse(decodeURIComponent(questionInfo));
-          showQuestionInfo = !!qInfo.event;
+          showQuestionInfo = !!qInfo;
         } catch (e) {
           console.log('解析问事信息失败', e);
         }
