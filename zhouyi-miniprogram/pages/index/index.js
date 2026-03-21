@@ -4,13 +4,27 @@ const guaData = require('../../utils/gua_data.js');
 
 const app = getApp();
 
+// 随机语录列表
+const quotes = [
+  '心诚则灵',
+  '善易者不卜',
+  '君子以顺德积小',
+  '天地之大德曰生',
+  '顺天应人',
+  '自强不息',
+  '厚德载物',
+  '知命而为',
+  '易者易也，易以贡之'
+];
+
 Page({
   data: {
     divinationType: 'dayanshi', // 'dayanshi' 大衍筮法, 'coin' 铜钱卦
     isDivinating: false,
     animationFrame: 0,
     userInfo: null,
-    isLoggedIn: false
+    isLoggedIn: false,
+    currentQuote: ''
   },
 
   onLoad() {
@@ -20,6 +34,16 @@ Page({
   onShow() {
     // 每次显示页面时检查登录状态
     this.checkLoginStatus();
+    // 随机选择一条语录
+    this.setRandomQuote();
+  },
+
+  // 随机选择语录
+  setRandomQuote() {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    this.setData({
+      currentQuote: quotes[randomIndex]
+    });
   },
 
   // 检查登录状态

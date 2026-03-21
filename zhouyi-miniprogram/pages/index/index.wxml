@@ -16,7 +16,7 @@
 
   <!-- 标题 -->
   <view class="title">周易算卦</view>
-  <view class="subtitle">心诚则灵</view>
+  <view class="subtitle">{{currentQuote}}</view>
 
   <!-- 算卦方式选择 -->
   <view class="type-selector">
@@ -42,7 +42,7 @@
   <view class="divination-area">
     <view class="coin-animation {{isDivinating ? 'animating' : ''}}">
       <view class="coin">
-        <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☰' : '☷') : '☰'}}</text>
+        <text class="coin-text">{{isDivinating ? (animationFrame % 2 === 0 ? '☱' : '☷') : '☱'}}</text>
       </view>
     </view>
 
