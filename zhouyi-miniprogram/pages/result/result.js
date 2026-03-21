@@ -187,46 +187,55 @@ Page({
 
   // 复制完整卦象信息
   copyGuaCi() {
-    const { guaDetail, bianGuaDetail, hasBian, questionInfo, divinationType, currentTab } = this.data;
+    const { guaDetail, bianGuaDetail, hasBian, questionInfo, divinationType, bianYaoIndices } = this.data;
     if (!guaDetail) return;
 
     // 格式化占卜方法
     const methodName = divinationType === 'dayanshi' ? '大衍筮法' : '铜钱卦';
 
-    // 获取当前显示的卦象（根据 tab）
-    const detail = currentTab === 0 ? guaDetail : (bianGuaDetail || guaDetail);
-
-    // 拼接卦象描述
-    let guaDesc = '';
-    if (hasBian && bianGuaDetail) {
-      if (currentTab === 0) {
-        guaDesc = `${guaDetail.guaName}卦（本卦）`;
-      } else {
-        guaDesc = `${bianGuaDetail.guaName}卦（变卦）`;
-      }
-    } else {
-      guaDesc = `${detail.guaName}卦`;
-    }
-
     // 拼接爻辞
-    const yaoCiText = detail.yaoCi.map((ci, i) => `${['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]}：${ci}`).join('；');
+    const formatYaoCi = (detail) => {
+      return detail.yaoCi.map((ci, i) => `${['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]}：${ci}`).join('；');
+    };
+
+    // 变爻位置描述
+    const bianYaoDesc = bianYaoIndices.length > 0
+      ? `变爻位置：${bianYaoIndices.map(i => ['初爻', '二爻', '三爻', '四爻', '五爻', '上爻'][i]).join('、')}`
+      : '';
 
     // 构建完整信息
-    const text = [
+    const parts = [
       `用户使用${methodName}进行占卜，`,
       `所问：${questionInfo?.event || '未填写'}，`,
       `占卜地点：${questionInfo?.locationText || '未填写'}，`,
       `占卜时间：${questionInfo?.currentTime || '未填写'}，`,
       `事件发生时间：${questionInfo?.targetTime || '未填写'}，`,
-      `所得卦象为${guaDesc}。`,
-      `卦辞：${detail.guaCi}`,
-      `彖传：${detail.duan}`,
-      `大象传：${detail.xiang}`,
-      `爻辞：${yaoCiText}`
-    ].join('\n');
+      hasBian && bianGuaDetail
+        ? `所得卦象为本卦${guaDetail.guaName}卦、变卦${bianGuaDetail.guaName}卦。`
+        : `所得卦象为${guaDetail.guaName}卦。`
+    ];
+
+    // 本卦信息
+    parts.push(`【本卦 ${guaDetail.guaName}】`);
+    parts.push(`卦辞：${guaDetail.guaCi}`);
+    parts.push(`彖传：${guaDetail.duan}`);
+    parts.push(`大象传：${guaDetail.xiang}`);
+    parts.push(`爻辞：${formatYaoCi(guaDetail)}`);
+
+    // 变卦信息
+    if (hasBian && bianGuaDetail) {
+      parts.push(`【变卦 ${bianGuaDetail.guaName}】`);
+      parts.push(`卦辞：${bianGuaDetail.guaCi}`);
+      parts.push(`彖传：${bianGuaDetail.duan}`);
+      parts.push(`大象传：${bianGuaDetail.xiang}`);
+      parts.push(`爻辞：${formatYaoCi(bianGuaDetail)}`);
+      if (bianYaoDesc) {
+        parts.push(bianYaoDesc);
+      }
+    }
 
     wx.setClipboardData({
-      data: text,
+      data: parts.join('\n'),
       success: () => {
         wx.showToast({
           title: '已复制',
