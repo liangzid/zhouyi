@@ -16,6 +16,8 @@ Page({
     // 上卦（三、四、五爻）和下卦（初、二、三爻）
     upperYaoResults: [],  // 上卦爻
     lowerYaoResults: [],  // 下卦爻
+    originalUpperYaoResults: [], // 本卦上卦爻（备份）
+    originalLowerYaoResults: [], // 本卦下卦爻（备份）
     upperYaoResultsBian: [], // 变卦上卦爻
     lowerYaoResultsBian: [], // 变卦下卦爻
     bianYaoIndices: [], // 变爻索引（原数组顺序：0-5对应初到上）
@@ -119,6 +121,8 @@ Page({
         originalResults: swappedResults,
         upperYaoResults,
         lowerYaoResults,
+        originalUpperYaoResults: [...upperYaoResults],  // 保存副本
+        originalLowerYaoResults: [...lowerYaoResults],  // 保存副本
         upperYaoResultsBian,
         lowerYaoResultsBian,
         bianYaoIndices,
@@ -148,7 +152,7 @@ Page({
   // 切换 tab
   switchTab(e) {
     const index = parseInt(e.currentTarget.dataset.index);
-    const { originalResults, bianGuaDetail, guaDetail, upperYaoResults, lowerYaoResults, upperYaoResultsBian, lowerYaoResultsBian, hasBian } = this.data;
+    const { originalResults, bianGuaDetail, guaDetail, originalUpperYaoResults, originalLowerYaoResults, upperYaoResultsBian, lowerYaoResultsBian, hasBian } = this.data;
 
     // 根据 tab 切换六爻数据和标题
     if (index === 1 && hasBian && bianGuaDetail) {
@@ -165,8 +169,8 @@ Page({
       this.setData({
         currentTab: index,
         results: originalResults,
-        upperYaoResults: upperYaoResults,
-        lowerYaoResults: lowerYaoResults
+        upperYaoResults: originalUpperYaoResults,
+        lowerYaoResults: originalLowerYaoResults
       });
       wx.setNavigationBarTitle({
         title: `${guaDetail.guaName}卦`

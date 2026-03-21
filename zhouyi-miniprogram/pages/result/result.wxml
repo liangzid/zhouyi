@@ -121,7 +121,6 @@
   <!-- 操作按钮 -->
   <view class="action-btns">
     <button class="copy-btn" bindtap="copyGuaCi">复制结果</button>
-    <button class="share-btn" bindtap="saveShareImage">截图保存</button>
     <button class="share-btn" bindtap="showShareTip">分享结果</button>
   </view>
 
@@ -132,7 +131,7 @@
       <view class="share-tip-desc">您可以选择以下方式分享本次占卜结果：</view>
       <view class="share-tip-btns">
         <button class="share-tip-btn share-card-btn" bindtap="doShareCard">分享小程序卡片</button>
-        <button class="share-tip-btn share-img-btn" bindtap="doShareImage">保存截图分享</button>
+        <button class="share-tip-btn share-img-btn" bindtap="doShareImage">保存到相册</button>
       </view>
       <view class="share-tip-cancel" bindtap="closeShareTip">取消</view>
     </view>
